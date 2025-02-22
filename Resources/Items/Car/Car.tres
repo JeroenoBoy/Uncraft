@@ -1,16 +1,13 @@
 [gd_resource type="Resource" script_class="ComplexItem" load_steps=5 format=3 uid="uid://d8seyk4of85l"]
 
 [ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="1_w3ehw"]
-[ext_resource type="Texture2D" uid="uid://luikthl4lfk6" path="res://Assets/Sprites/Car.png" id="2_4jo26"]
 [ext_resource type="Script" path="res://Scripts/Items/ComplexItem.gd" id="2_k7ph7"]
-
-[sub_resource type="Resource" id="Resource_xur8b"]
-script = ExtResource("1_w3ehw")
-layer = 0
-name = ""
-sprite = ExtResource("2_4jo26")
+[ext_resource type="Resource" uid="uid://cr65i1n051q68" path="res://Resources/Items/Car/Part_Tires.tres" id="2_pcdo4"]
+[ext_resource type="Texture2D" uid="uid://dn7lrruye8yjn" path="res://Assets/Sprites/Car/car_tires.tres" id="4_284mn"]
 
 [resource]
 script = ExtResource("2_k7ph7")
-items = Array[ExtResource("1_w3ehw")]([SubResource("Resource_xur8b")])
+items = Array[ExtResource("1_w3ehw")]([ExtResource("2_pcdo4")])
 name = ""
+stackSize = 100
+sprite = ExtResource("4_284mn")

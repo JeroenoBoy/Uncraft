@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComplexItemPart" load_steps=3 format=3 uid="uid://cr65i1n051q68"]
+
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="1_u31qk"]
+[ext_resource type="Texture2D" uid="uid://dn7lrruye8yjn" path="res://Assets/Sprites/Car/car_tires.tres" id="2_e4kxw"]
+
+[resource]
+script = ExtResource("1_u31qk")
+name = "Tires"
+layer = 0
+sprite = ExtResource("2_e4kxw")

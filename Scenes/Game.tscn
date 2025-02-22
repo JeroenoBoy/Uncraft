@@ -57,12 +57,12 @@ polygons = [PackedInt32Array(0, 1, 2, 3)]
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 31)
 sprite_frames = SubResource("SpriteFrames_88rw4")
-frame_progress = 0.265731
+frame_progress = 0.270919
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_88rw4")
-frame_progress = 0.991681
+frame_progress = 0.996871
 
 [node name="Core" type="Sprite2D" parent="."]
 position = Vector2(96, 0)
