@@ -8,6 +8,6 @@
 [resource]
 script = ExtResource("2_k7ph7")
 items = Array[ExtResource("1_w3ehw")]([ExtResource("2_pcdo4")])
-name = ""
-stackSize = 100
+name = "Car"
+stackSize = 1
 sprite = ExtResource("4_284mn")

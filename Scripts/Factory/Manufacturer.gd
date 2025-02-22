@@ -1,4 +1,4 @@
-class_name Machine
+class_name Manufacturer
 extends Node2D
 
 @export var recipes: Array[Recipe] = []

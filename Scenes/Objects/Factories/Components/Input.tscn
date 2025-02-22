@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bj211qmgyukaf"]
 
 [ext_resource type="Texture2D" uid="uid://ct5a4a8wj1un6" path="res://Assets/Sprites/Ports.png" id="2_t24h5"]
-[ext_resource type="PackedScene" uid="uid://bw247ekhgduva" path="res://Scenes/Factories/Components/Inventory.tscn" id="3_u6m47"]
+[ext_resource type="PackedScene" uid="uid://bw247ekhgduva" path="res://Scenes/Objects/Factories/Components/Inventory.tscn" id="3_u6m47"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpojv"]
 atlas = ExtResource("2_t24h5")

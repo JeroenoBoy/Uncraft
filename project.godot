@@ -13,6 +13,15 @@ config_version=5
 config/name="Gamejam-2025/02"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
+[autoload]
+
+Global="*res://Scripts/Globals.gd"
+Grid="*res://Scripts/Grid/WorldGrid.gd"
+
+[display]
+
+display_server/driver.linuxbsd="wayland"
+
 [dotnet]
 
 project/assembly_name="Gamejam-2025-02"
