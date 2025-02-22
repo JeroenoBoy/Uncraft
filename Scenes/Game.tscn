@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckobtjtq4elpw"]
+
+[ext_resource type="Texture2D" uid="uid://d0nblk48tnynm" path="res://Assets/Sprites/Background.png" id="1_m7xa0"]
+[ext_resource type="Texture2D" uid="uid://b3sbdkusdbfji" path="res://Assets/Sprites/conveyor.png" id="2_t44fi"]
+[ext_resource type="Texture2D" uid="uid://dru55fbegmx1o" path="res://Assets/Sprites/Core.png" id="3_shyhw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5tqu"]
+atlas = ExtResource("2_t44fi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7o1e"]
+atlas = ExtResource("2_t44fi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofuwx"]
+atlas = ExtResource("2_t44fi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5r3l"]
+atlas = ExtResource("2_t44fi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88rw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5tqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7o1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofuwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5r3l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Polygon2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, -1)
+rotation = 0.00221506
+scale = Vector2(5, 5)
+texture = ExtResource("1_m7xa0")
+texture_offset = Vector2(16, 16)
+texture_scale = Vector2(5, 5)
+polygon = PackedVector2Array(-80, 80, -80, -80, 80, -80, 80, 80)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 31)
+sprite_frames = SubResource("SpriteFrames_88rw4")
+frame_progress = 0.265731
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_88rw4")
+frame_progress = 0.991681
+
+[node name="Core" type="Sprite2D" parent="."]
+position = Vector2(96, 0)
+texture = ExtResource("3_shyhw")

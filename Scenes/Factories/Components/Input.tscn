@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj211qmgyukaf"]
+
+[ext_resource type="Texture2D" uid="uid://ct5a4a8wj1un6" path="res://Assets/Sprites/Ports.png" id="2_t24h5"]
+[ext_resource type="PackedScene" uid="uid://bw247ekhgduva" path="res://Scenes/Factories/Components/Inventory.tscn" id="3_u6m47"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpojv"]
+atlas = ExtResource("2_t24h5")
+region = Rect2(0, 0, 32, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvbhf"]
+atlas = ExtResource("2_t24h5")
+region = Rect2(32, 0, 32, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr3xq"]
+atlas = ExtResource("2_t24h5")
+region = Rect2(64, 0, 32, 3)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6fdsu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpojv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvbhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr3xq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Input" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6fdsu")
+frame_progress = 0.343306
+
+[node name="Inventory" parent="." instance=ExtResource("3_u6m47")]
