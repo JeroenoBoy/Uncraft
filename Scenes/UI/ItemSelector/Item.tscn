@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd5rseck46xn5"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ItemSelector/SelectableItem.gd" id="1_682fy"]
+[ext_resource type="Texture2D" uid="uid://bxfas563byeto" path="res://Assets/Sprites/Icons/ConveyorIcon.tres" id="2_v8y7t"]
+
+[node name="Item" type="Button"]
+custom_minimum_size = Vector2(96, 96)
+script = ExtResource("1_682fy")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Image" type="TextureRect" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v8y7t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -23.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 12
+text = "Conveyor"
+vertical_alignment = 2

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bxfas563byeto"]
+
+[ext_resource type="Texture2D" uid="uid://b3sbdkusdbfji" path="res://Assets/Sprites/conveyor.png" id="1_xs88o"]
+
+[resource]
+atlas = ExtResource("1_xs88o")
+region = Rect2(32, 0, 32, 32)

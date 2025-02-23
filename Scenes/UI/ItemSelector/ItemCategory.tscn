@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://h8kqh0e28670"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ItemSelector/ItemSelectorCategory.gd" id="1_def66"]
+[ext_resource type="PackedScene" uid="uid://dd5rseck46xn5" path="res://Scenes/UI/ItemSelector/Item.tscn" id="2_0rlug"]
+
+[node name="Belts" type="MarginContainer" node_paths=PackedStringArray("container")]
+visible = false
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_def66")
+selectableItemScene = ExtResource("2_0rlug")
+container = NodePath("HBox")
+metadata/_tab_index = 0
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
