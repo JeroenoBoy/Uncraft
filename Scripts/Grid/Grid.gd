@@ -27,17 +27,18 @@ static func grid_to_world(grid_position: Vector2i) -> Vector2:
 static func grid_mouse_pos(adjust_for_node: GridNode = null) -> Vector2i:
 	var mouse_pos = instance.get_viewport().get_camera_2d().get_global_mouse_position()
 	mouse_pos += DEFAULT_OFFSET
-	if adjust_for_node == null:
-		pass
-	else:
+	if adjust_for_node != null:
 		var offset = ((adjust_for_node.size - Vector2i.ONE) * 0.5 + Vector2(adjust_for_node.offset)) * CELL_SIZE
 		mouse_pos -= offset.rotated(adjust_for_node.global_rotation)
-		pass
-		# var offset = (adjust_for_node.size * 0.5 + adjust_for_node.offset * 1.0) * CELL_SIZE - DEFAULT_OFFSET
-		# mouse_pos += offset.rotated(deg_to_rad(adjust_for_node.global_rotation_degrees))
 	return Grid.world_to_grid(mouse_pos)
 
-static func fast_rotate()
+static func fast_rotate(vector: Vector2i, rot: float) -> Vector2i:
+	var rounded_rot = ((int(round(rot / 90)) % 4) + 4) % 4
+	for i in range(rounded_rot):
+		var y = vector.y
+		vector.y = vector.x
+		vector.x = -y
+	return vector
 
 func _exit_tree() -> void:
 	instance = null
@@ -58,11 +59,12 @@ func set_building(node: GridNode):
 		return
 
 	var gridPos = world_to_grid(node.position)
-	gridPos += node.offset
+	var offset = node.offset
+	var rot = node.global_rotation_degrees
 
 	for x in range(node.size.x):
 		for y in range(node.size.y):
-			var pos = Vector2i(x + gridPos.x, y + gridPos.y)
+			var pos = fast_rotate(Vector2i(x + offset.x, y + offset.y), rot) + gridPos
 			if !_grid.has(pos):
 				astar.set_point_solid(pos, true)
 				_grid[pos] = []
@@ -76,11 +78,12 @@ func remove_building(node: GridNode):
 		return
 
 	var gridPos = world_to_grid(node.position)
-	gridPos += node.offset
+	var offset = node.offset
+	var rot = node.global_rotation_degrees
 
 	for x in range(node.size.x):
 		for y in range(node.size.y):
-			var pos = Vector2i(x + gridPos.x, y + gridPos.y)
+			var pos = fast_rotate(Vector2i(x + offset.x, y + offset.y), rot) + gridPos
 			if !_grid.has(pos):
 				continue
 
@@ -95,10 +98,11 @@ func remove_building(node: GridNode):
 func is_spot_occupied(node: GridNode) -> bool:
 	var gridPos = world_to_grid(node.position)
 	var offset = node.offset
+	var rot = node.global_rotation_degrees
 	
 	for x in range(node.size.x):
 		for y in range(node.size.y):
-			var pos = Vector2i(x + offset.x, y + offset.y)
+			var pos = fast_rotate(Vector2i(x + offset.x, y + offset.y), rot) + gridPos
 			if _grid.has(pos):
 				return false
 
