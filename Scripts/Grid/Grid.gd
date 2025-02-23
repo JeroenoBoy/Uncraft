@@ -5,7 +5,7 @@ const CELL_SIZE = 32;
 static var instance: Grid
 
 @onready var astar: AStarGrid2D
-var _nodes: Dictionary = {}
+var _grid: Dictionary = {}
 
 func _init() -> void:
 	instance = self
@@ -23,14 +23,24 @@ static func world_to_grid(worldPosition: Vector2) -> Vector2i:
 static func grid_to_world(gridPosition: Vector2i) -> Vector2:
 	return gridPosition * CELL_SIZE
 
+static func grid_mouse_pos() -> Vector2i:
+	var mouse_pos = instance.get_viewport().get_camera_2d().get_global_mouse_position()
+	return Grid.world_to_grid(mouse_pos + Vector2(Grid.CELL_SIZE / 2.0, Grid.CELL_SIZE / 2.0))
 
 func _exit_tree() -> void:
 	instance = null
 
-func get_nodes(position: Vector2i) -> Array[GridNode]:
-	return _nodes[position]
+func get_buildings(grid_pos: Vector2i) -> Array[GridNode]:
+	if !_grid.has(grid_pos):
+		return []
+	return _grid[grid_pos]
 
-func set_node(node: GridNode):
+func get_building(grid_pos: Vector2i) -> GridNode:
+	if !_grid.has(grid_pos):
+		return null
+	return _grid[grid_pos][0]
+	
+func set_building(node: GridNode):
 	if node.is_on_grid:
 		push_warning("Tried to place an already placed node")
 		return
@@ -41,14 +51,14 @@ func set_node(node: GridNode):
 	for x in range(node.size.x):
 		for y in range(node.size.y):
 			var pos = Vector2i(x + gridPos.x, y + gridPos.y)
-			if !_nodes.has(pos):
+			if !_grid.has(pos):
 				astar.set_point_solid(pos, true)
-				_nodes[pos] = []
-			_nodes[pos].append(node)
+				_grid[pos] = []
+			_grid[pos].append(node)
 
 	node.is_on_grid = true
 
-func remove_node(node: GridNode):
+func remove_building(node: GridNode):
 	if !node.is_on_grid:
 		push_warning("Tried to remove a node thats not placed")
 		return
@@ -59,14 +69,14 @@ func remove_node(node: GridNode):
 	for x in range(node.size.x):
 		for y in range(node.size.y):
 			var pos = Vector2i(x + gridPos.x, y + gridPos.y)
-			if !_nodes.has(pos):
+			if !_grid.has(pos):
 				continue
 
-			if _nodes[pos].size == 1:
+			if _grid[pos].size() == 1:
 				astar.set_point_solid(pos, false)
-				_nodes[pos] = null
+				_grid.erase(pos)
 			else:
-				_nodes[pos].erase(node)
+				_grid[pos].erase(node)
 
 	node.is_on_grid = false
 	
@@ -77,7 +87,7 @@ func is_spot_occupied(node: GridNode) -> bool:
 	for x in range(node.size.x):
 		for y in range(node.size.y):
 			var pos = Vector2i(x + gridPos.x, y + gridPos.y)
-			if _nodes.has(pos):
+			if _grid.has(pos):
 				return false
 
 	return true

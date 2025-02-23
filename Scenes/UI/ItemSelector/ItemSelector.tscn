@@ -31,3 +31,8 @@ folder = "res://Resources/Factory/Belts"
 layout_mode = 2
 folder = "res://Resources/Factory/Machines"
 metadata/_tab_index = 1
+
+[node name="Generators" parent="TabContainer" instance=ExtResource("1_lh44s")]
+layout_mode = 2
+folder = "res://Resources/Factory/Generators"
+metadata/_tab_index = 2

@@ -1,4 +1,4 @@
-class_name BaseMoveItemState
+class_name BaseMoveBuildingState
 extends BaseGameState
 
 var object: GridNode
@@ -8,8 +8,11 @@ var can_place = false
 
 func reset_position_to_mouse():
 	current_rotation = 0
-	var mouse_pos = get_viewport().get_camera_2d().get_global_mouse_position()
-	current_pos = Grid.world_to_grid(mouse_pos + Vector2(Grid.CELL_SIZE / 2.0, Grid.CELL_SIZE / 2.0))
+	current_pos = Grid.grid_mouse_pos()
+
+func reset_position_to_building(grid_node: GridNode):
+	current_rotation = grid_node.global_rotation_degrees
+	current_pos = Grid.world_to_grid(grid_node.position)
 
 func set_object(grid_node: GridNode):
 	if grid_node.is_on_grid:
@@ -35,9 +38,7 @@ func rotate_object(rotation: float):
 func _update(delta: float):
 	super._update(delta)
 
-	var mouse_pos = get_viewport().get_camera_2d().get_global_mouse_position()
-	var grid_pos = Grid.world_to_grid(mouse_pos + Vector2(Grid.CELL_SIZE / 2.0, Grid.CELL_SIZE / 2.0))
-
+	var grid_pos = Grid.grid_mouse_pos()
 	if grid_pos != current_pos:
 		move_object(grid_pos)
 
@@ -49,8 +50,12 @@ func _update(delta: float):
 		_on_place()
 		return
 
-	if object.rotatable && Input.is_action_just_pressed("build_rotate"):
+	if object.rotatable && Input.is_action_just_pressed("build_rotate_clockwise"):
 		rotate_object(current_rotation + 90)
+		return
+
+	if object.rotatable && Input.is_action_just_pressed("building_rotate_anti_clockwise"):
+		rotate_object(current_rotation - 90)
 		return
 
 func _check_valid_position():

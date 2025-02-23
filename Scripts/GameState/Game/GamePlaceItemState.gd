@@ -1,5 +1,5 @@
 class_name GamePlaceItemState
-extends BaseMoveItemState
+extends BaseMoveBuildingState
 
 var item: PlaceableItem
 var cancelAction: CancelableAction

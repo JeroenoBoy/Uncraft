@@ -43,8 +43,9 @@ func rotation() -> Vector2i:
 	return Vector2i.LEFT
 
 func place():
-	Grid.instance.set_node(self)
+	Grid.instance.set_building(self)
 	on_placed.emit()
 
 func pickup():
+	Grid.instance.remove_building(self)
 	on_pickup.emit()
