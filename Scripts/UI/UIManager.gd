@@ -1,5 +1,5 @@
 class_name UIManager
-extends Control
+extends Node
 
 static var instance: UIManager
 

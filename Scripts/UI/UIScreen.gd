@@ -25,7 +25,6 @@ func hide_screen():
 	_hide()
 
 func _ready() -> void:
-	print("Ready")
 	visible = false
 
 func _first_show():

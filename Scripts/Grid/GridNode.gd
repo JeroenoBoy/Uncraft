@@ -1,8 +1,13 @@
 class_name GridNode
 extends Node2D
 
-@export var size = Vector2.ONE
-@export var offset = Vector2.ZERO
+@export var size = Vector2i.ONE
+@export var offset = Vector2i.ZERO
+@export var movable = true;
+@export var rotatable = true;
+@export var removable = true;
+
+var place_on_spawn = true;
 
 var childNodes: Array[GridNode] = []
 var is_registered = false
@@ -13,9 +18,13 @@ signal on_pickup()
 func _ready() -> void:
 	var children = find_children("*", "GridNode")
 	for child in children:
+		child.place_on_spawn = false;
 		on_placed.connect(child.place)
 		on_pickup.connect(child.pickup)
 		childNodes.append(child)
+
+	if place_on_spawn:
+		place()
 
 func _exit_tree() -> void:
 	for child in childNodes:
@@ -34,7 +43,7 @@ func rotation() -> Vector2i:
 	return Vector2i.LEFT
 
 func place():
-	WorldGrid.instance.set_node(self)
+	Grid.instance.set_node(self)
 	on_placed.emit()
 
 func pickup():

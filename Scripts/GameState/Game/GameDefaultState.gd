@@ -1,8 +1,6 @@
 class_name GameDefaultState
 extends BaseGameState
 
-var item_selector_screen: ItemSelectorScreen
-
 func _init():
 	_item_selector = true
 

@@ -10,7 +10,7 @@ func _ready() -> void:
 	if !access.dir_exists(folder):
 		push_error("Directory '"+folder+"' does not exist")
 		return
-	
+
 	for file in access.get_files():
 		var resource = ResourceLoader.load(folder + "/" + file)
 		if resource is not PlaceableItem:

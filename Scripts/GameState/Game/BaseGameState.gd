@@ -21,4 +21,4 @@ func _on_deactivate():
 	pass
 
 func _on_item_selected(item: PlaceableItem):
-	state_machine.change_state("PlaceItem", { item: item })
+	state_machine.change_state("PlaceItem", { "item": item })
