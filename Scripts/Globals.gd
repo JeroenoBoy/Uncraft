@@ -1,5 +1,5 @@
 class_name Globals
-extends Node2D
+extends Node
 
 var item_prefab = preload("res://Scenes/Objects/Item.tscn")
 

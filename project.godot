@@ -15,13 +15,17 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 
 [autoload]
 
-Global="*res://Scripts/Globals.gd"
+Global="*res://Scenes/Globals.tscn"
 Events="*res://Scripts/EventBus.gd"
 UI="*res://Scenes/UI/UI.tscn"
 
 [dotnet]
 
 project/assembly_name="Gamejam-2025-02"
+
+[global_group]
+
+Conveyor=""
 
 [input]
 
