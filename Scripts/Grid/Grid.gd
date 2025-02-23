@@ -4,11 +4,15 @@ extends Node2D
 const CELL_SIZE = 32;
 static var instance: Grid
 
-@onready var astar: AStarGrid2D = AStarGrid2D.new()
+@onready var astar: AStarGrid2D
 var _nodes: Dictionary = {}
 
 func _init() -> void:
 	instance = self
+	astar = AStarGrid2D.new()
+	astar.cell_size = Vector2i(32, 32)
+	astar.region = Rect2i(Vector2i(-50,-50), Vector2i(100,100))
+	astar.update()
 
 func _ready():
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
@@ -27,7 +31,7 @@ func get_nodes(position: Vector2i) -> Array[GridNode]:
 	return _nodes[position]
 
 func set_node(node: GridNode):
-	if node.is_registered:
+	if node.is_on_grid:
 		push_warning("Tried to place an already placed node")
 		return
 
@@ -42,10 +46,10 @@ func set_node(node: GridNode):
 				_nodes[pos] = []
 			_nodes[pos].append(node)
 
-	node.is_registered = true
+	node.is_on_grid = true
 
 func remove_node(node: GridNode):
-	if !node.is_registered:
+	if !node.is_on_grid:
 		push_warning("Tried to remove a node thats not placed")
 		return
 
@@ -64,7 +68,7 @@ func remove_node(node: GridNode):
 			else:
 				_nodes[pos].erase(node)
 
-	node.is_registered = false
+	node.is_on_grid = false
 	
 func is_spot_occupied(node: GridNode) -> bool:
 	var gridPos = world_to_grid(node.position)

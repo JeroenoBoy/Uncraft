@@ -10,7 +10,7 @@ extends Node2D
 var place_on_spawn = true;
 
 var childNodes: Array[GridNode] = []
-var is_registered = false
+var is_on_grid = false
 
 signal on_placed()
 signal on_pickup()
