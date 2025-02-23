@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlaceableItem" load_steps=5 format=3 uid="uid://byl0f7kwh1dy2"]
+
+[ext_resource type="Script" path="res://Scripts/Factory/PlacableItem.gd" id="1_ladk5"]
+[ext_resource type="PackedScene" uid="uid://bvrxytokgqmyo" path="res://Scenes/Objects/Factories/Buildings/CarGenerator.tscn" id="1_r7haa"]
+[ext_resource type="Texture2D" uid="uid://ct37nbxbbn5wp" path="res://Assets/Sprites/Generators/Generator.png" id="3_yxssn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcn4o"]
+atlas = ExtResource("3_yxssn")
+region = Rect2(0, 0, 64, 32)
+
+[resource]
+script = ExtResource("1_ladk5")
+name = ""
+sprite = SubResource("AtlasTexture_jcn4o")
+node = ExtResource("1_r7haa")

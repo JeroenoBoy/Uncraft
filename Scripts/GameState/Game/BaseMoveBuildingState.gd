@@ -8,7 +8,7 @@ var can_place = false
 
 func reset_position_to_mouse():
 	current_rotation = 0
-	current_pos = Grid.grid_mouse_pos()
+	current_pos = Grid.grid_mouse_pos(object)
 
 func reset_position_to_building(grid_node: GridNode):
 	current_rotation = grid_node.global_rotation_degrees
@@ -38,7 +38,7 @@ func rotate_object(rotation: float):
 func _update(delta: float):
 	super._update(delta)
 
-	var grid_pos = Grid.grid_mouse_pos()
+	var grid_pos = Grid.grid_mouse_pos(object)
 	if grid_pos != current_pos:
 		move_object(grid_pos)
 

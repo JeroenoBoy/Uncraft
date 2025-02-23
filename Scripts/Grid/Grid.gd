@@ -2,6 +2,7 @@ class_name Grid
 extends Node2D
 
 const CELL_SIZE = 32;
+const DEFAULT_OFFSET = Vector2(CELL_SIZE / 2.0, CELL_SIZE / 2.0)
 static var instance: Grid
 
 @onready var astar: AStarGrid2D
@@ -17,15 +18,26 @@ func _init() -> void:
 func _ready():
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 
-static func world_to_grid(worldPosition: Vector2) -> Vector2i:
-	return floor(worldPosition / CELL_SIZE)
+static func world_to_grid(world_position: Vector2) -> Vector2i:
+	return floor(world_position / CELL_SIZE)
 
-static func grid_to_world(gridPosition: Vector2i) -> Vector2:
-	return gridPosition * CELL_SIZE
+static func grid_to_world(grid_position: Vector2i) -> Vector2:
+	return grid_position * CELL_SIZE
 
-static func grid_mouse_pos() -> Vector2i:
+static func grid_mouse_pos(adjust_for_node: GridNode = null) -> Vector2i:
 	var mouse_pos = instance.get_viewport().get_camera_2d().get_global_mouse_position()
-	return Grid.world_to_grid(mouse_pos + Vector2(Grid.CELL_SIZE / 2.0, Grid.CELL_SIZE / 2.0))
+	mouse_pos += DEFAULT_OFFSET
+	if adjust_for_node == null:
+		pass
+	else:
+		var offset = ((adjust_for_node.size - Vector2i.ONE) * 0.5 + Vector2(adjust_for_node.offset)) * CELL_SIZE
+		mouse_pos -= offset.rotated(adjust_for_node.global_rotation)
+		pass
+		# var offset = (adjust_for_node.size * 0.5 + adjust_for_node.offset * 1.0) * CELL_SIZE - DEFAULT_OFFSET
+		# mouse_pos += offset.rotated(deg_to_rad(adjust_for_node.global_rotation_degrees))
+	return Grid.world_to_grid(mouse_pos)
+
+static func fast_rotate()
 
 func _exit_tree() -> void:
 	instance = null
@@ -82,11 +94,11 @@ func remove_building(node: GridNode):
 	
 func is_spot_occupied(node: GridNode) -> bool:
 	var gridPos = world_to_grid(node.position)
-	gridPos += node.offset
+	var offset = node.offset
 	
 	for x in range(node.size.x):
 		for y in range(node.size.y):
-			var pos = Vector2i(x + gridPos.x, y + gridPos.y)
+			var pos = Vector2i(x + offset.x, y + offset.y)
 			if _grid.has(pos):
 				return false
 

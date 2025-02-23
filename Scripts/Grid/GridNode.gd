@@ -1,6 +1,9 @@
 class_name GridNode
 extends Node2D
 
+signal placed()
+signal picked_up()
+
 @export var size = Vector2i.ONE
 @export var offset = Vector2i.ZERO
 @export var movable = true;
@@ -12,15 +15,12 @@ var place_on_spawn = true;
 var childNodes: Array[GridNode] = []
 var is_on_grid = false
 
-signal on_placed()
-signal on_pickup()
-
 func _ready() -> void:
 	var children = find_children("*", "GridNode")
 	for child in children:
 		child.place_on_spawn = false;
-		on_placed.connect(child.place)
-		on_pickup.connect(child.pickup)
+		placed.connect(child.place)
+		picked_up.connect(child.pickup)
 		childNodes.append(child)
 
 	if place_on_spawn:
@@ -28,8 +28,8 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	for child in childNodes:
-		on_placed.disconnect(child.place)
-		on_pickup.disconnect(child.pickup)
+		placed.disconnect(child.place)
+		picked_up.disconnect(child.pickup)
 	childNodes.clear()
 
 func rotation() -> Vector2i:
@@ -44,8 +44,8 @@ func rotation() -> Vector2i:
 
 func place():
 	Grid.instance.set_building(self)
-	on_placed.emit()
+	placed.emit()
 
 func pickup():
 	Grid.instance.remove_building(self)
-	on_pickup.emit()
+	picked_up.emit()

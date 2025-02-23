@@ -3,55 +3,60 @@ extends Node2D
 
 @export var max_size = 1
 @export var max_items = -1
-@export var items: Array[Item] = []
+@export var items: Dictionary = {}
 @export var filter: Array[ItemFilter] = []
+@export var items_visible = false;
 
-var items_in_inventory = 0
+var total_items = 0
 
-func add_item(item: Item) -> bool:
-	
+func _exit_tree() -> void:
+	for v in items.values():
+		for item in v:
+			item.queue_free()
+
+func can_hold(item_data: ItemData, count: int = 1) -> bool:
 	if max_items > -1:
-		if item.count + items_in_inventory > max_items:
+		if count + total_items > max_items:
 			return false
 
-	var item_data = item.item_data
 	if filter.size() != 0 && !filter.any(func(it): return it.item_data == item_data):
 		return false
 
-	var item_in_inventory = items.find(func(it): return it.item_data == item_data)
-	if item_in_inventory != null:
-		if item_data.max_size > item_in_inventory.count + item.count:
+	if items.has(item_data):
+		var items_in_inventory = items[item_data] as Array[Item];
+		if item_data.max_size > items_in_inventory.size() + count:
 			return false
-
-	elif items.count >= max_size:
-		return false
 	
-	return false
+	if items.size() >= max_size:
+		return false
+
+	return true
+
+func add_item(item: Item) -> bool:
+	if !can_hold(item.item_data, item.count):
+		return false
+	add_item_skip_checks(item)
+	return true
 	
 func add_item_skip_checks(item: Item):
 	var item_data = item.item_data
-	items_in_inventory += item.count
-	if item_data is ComplexItem:
-		items.append(item)
-		return
+	if !items.has(item_data):
+		items[item_data] = []
 
-	var item_in_inventory = items.find(func(it): return it.item_data == item_data)
-	if item_in_inventory == null:
-		items.append(item)
-	else:
-		item_in_inventory.count += item.count
-		item.queue_free()
+	item.visible = items_visible
+	
+	items[item_data].append(item)
+	total_items += 1
 
-func remove_item(item_data: ItemData, count = 1) -> Item:
-	var item_in_inventory = items.find(func(it): return it.item_data == item_data)
-	if item_in_inventory == null:
+func remove_item(item_data: ItemData) -> Item:
+	if !items.has(item_data):
 		return null
 
-	if item_in_inventory.count <= count:
-		items.erase(item_in_inventory)
-		items_in_inventory -= item_in_inventory.count
-		return item_in_inventory
+	var items_in_inventory = items[item_data] as Array[Item]
+	var item = items_in_inventory.pop_front()
+	total_items -= 1
 
-	items_in_inventory -= count
-	item_in_inventory.count -= count
-	return Item.create(item_data, count)
+	if items_in_inventory.size() == 0:
+		items.erase(item_data)
+	
+	return item

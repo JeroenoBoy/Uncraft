@@ -1,41 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj211qmgyukaf"]
+[gd_scene load_steps=3 format=3 uid="uid://bwo05tbedg8d7"]
 
-[ext_resource type="Texture2D" uid="uid://ct5a4a8wj1un6" path="res://Assets/Sprites/Ports.png" id="2_t24h5"]
-[ext_resource type="PackedScene" uid="uid://bw247ekhgduva" path="res://Scenes/Objects/Factories/Components/Inventory.tscn" id="3_u6m47"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lpojv"]
-atlas = ExtResource("2_t24h5")
-region = Rect2(0, 0, 32, 3)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvbhf"]
-atlas = ExtResource("2_t24h5")
-region = Rect2(32, 0, 32, 3)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hr3xq"]
-atlas = ExtResource("2_t24h5")
-region = Rect2(64, 0, 32, 3)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6fdsu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lpojv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nvbhf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hr3xq")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" path="res://Scripts/Factory/MachineInput.gd" id="1_327js"]
+[ext_resource type="SpriteFrames" uid="uid://bd7ivu5b27s5d" path="res://Assets/Sprites/Input_anim.tres" id="2_520d7"]
 
 [node name="Input" type="Node2D"]
+script = ExtResource("1_327js")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_6fdsu")
-frame_progress = 0.343306
-
-[node name="Inventory" parent="." instance=ExtResource("3_u6m47")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Ports"]]
+position = Vector2(0, 0.5)
+sprite_frames = ExtResource("2_520d7")
+frame_progress = 0.0114251

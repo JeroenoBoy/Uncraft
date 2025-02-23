@@ -1,25 +1,23 @@
 class_name Item
 extends Node2D
 
-@export var count = 1
 @export var item_data: ItemData
 
 var renderers: Array[Sprite2D] = []
 
 
-static func create(item_data: ItemData, count = 1) -> Item:
+static func create(item_data: ItemData) -> Item:
 	var prefab = Globals.instance.item_prefab
 	var instance = prefab.instantiate()
 
 	if instance is not Item:
 		push_error("Instance is not of type Item")
-		pass
+		return null
 
 	var item = instance as Item
-	item.count = max(count, 1)
 	item.set_data(item_data)
 
-	return null
+	return item
 	
 
 func set_data(item_data: ItemData):

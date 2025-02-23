@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvrxytokgqmyo"]
+
+[ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_6t78y"]
+[ext_resource type="PackedScene" uid="uid://v40l4ksnje7j" path="res://Scenes/Objects/Factories/Components/Generator.tscn" id="2_6phwj"]
+[ext_resource type="SpriteFrames" uid="uid://ckgh8mkra3eyj" path="res://Assets/Sprites/Generators/Generator.tres" id="2_53vvb"]
+[ext_resource type="PackedScene" uid="uid://bj211qmgyukaf" path="res://Scenes/Objects/Factories/Components/Output.tscn" id="3_lshni"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="5_pcvmi"]
+
+[node name="CarGenerator" type="Node2D"]
+script = ExtResource("1_6t78y")
+size = Vector2i(2, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 0)
+sprite_frames = ExtResource("2_53vvb")
+animation = &"idle"
+
+[node name="Generator" parent="." node_paths=PackedStringArray("output") instance=ExtResource("2_6phwj")]
+item_data = ExtResource("5_pcvmi")
+output = NodePath("../MachineOutput")
+
+[node name="MachineOutput" parent="." instance=ExtResource("3_lshni")]
+position = Vector2(47, 0)
+rotation = -1.57079
+
+[connection signal="picked_up" from="." to="Generator" method="_on_car_generator_picked_up"]
+[connection signal="placed" from="." to="Generator" method="_on_car_generator_placed"]
