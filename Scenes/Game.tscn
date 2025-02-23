@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckobtjtq4elpw"]
+[gd_scene load_steps=3 format=3 uid="uid://ckobtjtq4elpw"]
 
 [ext_resource type="Texture2D" uid="uid://d0nblk48tnynm" path="res://Assets/Sprites/Background.png" id="1_m7xa0"]
+[ext_resource type="PackedScene" uid="uid://dlqlwrhiaipoa" path="res://Scenes/MainStateMachine.tscn" id="2_fnk24"]
 
 [node name="Game" type="Node2D"]
 
@@ -17,3 +18,7 @@ texture_offset = Vector2(16, 16)
 texture_scale = Vector2(5, 5)
 polygon = PackedVector2Array(-80, 80, -80, -80, 80, -80, 80, 80)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MainStateMachine" parent="." instance=ExtResource("2_fnk24")]

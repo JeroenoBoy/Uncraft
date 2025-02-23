@@ -17,6 +17,8 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 
 Global="*res://Scripts/Globals.gd"
 Grid="*res://Scripts/Grid/WorldGrid.gd"
+UI="*res://Scenes/UI/UI.tscn"
+Events="*res://Scripts/EventBus.gd"
 
 [dotnet]
 

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://brov1ybjs5gc1"]
+[gd_scene load_steps=4 format=3 uid="uid://brov1ybjs5gc1"]
 
-[ext_resource type="PackedScene" uid="uid://h8kqh0e28670" path="res://Scenes/UI/ItemSelector/ItemCategory.tscn" id="1_2y7o7"]
+[ext_resource type="Script" path="res://Scripts/UI/UIManager.gd" id="1_hcomk"]
+[ext_resource type="PackedScene" uid="uid://r72gkwindvg5" path="res://Scenes/UI/ItemSelector/ItemSelector.tscn" id="2_pr08y"]
+[ext_resource type="Script" path="res://Scripts/UI/ItemSelector/ItemSelectorScreen.gd" id="3_ba6b5"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -9,32 +11,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hcomk")
 
-[node name="ItemSelector" type="Panel" parent="."]
-custom_minimum_size = Vector2(0, 150)
+[node name="ItemSelector" parent="." instance=ExtResource("2_pr08y")]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="TabContainer" type="TabContainer" parent="ItemSelector"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-current_tab = 0
-
-[node name="Belts" parent="ItemSelector/TabContainer" instance=ExtResource("1_2y7o7")]
-visible = true
-layout_mode = 2
-folder = "res://Resources/Factory/Belts"
-
-[node name="Machines" parent="ItemSelector/TabContainer" instance=ExtResource("1_2y7o7")]
-layout_mode = 2
-folder = "res://Resources/Factory/Machines"
-metadata/_tab_index = 1
+script = ExtResource("3_ba6b5")

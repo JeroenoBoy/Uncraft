@@ -30,6 +30,9 @@ func _process(delta: float) -> void:
 
 func _activate_state(state: State, state_data: Dictionary):
 	state.is_active_state = true
+	if !state._has_activated_before:
+		state._has_activated_before = true;
+		state._on_first_activate();
 	state._on_activate(state_data)
 	
 func _deactivate_state(state: State):

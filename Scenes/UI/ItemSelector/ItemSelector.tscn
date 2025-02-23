@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://r72gkwindvg5"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ItemSelector/ItemSelectorScreen.gd" id="1_hbgqn"]
+[ext_resource type="PackedScene" uid="uid://h8kqh0e28670" path="res://Scenes/UI/ItemSelector/ItemCategory.tscn" id="1_lh44s"]
+
+[node name="ItemSelector" type="Panel"]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_hbgqn")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Belts" parent="TabContainer" instance=ExtResource("1_lh44s")]
+visible = true
+layout_mode = 2
+folder = "res://Resources/Factory/Belts"
+
+[node name="Machines" parent="TabContainer" instance=ExtResource("1_lh44s")]
+layout_mode = 2
+folder = "res://Resources/Factory/Machines"
+metadata/_tab_index = 1

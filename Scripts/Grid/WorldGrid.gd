@@ -6,6 +6,9 @@ static var instance: WorldGrid
 const CELL_SIZE = 32;
 var _nodes: Dictionary = {}
 
+func _init() -> void:
+	instance = self
+
 static func world_to_grid(worldPosition: Vector2) -> Vector2i:
 	return floor(worldPosition / CELL_SIZE)
 
@@ -65,6 +68,4 @@ func can_place_node(node: GridNode) -> bool:
 
 	return true
 
-func _ready() -> void:
-	instance = self
 	

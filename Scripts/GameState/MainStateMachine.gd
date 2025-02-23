@@ -1,4 +1,4 @@
 extends StateMachine
 
-func _ready() -> void:
-	super._ready()
+func _ready():
+	change_state("Game")
