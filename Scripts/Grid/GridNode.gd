@@ -1,6 +1,9 @@
 class_name GridNode
 extends Node2D
 
+signal tile_update()
+signal function_update()
+
 signal placed()
 signal picked_up()
 
@@ -33,7 +36,7 @@ func _exit_tree() -> void:
 	childNodes.clear()
 
 func rotation() -> Vector2i:
-	var rot = floor(global_rotation_degrees / 90)
+	var rot = (floor(global_rotation_degrees / 90) % 4 + 4) % 4
 	if rot == 0:
 		return Vector2i.UP
 	if rot == 1:

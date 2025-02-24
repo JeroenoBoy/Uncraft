@@ -1,6 +1,8 @@
 class_name Inventory
 extends Node2D
 
+signal item_added(item: Item)
+
 @export var max_size = 1
 @export var max_items = -1
 @export var items: Dictionary = {}
@@ -14,9 +16,9 @@ func _exit_tree() -> void:
 		for item in v:
 			item.queue_free()
 
-func can_hold(item_data: ItemData, count: int = 1) -> bool:
+func can_hold(item_data: ItemData) -> bool:
 	if max_items > -1:
-		if count + total_items > max_items:
+		if total_items + 1 > max_items:
 			return false
 
 	if filter.size() != 0 && !filter.any(func(it): return it.item_data == item_data):
@@ -24,7 +26,7 @@ func can_hold(item_data: ItemData, count: int = 1) -> bool:
 
 	if items.has(item_data):
 		var items_in_inventory = items[item_data] as Array[Item];
-		if item_data.max_size > items_in_inventory.size() + count:
+		if item_data.max_size > items_in_inventory.size() + 1:
 			return false
 	
 	if items.size() >= max_size:
@@ -33,7 +35,7 @@ func can_hold(item_data: ItemData, count: int = 1) -> bool:
 	return true
 
 func add_item(item: Item) -> bool:
-	if !can_hold(item.item_data, item.count):
+	if !can_hold(item.item_data):
 		return false
 	add_item_skip_checks(item)
 	return true

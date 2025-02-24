@@ -3,7 +3,9 @@ extends Node2D
 
 const CELL_SIZE = 32;
 const DEFAULT_OFFSET = Vector2(CELL_SIZE / 2.0, CELL_SIZE / 2.0)
+
 static var instance: Grid
+static var emptryArray: Array[GridNode] = []
 
 @onready var astar: AStarGrid2D
 var _grid: Dictionary = {}
@@ -45,7 +47,7 @@ func _exit_tree() -> void:
 
 func get_buildings(grid_pos: Vector2i) -> Array[GridNode]:
 	if !_grid.has(grid_pos):
-		return []
+		return emptryArray
 	return _grid[grid_pos]
 
 func get_building(grid_pos: Vector2i) -> GridNode:
@@ -67,7 +69,7 @@ func set_building(node: GridNode):
 			var pos = fast_rotate(Vector2i(x + offset.x, y + offset.y), rot) + gridPos
 			if !_grid.has(pos):
 				astar.set_point_solid(pos, true)
-				_grid[pos] = []
+				_grid[pos] = [] as Array[GridNode]
 			_grid[pos].append(node)
 
 	node.is_on_grid = true

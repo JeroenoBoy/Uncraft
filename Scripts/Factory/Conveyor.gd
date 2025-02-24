@@ -1,4 +1,4 @@
 class_name Conveyor
-extends Node2D
+extends GridNode
 
 @onready var inventory: Inventory = $Inventory

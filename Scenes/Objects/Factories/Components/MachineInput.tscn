@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwo05tbedg8d7"]
+
+[ext_resource type="Script" path="res://Scripts/Factory/MachineInput.gd" id="1_3d350"]
+[ext_resource type="SpriteFrames" uid="uid://bd7ivu5b27s5d" path="res://Assets/Sprites/Input_anim.tres" id="2_aaeb4"]
+[ext_resource type="Script" path="res://Scripts/Grid/SendPlaceUpdate.gd" id="3_mpc71"]
+
+[node name="MachineInput" type="Node2D"]
+script = ExtResource("1_3d350")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Ports"]]
+position = Vector2(0, 0.5)
+sprite_frames = ExtResource("2_aaeb4")
+frame_progress = 0.0114251
+
+[node name="SendPlaceUpdate" type="Node2D" parent="."]
+position = Vector2(0, -16)
+script = ExtResource("3_mpc71")

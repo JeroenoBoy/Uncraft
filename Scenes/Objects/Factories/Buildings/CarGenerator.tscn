@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_6t78y"]
 [ext_resource type="PackedScene" uid="uid://v40l4ksnje7j" path="res://Scenes/Objects/Factories/Components/Generator.tscn" id="2_6phwj"]
 [ext_resource type="SpriteFrames" uid="uid://ckgh8mkra3eyj" path="res://Assets/Sprites/Generators/Generator.tres" id="2_53vvb"]
-[ext_resource type="PackedScene" uid="uid://bj211qmgyukaf" path="res://Scenes/Objects/Factories/Components/Output.tscn" id="3_lshni"]
+[ext_resource type="PackedScene" uid="uid://bj211qmgyukaf" path="res://Scenes/Objects/Factories/Components/MachineOutput.tscn" id="3_lshni"]
 [ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="5_pcvmi"]
 
 [node name="CarGenerator" type="Node2D"]
