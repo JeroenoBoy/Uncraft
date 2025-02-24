@@ -6,6 +6,9 @@
 
 [node name="MachineInput" type="Node2D"]
 script = ExtResource("1_3d350")
+movable = false
+rotatable = false
+removable = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Ports"]]
 position = Vector2(0, 0.5)

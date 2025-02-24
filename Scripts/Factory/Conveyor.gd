@@ -35,8 +35,6 @@ func _on_tile_update():
 	var pos = grid_position()
 	var rot = grid_rotation()
 
-	print("Tile update: ", pos)
-
 	var nodes_infront = Grid.instance.get_grid_nodes(pos + rot)
 	for grid_node in nodes_infront:
 		var other_rot = grid_node.grid_rotation()
@@ -54,12 +52,9 @@ func _on_tile_update():
 		var nodes = Grid.instance.get_grid_nodes(pos + rot)
 		for grid_node in nodes:
 			if !grid_node.is_in_group("ConveyorOuput"):
-				print("Group mismatch for ", grid_node.grid_position())
 				continue
 			if Grid.fast_rotate(grid_node.grid_rotation(), 180) != rot:
-				print("Rotation mismatch for ", grid_node.grid_position())
 				continue
-			print("Added child ", grid_node.grid_position())
 			previous_nodes.append(grid_node)
 			break
 
@@ -70,7 +65,6 @@ func _on_picked_up():
 	_clear_connections()
 
 func _on_function_update():
-	print("Function update: ", grid_position())
 	if _locked:
 		return
 
@@ -109,7 +103,6 @@ func _update_children():
 	for i in range(count):
 		var index = (i + _last_grabbed_child + 1) % count
 		previous_nodes[i].function_update.emit()
-		print("Updating child ", i, " pos: ", previous_nodes[i].grid_position())
 		if _locked:
 			_last_grabbed_child = index
 			return
