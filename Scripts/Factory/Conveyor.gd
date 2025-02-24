@@ -98,7 +98,6 @@ func _try_put_item_in_next_node(item_data: ItemData) -> bool:
 		
 func _update_children():
 	var count = previous_nodes.size()
-	print(count)
 	for i in range(count):
 		var index = (i + _last_grabbed_child + 1) % count
 		previous_nodes[i].function_update.emit()
