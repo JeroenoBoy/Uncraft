@@ -7,6 +7,7 @@
 
 [node name="Conveyor" type="Node2D" groups=["ConveyorOuput"]]
 script = ExtResource("3_gjdpt")
+conveyor_speed = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Conveyor"]]
 sprite_frames = ExtResource("2_000hi")
