@@ -12,6 +12,7 @@ rotatable = false
 removable = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Ports"]]
+position = Vector2(0, 1)
 sprite_frames = ExtResource("2_bakbc")
 frame_progress = 0.343306
 offset = Vector2(0, -0.5)

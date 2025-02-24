@@ -44,25 +44,21 @@ func _set_data(item_data: ItemData):
 		for complex_part in complex_item.items:
 			_parts.append(complex_part)
 
-	_create_renderer(item_data.sprite)
+	_create_renderer(-1, item_data.sprite)
 
+	for part in _parts:
+		if _renderers.has(part.layer):
+			continue
+		_create_renderer(part.layer, part.sprite)
 
 func _clear_renderers():
 	for renderer in _renderers.values():
 		renderer.queue_free()
 	_renderers.clear()
 	
-func _create_renderer(texture: Texture2D):
+func _create_renderer(layer: int, texture: Texture2D):
 	var instance = Sprite2D.new()
 	instance.texture = texture
 	add_child(instance)
-	_renderers[-1] = instance
+	_renderers[layer] = instance
 
-	for part in _parts:
-		if _renderers.has(part.layer):
-			continue
-
-		instance = Sprite2D.new()
-		instance.texture = texture
-		add_child(instance)
-		_renderers[part.layer] = instance
