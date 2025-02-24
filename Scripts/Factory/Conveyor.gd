@@ -12,7 +12,6 @@ var _locked: bool = false
 func _ready() -> void:
 	tile_update.connect(_on_tile_update)
 	function_update.connect(_on_function_update)
-	placed.connect(func(): print("Placed", grid_position()))
 	picked_up.connect(_on_picked_up)
 
 func conveyor_accepts(item_data: ItemData) -> bool:
