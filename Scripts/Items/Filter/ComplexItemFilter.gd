@@ -10,11 +10,11 @@ func check(item: Item) -> bool:
 		return false
 	
 	for part in has:
-		if !item.has_node(part.name):
+		if !item.has_part(part):
 			return false
 	
 	for part in has_not:
-		if item.has_node(part.name):
+		if item.has_part(part):
 			return false
 	
 	return true

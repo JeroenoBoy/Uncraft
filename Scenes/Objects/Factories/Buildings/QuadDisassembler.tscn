@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://dic2ut1phh0w7"]
+
+[ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_est3o"]
+[ext_resource type="Script" path="res://Scripts/Factory/Manufacturer.gd" id="2_lo30o"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="3_0t7gd"]
+[ext_resource type="Texture2D" uid="uid://bmj1r13novt1i" path="res://Assets/Sprites/Machines/QuadDisassembler.png" id="3_461kk"]
+[ext_resource type="Resource" uid="uid://gx7g6bc0ijig" path="res://Resources/Recipes/StripTires.tres" id="4_4d06x"]
+[ext_resource type="PackedScene" uid="uid://bwo05tbedg8d7" path="res://Scenes/Objects/Factories/Components/MachineInput.tscn" id="4_l575c"]
+[ext_resource type="PackedScene" uid="uid://bj211qmgyukaf" path="res://Scenes/Objects/Factories/Components/MachineOutput.tscn" id="5_3xsdk"]
+[ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="5_4sdhi"]
+
+[node name="QuadDisassembler" type="Node2D"]
+script = ExtResource("1_est3o")
+size = Vector2i(5, 2)
+
+[node name="Manufacturer" type="Node2D" parent="."]
+script = ExtResource("2_lo30o")
+recipes = Array[ExtResource("3_0t7gd")]([ExtResource("4_4d06x")])
+
+[node name="Inventory" type="Node2D" parent="Manufacturer"]
+script = ExtResource("5_4sdhi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("3_461kk")
+
+[node name="MachineInput" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("4_l575c")]
+position = Vector2(-14, 32)
+rotation = 1.5708
+inventory = NodePath("../Manufacturer/Inventory")
+
+[node name="MachineOutput" parent="." instance=ExtResource("5_3xsdk")]
+position = Vector2(32, 78)
+rotation = 3.14159
+
+[node name="MachineOutput2" parent="." instance=ExtResource("5_3xsdk")]
+position = Vector2(128, 78)
+rotation = 3.14159
+
+[node name="MachineOutput4" parent="." instance=ExtResource("5_3xsdk")]
+position = Vector2(32, -14)
+
+[node name="MachineOutput5" parent="." instance=ExtResource("5_3xsdk")]
+position = Vector2(128, -14)
+
+[node name="MachineOutput3" parent="." instance=ExtResource("5_3xsdk")]
+position = Vector2(174, 32)
+rotation = 1.5708

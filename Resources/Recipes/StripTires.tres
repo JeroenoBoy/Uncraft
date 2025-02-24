@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=14 format=3 uid="uid://gx7g6bc0ijig"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=13 format=3 uid="uid://gx7g6bc0ijig"]
 
 [ext_resource type="Script" path="res://Scripts/Items/Filter/Filter.gd" id="1_7aftx"]
 [ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="2_t4hq6"]
@@ -7,20 +7,17 @@
 [ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="4_cok4o"]
 [ext_resource type="Script" path="res://Scripts/Items/Filter/ComplexItemFilter.gd" id="5_ab1e4"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/BaseItemTransform.gd" id="6_mi3h3"]
-[ext_resource type="Resource" uid="uid://deiojou0cgv6y" path="res://Resources/Items/Tire.tres" id="8_j1rjk"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/AddItemTransform.gd" id="8_jgnr1"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/ComplexItemTransform.gd" id="9_8tpad"]
 
 [sub_resource type="Resource" id="Resource_bm0td"]
 script = ExtResource("5_ab1e4")
-itemData = ExtResource("4_cok4o")
 has = Array[ExtResource("2_t4hq6")]([ExtResource("3_jd0ex")])
-hasNot = Array[ExtResource("2_t4hq6")]([])
+has_not = Array[ExtResource("2_t4hq6")]([])
 
 [sub_resource type="Resource" id="Resource_bsmdd"]
 script = ExtResource("8_jgnr1")
 count = 4
-itemToAdd = ExtResource("8_j1rjk")
 
 [sub_resource type="Resource" id="Resource_0cy5y"]
 script = ExtResource("9_8tpad")
