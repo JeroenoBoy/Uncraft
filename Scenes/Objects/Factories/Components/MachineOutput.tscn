@@ -12,10 +12,10 @@ rotatable = false
 removable = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Ports"]]
-position = Vector2(0, 1)
+position = Vector2(0, -1)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_bakbc")
-frame_progress = 0.343306
-offset = Vector2(0, -0.5)
+frame_progress = 0.044655
 flip_v = true
 
 [node name="Inventory" parent="." instance=ExtResource("3_464o1")]

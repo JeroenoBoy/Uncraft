@@ -2,29 +2,29 @@
 
 [ext_resource type="Texture2D" uid="uid://ct5a4a8wj1un6" path="res://Assets/Sprites/Ports.png" id="1_b81ne"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lpojv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_04l0o"]
 atlas = ExtResource("1_b81ne")
-region = Rect2(0, 0, 32, 3)
+region = Rect2(0, 0, 16, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvbhf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x2ix"]
 atlas = ExtResource("1_b81ne")
-region = Rect2(32, 0, 32, 3)
+region = Rect2(16, 0, 16, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hr3xq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxv8y"]
 atlas = ExtResource("1_b81ne")
-region = Rect2(64, 0, 32, 3)
+region = Rect2(32, 0, 16, 3)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lpojv")
+"texture": SubResource("AtlasTexture_04l0o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nvbhf")
+"texture": SubResource("AtlasTexture_5x2ix")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hr3xq")
+"texture": SubResource("AtlasTexture_wxv8y")
 }],
 "loop": true,
 "name": &"default",

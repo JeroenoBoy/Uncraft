@@ -1,16 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://evmy8ahguntt"]
+[gd_scene load_steps=5 format=3 uid="uid://evmy8ahguntt"]
 
 [ext_resource type="Script" path="res://Scripts/Globals.gd" id="1_msmot"]
 [ext_resource type="Script" path="res://Scripts/Common/AnimationSync.gd" id="2_e8qh1"]
 [ext_resource type="SpriteFrames" uid="uid://bj1by5xe6hy0f" path="res://Assets/Sprites/Conveyor_anim.tres" id="3_wydc3"]
+[ext_resource type="SpriteFrames" uid="uid://bd7ivu5b27s5d" path="res://Assets/Sprites/Input_anim.tres" id="4_vt3km"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_msmot")
 
-[node name="AnimationSync" type="Timer" parent="."]
+[node name="ConveyorSync" type="Timer" parent="."]
 autostart = true
 script = ExtResource("2_e8qh1")
 frames = ExtResource("3_wydc3")
 group = "Conveyor"
 
-[connection signal="timeout" from="AnimationSync" to="AnimationSync" method="_on_timeout"]
+[node name="PortsSync" type="Timer" parent="."]
+autostart = true
+script = ExtResource("2_e8qh1")
+frames = ExtResource("4_vt3km")
+group = "Ports"
+
+[connection signal="timeout" from="ConveyorSync" to="ConveyorSync" method="_on_timeout"]
+[connection signal="timeout" from="PortsSync" to="PortsSync" method="_on_timeout"]
