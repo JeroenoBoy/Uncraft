@@ -9,6 +9,8 @@
 [node name="Grid" type="Node2D" parent="."]
 script = ExtResource("3_1fxpp")
 
+[node name="Items" type="Node2D" parent="."]
+
 [node name="Environment" type="Node2D" parent="."]
 z_index = -10
 

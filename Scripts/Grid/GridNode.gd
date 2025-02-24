@@ -12,8 +12,7 @@ signal picked_up()
 @export var movable = true;
 @export var rotatable = true;
 @export var removable = true;
-
-var place_on_spawn = true;
+@export var place_on_spawn = false;
 
 var childNodes: Array[GridNode] = []
 var is_on_grid = false
@@ -35,20 +34,25 @@ func _exit_tree() -> void:
 		picked_up.disconnect(child.pickup)
 	childNodes.clear()
 
-func rotation() -> Vector2i:
-	var rot = (floor(global_rotation_degrees / 90) % 4 + 4) % 4
-	if rot == 0:
-		return Vector2i.UP
-	if rot == 1:
-		return Vector2i.RIGHT
-	if rot == 2:
-		return Vector2i.DOWN
-	return Vector2i.LEFT
+func grid_position() -> Vector2i:
+	return Grid.world_to_grid(global_position)
+
+func grid_rotation() -> Vector2i:
+	var rot = (int(floor(global_rotation_degrees / 90)) % 4 + 4) % 4
+	match rot:
+		0: return Vector2i.UP
+		1: return Vector2i.RIGHT
+		2: return Vector2i.DOWN
+		3: return Vector2i.LEFT
+		_: 
+			push_error("Invalid rotation ", rot)
+			return Vector2i.ZERO
 
 func place():
-	Grid.instance.set_building(self)
+	Grid.instance.set_grid_node(self)
 	placed.emit()
+	tile_update.emit()
 
 func pickup():
-	Grid.instance.remove_building(self)
+	Grid.instance.remove_grid_node(self)
 	picked_up.emit()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Factory/MachineInput.gd" id="1_3d350"]
 [ext_resource type="SpriteFrames" uid="uid://bd7ivu5b27s5d" path="res://Assets/Sprites/Input_anim.tres" id="2_aaeb4"]
-[ext_resource type="Script" path="res://Scripts/Grid/SendPlaceUpdate.gd" id="3_mpc71"]
+[ext_resource type="PackedScene" uid="uid://bm5rpej2vailu" path="res://Scenes/Objects/Factories/Components/SendPlaceUpdate.tscn" id="3_kxt6q"]
 
 [node name="MachineInput" type="Node2D"]
 script = ExtResource("1_3d350")
@@ -11,7 +11,7 @@ script = ExtResource("1_3d350")
 position = Vector2(0, 0.5)
 sprite_frames = ExtResource("2_aaeb4")
 frame_progress = 0.0114251
+flip_v = true
 
-[node name="SendPlaceUpdate" type="Node2D" parent="."]
-position = Vector2(0, -16)
-script = ExtResource("3_mpc71")
+[node name="SendPlaceUpdate" parent="." instance=ExtResource("3_kxt6q")]
+position = Vector2(0, 16)

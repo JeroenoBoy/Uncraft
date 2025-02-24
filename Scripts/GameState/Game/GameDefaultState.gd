@@ -17,6 +17,6 @@ func _update(delta: float):
 
 	if Input.is_action_just_pressed("build_pickup"):
 		var grid_pos = Grid.grid_mouse_pos()
-		var building = Grid.instance.get_building(grid_pos)
-		if building != null:
+		var building = Grid.instance.get_grid_node(grid_pos)
+		if building != null && building.movable:
 			state_machine.change_state("MoveBuilding", { "building": building })

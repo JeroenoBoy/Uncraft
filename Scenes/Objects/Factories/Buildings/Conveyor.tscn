@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://8wkeopwsjlp0"]
+[gd_scene load_steps=5 format=3 uid="uid://8wkeopwsjlp0"]
 
 [ext_resource type="SpriteFrames" uid="uid://bj1by5xe6hy0f" path="res://Assets/Sprites/Conveyor_anim.tres" id="2_000hi"]
 [ext_resource type="Script" path="res://Scripts/Factory/Conveyor.gd" id="3_gjdpt"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="4_ec5i8"]
+[ext_resource type="PackedScene" uid="uid://bm5rpej2vailu" path="res://Scenes/Objects/Factories/Components/SendPlaceUpdate.tscn" id="4_t1rl8"]
 
-[node name="Conveyor" type="Node2D"]
+[node name="Conveyor" type="Node2D" groups=["ConveyorOuput"]]
 script = ExtResource("3_gjdpt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Conveyor"]]
@@ -14,3 +15,24 @@ sprite_frames = ExtResource("2_000hi")
 script = ExtResource("4_ec5i8")
 max_items = 1
 items_visible = true
+
+[node name="SendPlaceUpdate" parent="." instance=ExtResource("4_t1rl8")]
+position = Vector2(0, 32)
+
+[node name="SendPlaceUpdate2" parent="." instance=ExtResource("4_t1rl8")]
+position = Vector2(0, -32)
+
+[node name="SendPlaceUpdate3" parent="." instance=ExtResource("4_t1rl8")]
+position = Vector2(32, 0)
+
+[node name="SendPlaceUpdate4" parent="." instance=ExtResource("4_t1rl8")]
+position = Vector2(-32, 0)
+
+[connection signal="picked_up" from="." to="SendPlaceUpdate" method="_on_conveyor_picked_up"]
+[connection signal="picked_up" from="." to="SendPlaceUpdate2" method="_on_place_changed"]
+[connection signal="picked_up" from="." to="SendPlaceUpdate3" method="_on_place_changed"]
+[connection signal="picked_up" from="." to="SendPlaceUpdate4" method="_on_place_changed"]
+[connection signal="placed" from="." to="SendPlaceUpdate" method="_on_place_changed"]
+[connection signal="placed" from="." to="SendPlaceUpdate2" method="_on_place_changed"]
+[connection signal="placed" from="." to="SendPlaceUpdate3" method="_on_place_changed"]
+[connection signal="placed" from="." to="SendPlaceUpdate4" method="_on_place_changed"]

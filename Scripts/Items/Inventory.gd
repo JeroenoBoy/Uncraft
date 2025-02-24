@@ -6,7 +6,7 @@ signal item_added(item: Item)
 @export var max_size = 1
 @export var max_items = -1
 @export var items: Dictionary = {}
-@export var filter: Array[ItemFilter] = []
+@export var filter: Array[Filter] = []
 @export var items_visible = false;
 
 var total_items = 0
@@ -15,6 +15,9 @@ func _exit_tree() -> void:
 	for v in items.values():
 		for item in v:
 			item.queue_free()
+
+func is_full() -> bool:
+	return total_items >= max_size
 
 func can_hold(item_data: ItemData) -> bool:
 	if max_items > -1:
@@ -34,6 +37,11 @@ func can_hold(item_data: ItemData) -> bool:
 
 	return true
 
+func types_in_inventory() -> Array[ItemData]:
+	var array: Array[ItemData] = []
+	array.append_array(items.keys())
+	return array
+
 func add_item(item: Item) -> bool:
 	if !can_hold(item.item_data):
 		return false
@@ -49,6 +57,12 @@ func add_item_skip_checks(item: Item):
 	
 	items[item_data].append(item)
 	total_items += 1
+	item_added.emit(item)
+
+func remove_random_item() -> Item:
+	if items.is_empty():
+		return null
+	return remove_item(items.keys().pick_random())
 
 func remove_item(item_data: ItemData) -> Item:
 	if !items.has(item_data):

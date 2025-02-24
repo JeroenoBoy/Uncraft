@@ -47,4 +47,3 @@ func _create_item(from: PlaceableItem):
 	Grid.instance.add_child(grid_node)
 	cancelAction = DestroyObjectCancelAction.new(grid_node)
 	set_object(grid_node)
-

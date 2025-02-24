@@ -21,14 +21,13 @@ func _ready():
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 
 static func world_to_grid(world_position: Vector2) -> Vector2i:
-	return floor(world_position / CELL_SIZE)
+	return round(world_position / CELL_SIZE)
 
 static func grid_to_world(grid_position: Vector2i) -> Vector2:
 	return grid_position * CELL_SIZE
 
 static func grid_mouse_pos(adjust_for_node: GridNode = null) -> Vector2i:
 	var mouse_pos = instance.get_viewport().get_camera_2d().get_global_mouse_position()
-	mouse_pos += DEFAULT_OFFSET
 	if adjust_for_node != null:
 		var offset = ((adjust_for_node.size - Vector2i.ONE) * 0.5 + Vector2(adjust_for_node.offset)) * CELL_SIZE
 		mouse_pos -= offset.rotated(adjust_for_node.global_rotation)
@@ -36,31 +35,38 @@ static func grid_mouse_pos(adjust_for_node: GridNode = null) -> Vector2i:
 
 static func fast_rotate(vector: Vector2i, rot: float) -> Vector2i:
 	var rounded_rot = ((int(round(rot / 90)) % 4) + 4) % 4
-	for i in range(rounded_rot):
-		var y = vector.y
-		vector.y = vector.x
-		vector.x = -y
+	match rounded_rot:
+		1:
+			var y = vector.y
+			vector.y = -vector.x
+			vector.x = y
+		2: 
+			vector *= -1
+		3:
+			var y = vector.y
+			vector.y = vector.x
+			vector.x = -y
 	return vector
 
 func _exit_tree() -> void:
 	instance = null
 
-func get_buildings(grid_pos: Vector2i) -> Array[GridNode]:
+func get_grid_nodes(grid_pos: Vector2i) -> Array[GridNode]:
 	if !_grid.has(grid_pos):
 		return emptryArray
 	return _grid[grid_pos]
 
-func get_building(grid_pos: Vector2i) -> GridNode:
+func get_grid_node(grid_pos: Vector2i) -> GridNode:
 	if !_grid.has(grid_pos):
 		return null
 	return _grid[grid_pos][0]
 	
-func set_building(node: GridNode):
+func set_grid_node(node: GridNode):
 	if node.is_on_grid:
 		push_warning("Tried to place an already placed node")
 		return
 
-	var gridPos = world_to_grid(node.position)
+	var gridPos = world_to_grid(node.global_position)
 	var offset = node.offset
 	var rot = node.global_rotation_degrees
 
@@ -74,12 +80,12 @@ func set_building(node: GridNode):
 
 	node.is_on_grid = true
 
-func remove_building(node: GridNode):
+func remove_grid_node(node: GridNode):
 	if !node.is_on_grid:
 		push_warning("Tried to remove a node thats not placed")
 		return
 
-	var gridPos = world_to_grid(node.position)
+	var gridPos = world_to_grid(node.global_position)
 	var offset = node.offset
 	var rot = node.global_rotation_degrees
 
@@ -98,7 +104,7 @@ func remove_building(node: GridNode):
 	node.is_on_grid = false
 	
 func is_spot_occupied(node: GridNode) -> bool:
-	var gridPos = world_to_grid(node.position)
+	var gridPos = world_to_grid(node.global_position)
 	var offset = node.offset
 	var rot = node.global_rotation_degrees
 	

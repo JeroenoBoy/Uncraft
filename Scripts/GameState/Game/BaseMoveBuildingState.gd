@@ -30,7 +30,7 @@ func move_object(position: Vector2i):
 	_check_valid_position()
 
 func rotate_object(rotation: float):
-	rotation = floor(rotation / 90) * 90
+	rotation = ((int(floor(rotation / 90)) % 4 + 4) % 4) * 90
 	current_rotation = rotation
 	object.global_rotation_degrees = rotation
 	_check_valid_position()

@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="1_w3ehw"]
 [ext_resource type="Script" path="res://Scripts/Items/ComplexItem.gd" id="2_k7ph7"]
 [ext_resource type="Resource" uid="uid://cr65i1n051q68" path="res://Resources/Items/Car/Part_Tires.tres" id="2_pcdo4"]
-[ext_resource type="Texture2D" uid="uid://dn7lrruye8yjn" path="res://Assets/Sprites/Car/car_tires.tres" id="4_284mn"]
+[ext_resource type="Texture2D" uid="uid://bfe0u2iokybk3" path="res://Assets/Sprites/Car/car_base.tres" id="4_m4goh"]
 
 [resource]
 script = ExtResource("2_k7ph7")
 items = Array[ExtResource("1_w3ehw")]([ExtResource("2_pcdo4")])
 name = "Car"
 stack_size = 10
-sprite = ExtResource("4_284mn")
+sprite = ExtResource("4_m4goh")

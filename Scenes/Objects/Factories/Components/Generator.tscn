@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Factory/Generator.gd" id="1_x753e"]
 
 [node name="Generator" type="Timer"]
-wait_time = 2.0
+wait_time = 4.0
 script = ExtResource("1_x753e")
 
 [connection signal="timeout" from="." to="." method="_on_timeout"]

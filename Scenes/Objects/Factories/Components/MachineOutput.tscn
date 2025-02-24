@@ -3,22 +3,19 @@
 [ext_resource type="Script" path="res://Scripts/Factory/MachineOutput.gd" id="1_0bsl2"]
 [ext_resource type="SpriteFrames" uid="uid://bwe4gcnlsptg6" path="res://Assets/Sprites/Output_anim.tres" id="2_bakbc"]
 [ext_resource type="PackedScene" uid="uid://bw247ekhgduva" path="res://Scenes/Objects/Factories/Components/Inventory.tscn" id="3_464o1"]
-[ext_resource type="Script" path="res://Scripts/Grid/SendPlaceUpdate.gd" id="4_f7q64"]
+[ext_resource type="PackedScene" uid="uid://bm5rpej2vailu" path="res://Scenes/Objects/Factories/Components/SendPlaceUpdate.tscn" id="4_1ec2g"]
 
-[node name="MachineOutput" type="Node2D"]
+[node name="MachineOutput" type="Node2D" groups=["ConveyorOuput"]]
 script = ExtResource("1_0bsl2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Ports"]]
 sprite_frames = ExtResource("2_bakbc")
 frame_progress = 0.343306
-offset = Vector2(0, 0.5)
+offset = Vector2(0, -0.5)
+flip_v = true
 
 [node name="Inventory" parent="." instance=ExtResource("3_464o1")]
 max_items = 1
 
-[node name="SendPlaceUpdate" type="Node2D" parent="."]
-position = Vector2(0, 16)
-script = ExtResource("4_f7q64")
-
-[connection signal="picked_up" from="." to="SendPlaceUpdate" method="_on_place_changed"]
-[connection signal="placed" from="." to="SendPlaceUpdate" method="_on_place_changed"]
+[node name="SendPlaceUpdate" parent="." instance=ExtResource("4_1ec2g")]
+position = Vector2(0, -16)
