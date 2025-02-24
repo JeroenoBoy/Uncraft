@@ -59,15 +59,12 @@ func get_grid_nodes(grid_pos: Vector2i) -> Array[GridNode]:
 func get_grid_node(grid_pos: Vector2i) -> GridNode:
 	if !_grid.has(grid_pos):
 		return null
-	print(_grid[grid_pos])
 	return _grid[grid_pos][0]
 	
 func set_grid_node(node: GridNode):
 	if node.is_on_grid:
 		push_warning("Tried to place an already placed node")
 		return
-
-	print(node.name)
 
 	var gridPos = world_to_grid(node.global_position)
 	var offset = node.offset
@@ -79,7 +76,6 @@ func set_grid_node(node: GridNode):
 			if !_grid.has(pos):
 				astar.set_point_solid(pos, true)
 				_grid[pos] = [] as Array[GridNode]
-			print(gridPos, " ", pos)
 			_grid[pos].append(node)
 
 	node.is_on_grid = true
