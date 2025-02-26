@@ -2,6 +2,7 @@ class_name Inventory
 extends Node2D
 
 signal item_added(item: Item)
+signal item_removed(item: Item)
 
 @export var max_size = 1
 @export var max_items = -1
@@ -16,8 +17,19 @@ func _exit_tree() -> void:
 		for item in v:
 			item.queue_free()
 
+func has_items(item_data: ItemData, count = 1) -> bool:
+	if !items.has(item_data):
+		return false
+	return items[item_data].size() >= count
+
 func is_full() -> bool:
 	return total_items >= max_size
+
+func is_not_empty() -> bool:
+	return total_items > 0
+
+func is_empty() -> bool:
+	return total_items == 0
 
 func can_hold(item_data: ItemData) -> bool:
 	if max_items > -1:
@@ -29,7 +41,7 @@ func can_hold(item_data: ItemData) -> bool:
 
 	if items.has(item_data):
 		var items_in_inventory = items[item_data] as Array[Item];
-		if item_data.max_size > items_in_inventory.size() + 1:
+		if item_data.stack_size > items_in_inventory.size() + 1:
 			return false
 	
 	if items.size() >= max_size:
@@ -37,13 +49,33 @@ func can_hold(item_data: ItemData) -> bool:
 
 	return true
 
+func can_hold_item(item: Item) -> bool:
+	if max_items > -1:
+		if total_items + 1 > max_items:
+			return false
+
+	if filter.size() != 0 && !filter.any(func(it): return it.check(item)):
+		return false
+
+	var item_data = item.item_data
+	if items.has(item_data):
+		var items_in_inventory = items[item_data] as Array[Item];
+		if item_data.stack_size > items_in_inventory.size() + 1:
+			return false
+	
+	if items.size() >= max_size:
+		return false
+
+	return true
+	
+
 func types_in_inventory() -> Array[ItemData]:
 	var array: Array[ItemData] = []
 	array.append_array(items.keys())
 	return array
 
 func add_item(item: Item) -> bool:
-	if !can_hold(item.item_data):
+	if !can_hold_item(item):
 		return false
 	add_item_skip_checks(item)
 	return true
@@ -58,6 +90,23 @@ func add_item_skip_checks(item: Item):
 	items[item_data].append(item)
 	total_items += 1
 	item_added.emit(item)
+
+func get_item(item_data: ItemData, with_parts: Array[ComplexItemPart] = [], without_parts: Array[ComplexItemPart] = []) -> Item:
+	if !items.has(item_data):
+		return null
+
+	for item in items[item_data]:
+		if item.has_all_parts(with_parts) && item.has_none_parts(without_parts):
+			return item
+
+	return null
+
+func get_items(item_data: ItemData) -> Array[Item]:
+	var arr: Array[Item] = []
+	if !items.has(item_data):
+		return arr
+	arr.assign(items[item_data])
+	return arr
 
 func remove_random_item() -> Item:
 	if items.is_empty():
@@ -74,5 +123,36 @@ func remove_item(item_data: ItemData) -> Item:
 
 	if items_in_inventory.size() == 0:
 		items.erase(item_data)
-	
+
+	item_removed.emit(item)
 	return item
+
+func remove_specific_item(item: Item) -> bool:
+	if !items.has(item.item_data):
+		return false
+
+	var items_in_inventory = items[item.item_data] as Array[Item]
+	if !items_in_inventory.has(item):
+		return false
+
+	items_in_inventory.erase(item)
+	total_items -= 1
+
+	if items_in_inventory.size() == 0:
+		items.erase(item.item_data)
+
+	item_removed.emit(item)
+	return true
+
+func set_filters(filters: Array[Filter]):
+	filter.clear()
+	filters.append_array(filters)
+
+func clear_filters():
+	filter.clear()
+
+func clear_inventory():
+	for item_data in types_in_inventory():
+		while items.has(item_data):
+			var item = remove_item(item_data)
+			item.queue_free()

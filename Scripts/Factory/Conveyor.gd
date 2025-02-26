@@ -6,16 +6,16 @@ extends GridNode
 
 var next_node: GridNode
 var previous_nodes: Array[GridNode] = []
-var _last_grabbed_child = 0
 var _locked: bool = false
 
 func _ready() -> void:
 	tile_update.connect(_on_tile_update)
 	function_update.connect(_on_function_update)
 	picked_up.connect(_on_picked_up)
+	placed.connect(func(): print("Placed at ", grid_position(), " rot ", grid_rotation()))
 
-func conveyor_accepts(item_data: ItemData) -> bool:
-	return !_locked && inventory.can_hold(item_data)
+func conveyor_accepts(item: Item) -> bool:
+	return !_locked && inventory.can_hold_item(item)
 
 func conveyor_input(item: Item) -> bool:
 	if _locked:
@@ -68,8 +68,15 @@ func _on_function_update():
 		return
 
 	for item_data in inventory.types_in_inventory():
-		if _try_put_item_in_next_node(item_data):
-			return
+		if item_data is ComplexItem:
+			for item in inventory.get_items(item_data):
+				if _try_put_item_in_next_node(item):
+					return
+
+		else:
+			var item = inventory.get_item(item_data)
+			if _try_put_item_in_next_node(item):
+				return
 
 func _clear_connections():
 	next_node = null
@@ -80,17 +87,17 @@ func _process_item(item: Item):
 	_locked = true
 	await get_tree().create_timer(conveyor_speed).timeout
 	_locked = false
-	_try_put_item_in_next_node(item.item_data)
+	_try_put_item_in_next_node(item)
 
-func _try_put_item_in_next_node(item_data: ItemData) -> bool:
+func _try_put_item_in_next_node(item: Item) -> bool:
 	if _locked:
 		return false
 	if next_node == null:
 		return false
-	if !next_node.conveyor_accepts(item_data):
+	if !next_node.conveyor_accepts(item):
 		return false
 
-	var item = inventory.remove_item(item_data)
+	inventory.remove_specific_item(item)
 	next_node.conveyor_input(item)
 	_update_children()
 	return true
@@ -99,8 +106,6 @@ func _try_put_item_in_next_node(item_data: ItemData) -> bool:
 func _update_children():
 	var count = previous_nodes.size()
 	for i in range(count):
-		var index = (i + _last_grabbed_child + 1) % count
 		previous_nodes[i].function_update.emit()
 		if _locked:
-			_last_grabbed_child = index
 			return

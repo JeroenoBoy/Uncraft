@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_r7kvy")
 name = "Tire"
-stackSize = 100
+stack_size = 10
 sprite = ExtResource("2_k4ej0")

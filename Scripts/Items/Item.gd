@@ -24,16 +24,28 @@ static func create(item_data: ItemData) -> Item:
 func has_part(part: ComplexItemPart) -> bool:
 	return _parts.any(func(it): return it == part)
 
+func has_all_parts(parts: Array[ComplexItemPart]) -> bool:
+	for part in parts:
+		if !has_part(part):
+			return false
+	return true
+
+func has_none_parts(parts: Array[ComplexItemPart]) -> bool:
+	for part in parts:
+		if has_part(part):
+			return false
+	return true
+
 func remove_part(part: ComplexItemPart):
 	_parts.erase(part);
 
-	var part_to_render = _parts.find(func(it): return it.layer == part.layer)
-	if part_to_render == null:
+	var part_index = _parts.find(func(it): return it.layer == part.layer)
+	if part_index == -1:
 		_renderers[part.layer].queue_free()
 		_renderers.erase(part.layer)
 		return
 
-	_parts[part.layer].texture = part_to_render.texture
+	_parts[part.layer].texture = _parts[part_index].texture
 
 func _set_data(item_data: ItemData):
 	_clear_renderers()
@@ -61,4 +73,3 @@ func _create_renderer(layer: int, texture: Texture2D):
 	instance.texture = texture
 	add_child(instance)
 	_renderers[layer] = instance
-

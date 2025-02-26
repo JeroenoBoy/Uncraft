@@ -29,7 +29,7 @@ position = Vector2(32, 0)
 [node name="SendPlaceUpdate4" parent="." instance=ExtResource("4_t1rl8")]
 position = Vector2(-32, 0)
 
-[connection signal="picked_up" from="." to="SendPlaceUpdate" method="_on_conveyor_picked_up"]
+[connection signal="picked_up" from="." to="SendPlaceUpdate" method="_on_place_changed"]
 [connection signal="picked_up" from="." to="SendPlaceUpdate2" method="_on_place_changed"]
 [connection signal="picked_up" from="." to="SendPlaceUpdate3" method="_on_place_changed"]
 [connection signal="picked_up" from="." to="SendPlaceUpdate4" method="_on_place_changed"]
