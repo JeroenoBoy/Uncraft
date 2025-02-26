@@ -35,10 +35,7 @@ func _process_movement(delta: float):
 	position += input * move_speed * delta * zoom_value
 
 	var vp = get_viewport_rect().size * (1/zoom.x) * .5
-	print(vp)
-	print(position)
 	position = Vector2(clamp(position.x, limit_left + vp.x, limit_right - vp.x), clamp(position.y, limit_top + vp.y, limit_bottom - vp.y))
-	print(position)
 
 func _process_zoom():
 	var zoom_input = 0
