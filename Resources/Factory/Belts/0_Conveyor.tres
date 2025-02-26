@@ -1,15 +1,11 @@
-[gd_resource type="Resource" script_class="PlaceableItem" load_steps=5 format=3 uid="uid://c25bm4xykamxc"]
+[gd_resource type="Resource" script_class="PlaceableItem" load_steps=4 format=3 uid="uid://c25bm4xykamxc"]
 
 [ext_resource type="Script" path="res://Scripts/Factory/PlacableItem.gd" id="1_a714l"]
 [ext_resource type="PackedScene" uid="uid://8wkeopwsjlp0" path="res://Scenes/Objects/Factories/Buildings/Conveyor.tscn" id="1_yhj5q"]
-[ext_resource type="Texture2D" uid="uid://r2s4c066bv86" path="res://Assets/Sprites/Conveyor.png" id="2_4vbxt"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fs0pg"]
-atlas = ExtResource("2_4vbxt")
-region = Rect2(0, 0, 16, 16)
+[ext_resource type="Texture2D" uid="uid://bxfas563byeto" path="res://Assets/Sprites/Icons/ConveyorIcon.tres" id="3_puncv"]
 
 [resource]
 script = ExtResource("1_a714l")
 name = "Conveyor"
-sprite = SubResource("AtlasTexture_fs0pg")
+sprite = ExtResource("3_puncv")
 node = ExtResource("1_yhj5q")
