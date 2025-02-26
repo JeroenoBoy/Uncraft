@@ -5,7 +5,7 @@ var item: PlaceableItem
 var cancelAction: CancelableAction
 
 func _init():
-	_item_selector = true;
+	item_selector = true;
 
 func _on_activate(state_data: Dictionary):
 	super._on_activate({})

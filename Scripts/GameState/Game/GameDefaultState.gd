@@ -2,7 +2,7 @@ class_name GameDefaultState
 extends BaseGameState
 
 func _init():
-	_item_selector = true
+	item_selector = true
 
 func _on_activate(_state_data: Dictionary):
 	super._on_activate({})

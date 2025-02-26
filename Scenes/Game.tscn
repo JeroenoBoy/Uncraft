@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckobtjtq4elpw"]
+[gd_scene load_steps=6 format=3 uid="uid://ckobtjtq4elpw"]
 
 [ext_resource type="Texture2D" uid="uid://d0nblk48tnynm" path="res://Assets/Sprites/Background.png" id="1_m7xa0"]
 [ext_resource type="PackedScene" uid="uid://dlqlwrhiaipoa" path="res://Scenes/MainStateMachine.tscn" id="2_fnk24"]
 [ext_resource type="Script" path="res://Scripts/Grid/Grid.gd" id="3_1fxpp"]
+[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_7pnwj"]
+
+[sub_resource type="Curve" id="Curve_5copo"]
+_data = [Vector2(0, 0), 0.0, 0.374194, 0, 0, Vector2(1, 0.983253), 2.14735, 0.0, 0, 0]
+point_count = 2
 
 [node name="Game" type="Node2D"]
 
@@ -17,15 +22,22 @@ z_index = -10
 [node name="Background" type="Polygon2D" parent="Environment"]
 texture_filter = 1
 texture_repeat = 2
-position = Vector2(0, -1)
-rotation = 0.00221506
-scale = Vector2(5, 5)
+position = Vector2(-16, -16)
+scale = Vector2(20, 20)
 texture = ExtResource("1_m7xa0")
-texture_offset = Vector2(16, 16)
-texture_scale = Vector2(5, 5)
+texture_scale = Vector2(20, 20)
 polygon = PackedVector2Array(-80, 80, -80, -80, 80, -80, 80, 80)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -1616
+limit_top = -1616
+limit_right = 1584
+limit_bottom = 1584
+position_smoothing_enabled = true
+script = ExtResource("3_7pnwj")
+move_speed = 750
+zoom_speed = 0.2
+zoom_curve = SubResource("Curve_5copo")
 
 [node name="MainStateMachine" parent="." instance=ExtResource("2_fnk24")]
