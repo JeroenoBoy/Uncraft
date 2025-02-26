@@ -12,7 +12,9 @@ func _ready() -> void:
 	tile_update.connect(_on_tile_update)
 	function_update.connect(_on_function_update)
 	picked_up.connect(_on_picked_up)
-	placed.connect(func(): print("Placed at ", grid_position(), " rot ", grid_rotation()))
+
+func conveyor_can_make_link(_other: GridNode) -> bool:
+	return true
 
 func conveyor_accepts(item: Item) -> bool:
 	return !_locked && inventory.can_hold_item(item)
@@ -39,9 +41,11 @@ func _on_tile_update():
 		var other_rot = grid_node.grid_rotation()
 		if Grid.fast_rotate(other_rot, 180) == rot:
 			continue
-		if !grid_node.has_method("conveyor_input"):
+		if !grid_node.has_method("conveyor_can_make_link"):
 			continue
-		if !grid_node.has_method("conveyor_accepts"):
+		if !grid_node.conveyor_can_make_link(self):
+			continue
+		if !grid_node.has_method("conveyor_input") || !grid_node.has_method("conveyor_accepts"):
 			continue
 		next_node = grid_node
 		break
@@ -67,16 +71,9 @@ func _on_function_update():
 	if _locked:
 		return
 
-	for item_data in inventory.types_in_inventory():
-		if item_data is ComplexItem:
-			for item in inventory.get_items(item_data):
-				if _try_put_item_in_next_node(item):
-					return
-
-		else:
-			var item = inventory.get_item(item_data)
-			if _try_put_item_in_next_node(item):
-				return
+	for item in inventory.get_unique_items():
+		if _try_put_item_in_next_node(item):
+			return
 
 func _clear_connections():
 	next_node = null

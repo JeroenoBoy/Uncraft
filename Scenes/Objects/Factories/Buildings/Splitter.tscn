@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cccts51mdfwsi"]
+
+[ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_ybp4c"]
+[ext_resource type="Script" path="res://Scripts/Factory/Splitter.gd" id="2_itlcy"]
+[ext_resource type="Texture2D" uid="uid://bv532i45xveb7" path="res://Assets/Sprites/Splitter.png" id="2_rbno8"]
+[ext_resource type="PackedScene" uid="uid://bwo05tbedg8d7" path="res://Scenes/Objects/Factories/Components/MachineInput.tscn" id="4_be8gc"]
+[ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="5_avt0v"]
+[ext_resource type="PackedScene" uid="uid://bj211qmgyukaf" path="res://Scenes/Objects/Factories/Components/MachineOutput.tscn" id="6_8mq3b"]
+
+[node name="Splitter" type="Node2D"]
+script = ExtResource("1_ybp4c")
+size = Vector2i(2, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("2_rbno8")
+
+[node name="Splitter" type="Node2D" parent="." node_paths=PackedStringArray("inputs", "outputs")]
+script = ExtResource("2_itlcy")
+inputs = [NodePath("MachineInput"), NodePath("MachineInput2")]
+outputs = [NodePath("MachineOutput"), NodePath("MachineOutput2")]
+
+[node name="MachineInput" parent="Splitter" node_paths=PackedStringArray("inventory") instance=ExtResource("4_be8gc")]
+position = Vector2(32, 14)
+inventory = NodePath("Inventory")
+
+[node name="Inventory" type="Node2D" parent="Splitter/MachineInput"]
+script = ExtResource("5_avt0v")
+max_items = 1
+
+[node name="MachineInput2" parent="Splitter" node_paths=PackedStringArray("inventory") instance=ExtResource("4_be8gc")]
+position = Vector2(0, 14)
+inventory = NodePath("Inventory")
+
+[node name="Inventory" type="Node2D" parent="Splitter/MachineInput2"]
+script = ExtResource("5_avt0v")
+max_items = 1
+
+[node name="MachineOutput" parent="Splitter" instance=ExtResource("6_8mq3b")]
+position = Vector2(0, -14)
+
+[node name="MachineOutput2" parent="Splitter" instance=ExtResource("6_8mq3b")]
+position = Vector2(32, -14)

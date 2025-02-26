@@ -108,6 +108,31 @@ func get_items(item_data: ItemData) -> Array[Item]:
 	arr.assign(items[item_data])
 	return arr
 
+func get_unique_items() -> Array[Item]:
+	var out: Array[Item] = []
+	for item_data in items.keys():
+		if item_data is ComplexItem:
+			out.append_array(items[item_data])
+		else:
+			var item = get_item(item_data)
+			out.append(item)
+	return out
+
+func get_item_other_can_hold(other_inventory: Inventory):
+	for item_data in items.keys():
+		if item_data is ComplexItem:
+			for item in items[item_data]:
+				if !other_inventory.can_hold_item(item):
+					continue
+				return item
+		else:
+			var item = get_item(item_data)
+			if !other_inventory.can_hold_item(item):
+				continue
+			return item
+				
+	return null
+
 func remove_random_item() -> Item:
 	if items.is_empty():
 		return null
@@ -146,7 +171,7 @@ func remove_specific_item(item: Item) -> bool:
 
 func set_filters(filters: Array[Filter]):
 	filter.clear()
-	filters.append_array(filters)
+	filter.append_array(filters)
 
 func clear_filters():
 	filter.clear()

@@ -31,5 +31,6 @@ item_data = ExtResource("8_0iunn")
 
 [resource]
 script = ExtResource("3_5mmnn")
+craft_time = 8
 inputs = Array[ExtResource("10_wm8m1")]([SubResource("Resource_2kovu")])
 output = Array[ExtResource("1_se2dq")]([SubResource("Resource_1e66t"), SubResource("Resource_opdb6")])

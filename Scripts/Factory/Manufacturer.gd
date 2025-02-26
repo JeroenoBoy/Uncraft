@@ -8,12 +8,13 @@ extends Node2D
 @onready var processing_inventory: Inventory = $ProcessingInventory
 
 var selected_recipe: Recipe
+var locked: bool
 
 func _ready() -> void:
 	select_recipe(recipes[0])
 	input_inventory.item_added.connect(_on_item_added)
 	for output in outputs:
-		output.placed.connect(func(): output.inventory.item_removed.connect(_on_item_removed_from_output), CONNECT_ONE_SHOT)
+		output.item_removed.connect(_on_item_removed_from_output)
 
 func _on_item_added(_item: Item):
 	_try_craft_recipe()
@@ -28,9 +29,10 @@ func select_recipe(recipe: Recipe):
 	input_inventory.set_filters(selected_recipe.make_filters())
 
 func _try_craft_recipe() -> bool:
+	if locked:
+		return false
 	if !processing_inventory.is_empty():
 		return false
-
 	if outputs.any(func(it): return it.inventory.is_full()):
 		return false
 
@@ -38,19 +40,32 @@ func _try_craft_recipe() -> bool:
 		if !input.has_enough(input_inventory):
 			return false
 
+	_crafting_loop()
+
+	return true
+
+func _crafting_loop():
+	locked = true
+
 	for recipe_item in selected_recipe.inputs:
 		recipe_item.transfer(input_inventory, processing_inventory)
 
 	for item_transform in selected_recipe.output:
 		item_transform.process(processing_inventory)
 
+	await get_tree().create_timer(selected_recipe.craft_time).timeout
+
 	var current_ouput_index = 0
 	while processing_inventory.is_not_empty():
 		var output = outputs[current_ouput_index]
-		for item_data in processing_inventory.types_in_inventory():
-			if output.inventory.can_hold(item_data):
-				output.inventory.add_item_skip_checks(processing_inventory.remove_item(item_data))
-				current_ouput_index = (current_ouput_index + 1) % outputs.size()
-				break
+		var item = processing_inventory.get_item_other_can_hold(output.inventory)
+		if item == null:
+			continue
 
-	return true
+		processing_inventory.remove_specific_item(item)
+		output.inventory.add_item_skip_checks(item)
+		current_ouput_index = (current_ouput_index + 1) % outputs.size()
+
+	locked = false
+
+	_try_craft_recipe()

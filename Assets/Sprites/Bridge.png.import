@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3sbdkusdbfji"
-path="res://.godot/imported/conveyor.png-32f6f5abddcc975695b96cb43bbf3df9.ctex"
+uid="uid://t5g68y3fnycp"
+path="res://.godot/imported/Bridge.png-9cef6e7257b6c7c2658d39e58da9da1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/conveyor.png"
-dest_files=["res://.godot/imported/conveyor.png-32f6f5abddcc975695b96cb43bbf3df9.ctex"]
+source_file="res://Assets/Sprites/Bridge.png"
+dest_files=["res://.godot/imported/Bridge.png-9cef6e7257b6c7c2658d39e58da9da1c.ctex"]
 
 [params]
 

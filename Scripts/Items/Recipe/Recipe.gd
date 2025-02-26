@@ -1,6 +1,7 @@
 class_name Recipe
 extends Resource
 
+@export var craft_time = 4
 @export var inputs: Array[BaseRecipeItem]
 @export var output: Array[RecipeItemTransform]
 

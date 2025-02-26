@@ -39,7 +39,6 @@ func grid_position() -> Vector2i:
 
 func grid_rotation() -> Vector2i:
 	var rot = (int(round(global_rotation_degrees / 90)) % 4 + 4) % 4
-	print("Rotation ", rot, " global ", global_rotation_degrees)
 	match rot:
 		0: return Vector2i.UP
 		1: return Vector2i.RIGHT

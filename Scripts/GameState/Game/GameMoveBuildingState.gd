@@ -32,4 +32,3 @@ func _on_place():
 
 func _on_cancel():
 	state_machine.change_state("Default")
-
