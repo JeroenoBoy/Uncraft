@@ -37,7 +37,10 @@ limit_bottom = 1584
 position_smoothing_enabled = true
 script = ExtResource("3_7pnwj")
 move_speed = 750
+min_zoom = 0.3
+max_zoom = 1.5
 zoom_speed = 0.2
 zoom_curve = SubResource("Curve_5copo")
+preference = 0.5
 
 [node name="MainStateMachine" parent="." instance=ExtResource("2_fnk24")]

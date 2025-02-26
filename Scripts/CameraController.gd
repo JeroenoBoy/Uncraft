@@ -12,6 +12,10 @@ static var instance: CameraController
 @export var zoom_speed = 0.5;
 @export var zoom_curve: Curve
 
+@export_group("Screen Scaling")
+@export var default_screen_size = Vector2(1920,1080)
+@export var preference = 0.0
+
 var zoom_progress = 0
 var can_move = false
 
@@ -46,4 +50,9 @@ func _process_zoom():
 
 	zoom_progress = clamp(zoom_progress + zoom_input * zoom_speed, 0, 1)
 	var zoom_value = lerp(min_zoom, max_zoom, zoom_curve.sample(zoom_progress))
-	zoom = Vector2.ONE * (1 / zoom_value)
+
+	var vp = get_viewport_rect().size
+	var dif = vp / default_screen_size
+	var multi = dif.x * (1 - preference) + dif.y * preference
+
+	zoom = Vector2.ONE * (1 / zoom_value) * multi

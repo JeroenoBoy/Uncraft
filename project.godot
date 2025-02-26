@@ -20,6 +20,11 @@ Global="*res://Scenes/Globals.tscn"
 Events="*res://Scripts/EventBus.gd"
 UI="*res://Scenes/UI/UI.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="Gamejam-2025-02"

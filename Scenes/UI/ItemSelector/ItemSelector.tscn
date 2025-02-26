@@ -10,7 +10,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0utb6"]
 
 [node name="ItemSelector" type="Panel"]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 125)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0

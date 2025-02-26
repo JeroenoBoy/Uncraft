@@ -7,5 +7,6 @@
 [resource]
 script = ExtResource("1_gea17")
 name = "Quad Assembly"
+ui_icon_scale = 1.5
 sprite = ExtResource("3_ffyb1")
 node = ExtResource("1_ct576")

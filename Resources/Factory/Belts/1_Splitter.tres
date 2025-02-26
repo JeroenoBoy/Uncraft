@@ -7,5 +7,6 @@
 [resource]
 script = ExtResource("2_kw2g6")
 name = "Splitter"
+ui_icon_scale = 1.5
 sprite = ExtResource("3_m4rn8")
 node = ExtResource("1_scja5")

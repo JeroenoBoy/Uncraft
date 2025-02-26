@@ -6,9 +6,8 @@
 [node name="Belts" type="MarginContainer" node_paths=PackedStringArray("container")]
 visible = false
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 16
 script = ExtResource("1_def66")
 selectableItemScene = ExtResource("2_0rlug")
 container = NodePath("HBox")

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_ladk5")
-name = "Car Generator"
+name = "Car Mine"
+ui_icon_scale = 1.75
 sprite = ExtResource("3_xudht")
 node = ExtResource("1_r7haa")

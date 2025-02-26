@@ -10,9 +10,9 @@ var item: PlaceableItem
 
 func set_item(item: PlaceableItem):
 	image.texture = item.sprite
+	image.scale = image.scale * item.ui_icon_scale
 	nameContainer.text = item.name
 	self.item = item
-
 
 func _on_pressed() -> void:
 	on_pressed.emit(self)
