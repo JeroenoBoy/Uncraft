@@ -15,7 +15,7 @@ func _on_deactivate():
 func _update(delta: float):
 	super._update(delta)
 
-	if Input.is_action_just_pressed("build_pickup"):
+	if Input.is_action_just_pressed("build_pickup") && !UIManager.instance.is_mouse_over_ui:
 		var grid_pos = Grid.grid_mouse_pos()
 		var building = Grid.instance.get_grid_node(grid_pos)
 		if building != null && building.movable:

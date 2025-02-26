@@ -1,7 +1,9 @@
 class_name UIManager
-extends Node
+extends Control
 
 static var instance: UIManager
+
+var is_mouse_over_ui = false
 
 func _init() -> void:
 	instance = self
@@ -18,3 +20,9 @@ func show_screen(path: String, screen_data: Dictionary):
 
 func hide_screen(path: String):
 	get_screen(path).hide_screen()
+
+func _on_mouse_entered():
+	is_mouse_over_ui = true
+
+func _on_mouse_exited():
+	is_mouse_over_ui = true

@@ -46,7 +46,7 @@ func _update(delta: float):
 		_on_cancel()
 		return
 
-	if can_place && Input.is_action_just_pressed("build_place"):
+	if can_place && Input.is_action_just_pressed("build_place") && !UIManager.instance.is_mouse_over_ui:
 		_on_place()
 		return
 
