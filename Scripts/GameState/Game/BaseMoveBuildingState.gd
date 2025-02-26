@@ -6,6 +6,21 @@ var current_pos: Vector2i
 var current_rotation = 0.0
 var can_place = false
 
+var delete_screen: DeleteScreen
+
+func _on_first_activate():
+	super._on_first_activate()
+	delete_screen = UIManager.instance.get_screen("DeleteScreen") as DeleteScreen
+
+func _on_activate(_state_data: Dictionary):
+	super._on_activate({})
+	delete_screen.delete_pressed.connect(_on_delete)
+
+func _on_deactivate():
+	super._on_deactivate()
+	delete_screen.hide_screen()
+	delete_screen.delete_pressed.disconnect(_on_delete)
+
 func reset_position_to_mouse():
 	current_rotation = 0
 	current_pos = Grid.grid_mouse_pos(object)
@@ -24,6 +39,11 @@ func set_object(grid_node: GridNode):
 	rotate_object(current_rotation)
 	_check_valid_position()
 
+	if object.removable:
+		delete_screen.show_screen()
+	else:
+		delete_screen.hide_screen()
+
 func move_object(position: Vector2i):
 	current_pos = position
 	object.position = Grid.grid_to_world(current_pos)
@@ -34,7 +54,7 @@ func rotate_object(rotation: float):
 	current_rotation = rotation
 	object.global_rotation_degrees = rotation
 	_check_valid_position()
-	
+
 func _update(delta: float):
 	super._update(delta)
 
@@ -44,6 +64,10 @@ func _update(delta: float):
 
 	if Input.is_action_just_pressed("build_cancel"):
 		_on_cancel()
+		return
+
+	if object.removable && Input.is_action_just_released("build_delete"):
+		_on_delete()
 		return
 
 	if can_place && Input.is_action_just_pressed("build_place") && !UIManager.instance.is_mouse_over_ui:
@@ -67,4 +91,8 @@ func _on_place():
 
 func _on_cancel():
 	push_error("on_cancel must be overridden")
+	pass
+
+func _on_delete():
+	push_error("on_delete must be overridden")
 	pass

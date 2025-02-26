@@ -34,6 +34,11 @@ func _on_place():
 func _on_cancel():
 	state_machine.change_state("Default")
 
+func _on_delete():
+	object.queue_free()
+	cancelAction = null
+	state_machine.change_state("Default")
+
 func _create_item(from: PlaceableItem):
 	var node = from.node.instantiate()
 	if node is not GridNode:

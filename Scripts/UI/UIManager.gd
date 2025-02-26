@@ -22,7 +22,7 @@ func hide_screen(path: String):
 	get_screen(path).hide_screen()
 
 func _on_mouse_entered():
-	is_mouse_over_ui = true
+	is_mouse_over_ui = false
 
 func _on_mouse_exited():
 	is_mouse_over_ui = true
