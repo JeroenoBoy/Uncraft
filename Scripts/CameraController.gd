@@ -24,6 +24,8 @@ func _init() -> void:
 	zoom_progress = inverse_lerp(min_zoom, max_zoom,scale.x)
 
 func _process(delta: float) -> void:
+	if !can_move:
+		return
 	_process_zoom()
 	_process_movement(delta)
 

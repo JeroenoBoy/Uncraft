@@ -1,0 +1,50 @@
+class_name GameSelectRecipeState
+extends BaseGameState
+
+var recipe_selector_screen: RecipeScreen
+var selected_recipe: Recipe
+var building: Node
+
+func _on_first_activate():
+	super._on_first_activate()
+	recipe_selector_screen = UIManager.instance.get_screen("RecipeSelector") as RecipeScreen
+
+func _on_activate(state_data: Dictionary):
+	super._on_activate(state_data)
+
+	building = state_data["building"] as Node
+	var recipes = state_data["recipes"] as Array[Recipe]
+	selected_recipe = null
+	recipe_selector_screen.show_screen({ "recipes": recipes })
+	recipe_selector_screen.recipe_selected.connect(_on_recipe_selected)
+
+	if building.selected_recipe != null:
+		recipe_selector_screen.set_preview(building.selected_recipe)
+
+func _on_deactivate():
+	super._on_deactivate()
+	recipe_selector_screen.hide_screen()
+	recipe_selector_screen.recipe_selected.disconnect(_on_recipe_selected)
+	recipe_selector_screen.clear_preview()
+
+func _update(_delta: float):
+	if Input.is_action_just_released("ui_cancel"):
+		state_machine.change_state("Default")
+		return
+
+func _select_recipe(recipe: Recipe):
+	building.set_recipe(recipe)
+	state_machine.change_state("Default")
+
+func _on_recipe_selected(recipe: Recipe):
+	if selected_recipe == recipe:
+		_select_recipe(recipe)
+		return
+
+	recipe_selector_screen.set_preview(recipe)
+	selected_recipe = recipe
+
+func _on_select_button_pressed():
+	if selected_recipe == null:
+		return
+	_select_recipe(selected_recipe)

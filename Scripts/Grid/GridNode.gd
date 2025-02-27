@@ -9,10 +9,10 @@ signal picked_up()
 
 @export var size = Vector2i.ONE
 @export var offset = Vector2i.ZERO
-@export var movable = true;
-@export var rotatable = true;
-@export var removable = true;
-@export var place_on_spawn = false;
+@export var movable = true
+@export var rotatable = true
+@export var removable = true
+@export var place_on_spawn = false
 
 var childNodes: Array[GridNode] = []
 var is_on_grid = false

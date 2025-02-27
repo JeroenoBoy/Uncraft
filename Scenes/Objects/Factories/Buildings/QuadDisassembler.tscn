@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dic2ut1phh0w7"]
+[gd_scene load_steps=14 format=3 uid="uid://dic2ut1phh0w7"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_est3o"]
+[ext_resource type="Script" path="res://Scripts/Grid/SecondaryAction/ClickAction.gd" id="2_5g03f"]
 [ext_resource type="Script" path="res://Scripts/Factory/Manufacturer.gd" id="2_lo30o"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="3_0t7gd"]
 [ext_resource type="Texture2D" uid="uid://bmj1r13novt1i" path="res://Assets/Sprites/Machines/QuadDisassembler.png" id="3_461kk"]
@@ -19,6 +20,10 @@ item = ExtResource("12_w08yo")
 [node name="QuadDisassembler" type="Node2D"]
 script = ExtResource("1_est3o")
 size = Vector2i(6, 3)
+
+[node name="ClickAction" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("2_5g03f")
+target = NodePath("../Manufacturer")
 
 [node name="Manufacturer" type="Node2D" parent="." node_paths=PackedStringArray("outputs")]
 script = ExtResource("2_lo30o")

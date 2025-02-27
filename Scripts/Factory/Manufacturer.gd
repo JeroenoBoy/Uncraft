@@ -11,7 +11,7 @@ var selected_recipe: Recipe
 var locked: bool
 
 func _ready() -> void:
-	select_recipe(recipes[0])
+	set_recipe(recipes[0])
 	input_inventory.item_added.connect(_on_item_added)
 	for output in outputs:
 		output.item_removed.connect(_on_item_removed_from_output)
@@ -22,7 +22,7 @@ func _on_item_added(_item: Item):
 func _on_item_removed_from_output(_item: Item):
 	_try_craft_recipe()
 
-func select_recipe(recipe: Recipe):
+func set_recipe(recipe: Recipe):
 	input_inventory.clear_inventory()
 	processing_inventory.clear_inventory()
 	selected_recipe = recipe

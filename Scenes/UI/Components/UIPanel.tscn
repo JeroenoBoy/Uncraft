@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://csg4vyi68gwnw"]
+
+[ext_resource type="Script" path="res://Scripts/Common/UI/TileScaleContainer.gd" id="1_7hax8"]
+[ext_resource type="Texture2D" uid="uid://bjp1krgjaosmc" path="res://Assets/UI/Atlas/PanelBackground.tres" id="2_7pxaf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1l5dq"]
+
+[node name="Panel" type="PanelContainer"]
+custom_minimum_size = Vector2(128, 0)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1l5dq")
+
+[node name="TileScaleContainer" type="Container" parent="."]
+layout_mode = 2
+script = ExtResource("1_7hax8")
+tile_scale = 2.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TileScaleContainer"]
+layout_mode = 2
+texture = ExtResource("2_7pxaf")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8

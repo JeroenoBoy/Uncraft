@@ -1,19 +1,33 @@
 class_name BaseMoveBuildingState
 extends BaseGameState
 
+enum Mode {
+	Default,
+	Drag
+}
+
 var object: GridNode
 var current_pos: Vector2i
 var current_rotation = 0.0
 var can_place = false
+var mode = Mode.Default
 
 var delete_screen: DeleteScreen
+
+func _init() -> void:
+	can_move_camera = true
 
 func _on_first_activate():
 	super._on_first_activate()
 	delete_screen = UIManager.instance.get_screen("DeleteScreen") as DeleteScreen
 
-func _on_activate(_state_data: Dictionary):
-	super._on_activate({})
+func _on_activate(state_data: Dictionary):
+	super._on_activate(state_data)
+
+	mode = Mode.Default
+	if state_data.has("mode"):
+		mode = Mode.get(state_data["mode"])
+
 	delete_screen.delete_pressed.connect(_on_delete)
 
 func _on_deactivate():
@@ -70,9 +84,24 @@ func _update(delta: float):
 		_on_delete()
 		return
 
-	if can_place && Input.is_action_just_pressed("build_place") && !UIManager.instance.is_mouse_over_ui:
-		_on_place()
-		return
+	match mode:
+		Mode.Default:
+			if can_place && Input.is_action_just_pressed("build_place") && !UIManager.instance.is_mouse_over_ui:
+				_on_place()
+				return
+		Mode.Drag:
+			if Input.is_action_just_released("build_place"):
+				if !can_place:
+					_on_cancel()
+				elif delete_screen.is_mouse_over_screen:
+					_on_delete()
+				elif UIManager.instance.is_mouse_over_ui:
+					_on_cancel()
+				else:
+					_on_place()
+				return
+		_:
+			push_error("Move mode ", mode, " is not implemented")
 
 	if object.rotatable && Input.is_action_just_pressed("build_rotate_clockwise"):
 		rotate_object(current_rotation + 90)

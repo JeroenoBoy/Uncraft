@@ -8,7 +8,7 @@ func _init():
 	item_selector = true;
 
 func _on_activate(state_data: Dictionary):
-	super._on_activate({})
+	super._on_activate(state_data)
 
 	if !state_data.has("item"):
 		push_error("Item was not found in 'state_data'")

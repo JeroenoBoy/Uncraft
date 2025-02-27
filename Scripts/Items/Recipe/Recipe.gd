@@ -1,7 +1,10 @@
 class_name Recipe
 extends Resource
 
+@export var name = ""
 @export var craft_time = 4
+@export var icon: Texture2D
+@export var ui_icon_scale = 1.0
 @export var inputs: Array[BaseRecipeItem]
 @export var output: Array[RecipeItemTransform]
 

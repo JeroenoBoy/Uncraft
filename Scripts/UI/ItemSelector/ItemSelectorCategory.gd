@@ -19,5 +19,5 @@ func _ready() -> void:
 		var item = resource as PlaceableItem
 		var selectableItem = selectableItemScene.instantiate() as SelectableItem
 		container.add_child(selectableItem)
-		selectableItem.set_item(item)
+		selectableItem.set_item(SelectableItem.SelectData.new(item, item.name, item.sprite, item.ui_icon_scale))
 	

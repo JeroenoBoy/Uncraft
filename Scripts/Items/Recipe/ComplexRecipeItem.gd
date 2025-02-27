@@ -1,8 +1,6 @@
 class_name ComplexRecipeItem
 extends BaseRecipeItem
 
-@export var count = 1
-@export var item_data: ComplexItem
 @export var with_parts: Array[ComplexItemPart]
 @export var without_parts: Array[ComplexItemPart]
 
@@ -12,6 +10,9 @@ func make_filter() -> Filter:
 	filter.has = with_parts
 	filter.has_not = without_parts
 	return filter
+
+func get_item_parts() -> Array[ComplexItemPart]:
+	return with_parts
 
 func has_enough(inventory: Inventory) -> bool:
 	if !inventory.has_items(item_data, count):

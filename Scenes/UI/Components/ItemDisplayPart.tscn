@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://yj20bbvhkxue"]
+
+[ext_resource type="Texture2D" uid="uid://byx4gussm2u16" path="res://Assets/UI/Atlas/BackgroundIcon.tres" id="1_nhu0a"]
+[ext_resource type="Texture2D" uid="uid://d2l10uwiko4v8" path="res://Assets/Sprites/Car/car_full.tres" id="2_yxe1h"]
+
+[node name="ItemDisplayPart" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nhu0a")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yxe1h")
+expand_mode = 1

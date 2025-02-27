@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dogvuij6dixmn"]
 
 [ext_resource type="Script" path="res://Scripts/UI/DeleteScreen.gd" id="1_fcbou"]
-[ext_resource type="Texture2D" uid="uid://dxh44q4hek1rx" path="res://Assets/Sprites/Icons/Bin.png" id="1_k14e0"]
+[ext_resource type="Texture2D" uid="uid://by11fuo0kmng8" path="res://Assets/UI/Atlas/BinIcon.tres" id="2_24g0t"]
 
 [node name="DeleteScreen" type="Control"]
 layout_mode = 3
@@ -34,6 +34,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_k14e0")
+texture = ExtResource("2_24g0t")
 
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

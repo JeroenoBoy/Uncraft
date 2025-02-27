@@ -1,13 +1,16 @@
 class_name RecipeItem
 extends BaseRecipeItem
 
-@export var count = 1
-@export var item_data: ItemData
-
 func make_filter() -> Filter:
 	var filter = ItemFilter.new()
 	filter.item = item_data
 	return filter
+
+func get_count() -> int:
+	return count
+
+func get_item_data() -> ItemData:
+	return item_data
 
 func has_enough(inventory: Inventory) -> bool:
 	return inventory.has_items(item_data, count)

@@ -82,7 +82,16 @@ func _clear_connections():
 
 func _process_item(item: Item):
 	_locked = true
-	await get_tree().create_timer(conveyor_speed).timeout
+
+	item.position = global_position - grid_rotation() * (Grid.CELL_SIZE / 3.0)
+	await get_tree().create_timer(conveyor_speed / 3).timeout
+	
+	item.position = global_position
+	await get_tree().create_timer(conveyor_speed / 3).timeout
+
+	item.position = global_position + grid_rotation() * (Grid.CELL_SIZE / 3.0)
+	await get_tree().create_timer(conveyor_speed / 3).timeout
+
 	_locked = false
 	_try_put_item_in_next_node(item)
 

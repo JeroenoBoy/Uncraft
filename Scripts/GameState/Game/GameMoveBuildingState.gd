@@ -4,7 +4,7 @@ extends BaseMoveBuildingState
 var cancelAction: CancelableAction
 
 func _on_activate(state_data: Dictionary):
-	super._on_activate({})
+	super._on_activate(state_data)
 
 	if !state_data.has("building"):
 		push_error("Building was not found in 'state_data'")

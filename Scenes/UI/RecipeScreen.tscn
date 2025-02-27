@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://t61cgieq1unh"]
+
+[ext_resource type="Theme" uid="uid://cokbn1tlqfm1m" path="res://Assets/UI/UITheme.tres" id="1_m585m"]
+[ext_resource type="Script" path="res://Scripts/UI/RecipeSelector/RecipeScreen.gd" id="2_gwj23"]
+[ext_resource type="PackedScene" uid="uid://dd5rseck46xn5" path="res://Scenes/UI/Components/SelectableItem.tscn" id="3_7ahco"]
+[ext_resource type="PackedScene" uid="uid://dloxykvbpwoe4" path="res://Scenes/UI/Components/UIWindow.tscn" id="4_r01qd"]
+[ext_resource type="PackedScene" uid="uid://csg4vyi68gwnw" path="res://Scenes/UI/Components/UIPanel.tscn" id="6_2r60c"]
+[ext_resource type="PackedScene" uid="uid://8u238yf3od64" path="res://Scenes/UI/Components/ItemDisplay.tscn" id="6_41yag"]
+
+[node name="RecipeSelector" type="Control" node_paths=PackedStringArray("container", "select_button", "preview_name", "preview_input", "preview_output")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_m585m")
+script = ExtResource("2_gwj23")
+selectable_item = ExtResource("3_7ahco")
+item_display = ExtResource("6_41yag")
+container = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/MarginContainer/GridContainer")
+select_button = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/SelectButton")
+preview_name = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer/Name Label")
+preview_input = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer/Input")
+preview_output = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer/Outputs")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="UIWindow" parent="CenterContainer/VBoxContainer" instance=ExtResource("4_r01qd")]
+custom_minimum_size = Vector2(400, 274)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/UIWindow"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="UIPanel" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer" instance=ExtResource("6_2r60c")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Name Label" type="Label" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Strip Tires"
+
+[node name="Takes Label" type="Label" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Takes"
+
+[node name="Input" type="HBoxContainer" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemDisplay" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer/Input" instance=ExtResource("6_41yag")]
+layout_mode = 2
+
+[node name="Outputs Label" type="Label" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Outputs"
+
+[node name="Outputs" type="HBoxContainer" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemDisplay" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer/Outputs" instance=ExtResource("6_41yag")]
+layout_mode = 2
+
+[node name="SelectButton" type="Button" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]

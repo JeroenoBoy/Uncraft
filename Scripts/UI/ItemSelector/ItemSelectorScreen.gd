@@ -15,4 +15,4 @@ func _hide():
 	visible = false
 
 func _on_item_pressed(item: SelectableItem):
-	on_item_selected.emit(item.item)
+	on_item_selected.emit(item.data.id)
