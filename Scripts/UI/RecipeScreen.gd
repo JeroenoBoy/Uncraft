@@ -12,6 +12,7 @@ signal select_button_pressed()
 
 @export_group("Preview")
 @export var preview_name: Label
+@export var preview_craft_time: Label
 @export var preview_input: Control
 @export var preview_output: Control
 
@@ -39,6 +40,7 @@ func _hide():
 func set_preview(recipe: Recipe):
 	clear_preview()
 	preview_name.text = recipe.name
+	preview_craft_time.text = "Craft Time: " + str(recipe.craft_time) + " seconds"
 	select_button.disabled = false
 
 	for child in container.get_children():
@@ -59,6 +61,7 @@ func set_preview(recipe: Recipe):
 
 func clear_preview():
 	preview_name.text = "Select a recipe"
+	preview_craft_time.text = ""
 	select_button.disabled = false
 	for n in preview_input.get_children():
 		n.queue_free()

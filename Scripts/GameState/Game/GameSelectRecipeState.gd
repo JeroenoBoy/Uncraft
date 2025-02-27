@@ -17,6 +17,7 @@ func _on_activate(state_data: Dictionary):
 	selected_recipe = null
 	recipe_selector_screen.show_screen({ "recipes": recipes })
 	recipe_selector_screen.recipe_selected.connect(_on_recipe_selected)
+	recipe_selector_screen.select_button_pressed.connect(_on_select_button_pressed)
 
 	if building.selected_recipe != null:
 		recipe_selector_screen.set_preview(building.selected_recipe)
@@ -25,6 +26,7 @@ func _on_deactivate():
 	super._on_deactivate()
 	recipe_selector_screen.hide_screen()
 	recipe_selector_screen.recipe_selected.disconnect(_on_recipe_selected)
+	recipe_selector_screen.select_button_pressed.disconnect(_on_select_button_pressed)
 	recipe_selector_screen.clear_preview()
 
 func _update(_delta: float):

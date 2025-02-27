@@ -19,6 +19,11 @@ func conveyor_accepts(item: Item) -> bool:
 func conveyor_input(item: Item) -> bool:
 	return inventory.add_item(item)
 
+func emit_update():
+	if target_node == null:
+		return
+	target_node.function_update.emit()
+
 func _on_tile_update():
 	var pos = grid_position()
 	var iRot = grid_rotation()

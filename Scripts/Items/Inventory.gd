@@ -10,6 +10,7 @@ signal item_removed(item: Item)
 @export var filter: Array[Filter] = []
 @export var items_visible = false;
 
+var locked = false
 var total_items = 0
 
 func _exit_tree() -> void:
@@ -32,6 +33,9 @@ func is_empty() -> bool:
 	return total_items == 0
 
 func can_hold(item_data: ItemData) -> bool:
+	if locked:
+		return false
+	
 	if max_items > -1:
 		if total_items + 1 > max_items:
 			return false
@@ -50,6 +54,9 @@ func can_hold(item_data: ItemData) -> bool:
 	return true
 
 func can_hold_item(item: Item) -> bool:
+	if locked:
+		return false
+
 	if max_items > -1:
 		if total_items + 1 > max_items:
 			return false

@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://t61cgieq1unh"]
 
 [ext_resource type="Theme" uid="uid://cokbn1tlqfm1m" path="res://Assets/UI/UITheme.tres" id="1_m585m"]
-[ext_resource type="Script" path="res://Scripts/UI/RecipeSelector/RecipeScreen.gd" id="2_gwj23"]
+[ext_resource type="Script" path="res://Scripts/UI/RecipeScreen.gd" id="2_gwj23"]
 [ext_resource type="PackedScene" uid="uid://dd5rseck46xn5" path="res://Scenes/UI/Components/SelectableItem.tscn" id="3_7ahco"]
 [ext_resource type="PackedScene" uid="uid://dloxykvbpwoe4" path="res://Scenes/UI/Components/UIWindow.tscn" id="4_r01qd"]
 [ext_resource type="PackedScene" uid="uid://csg4vyi68gwnw" path="res://Scenes/UI/Components/UIPanel.tscn" id="6_2r60c"]
 [ext_resource type="PackedScene" uid="uid://8u238yf3od64" path="res://Scenes/UI/Components/ItemDisplay.tscn" id="6_41yag"]
 
-[node name="RecipeSelector" type="Control" node_paths=PackedStringArray("container", "select_button", "preview_name", "preview_input", "preview_output")]
+[node name="RecipeSelector" type="Control" node_paths=PackedStringArray("container", "select_button", "preview_name", "preview_craft_time", "preview_input", "preview_output")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +21,7 @@ item_display = ExtResource("6_41yag")
 container = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/MarginContainer/GridContainer")
 select_button = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/SelectButton")
 preview_name = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer/Name Label")
+preview_craft_time = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/Craft Time")
 preview_input = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer/Input")
 preview_output = NodePath("CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer/Outputs")
 
@@ -100,6 +101,11 @@ layout_mode = 2
 
 [node name="ItemDisplay" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/VBoxContainer/Outputs" instance=ExtResource("6_41yag")]
 layout_mode = 2
+
+[node name="Craft Time" type="Label" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Craft Time: 1 seconds"
 
 [node name="SelectButton" type="Button" parent="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2

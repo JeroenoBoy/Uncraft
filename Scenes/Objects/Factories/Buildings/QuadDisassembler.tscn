@@ -25,9 +25,10 @@ size = Vector2i(6, 3)
 script = ExtResource("2_5g03f")
 target = NodePath("../Manufacturer")
 
-[node name="Manufacturer" type="Node2D" parent="." node_paths=PackedStringArray("outputs")]
+[node name="Manufacturer" type="Node2D" parent="." node_paths=PackedStringArray("inputs", "outputs")]
 script = ExtResource("2_lo30o")
 recipes = Array[ExtResource("3_0t7gd")]([ExtResource("4_4d06x")])
+inputs = [NodePath("../MachineInput")]
 outputs = [NodePath("../MachineOutputCar"), NodePath("../MachineOutputRest1"), NodePath("../MachineOutputRest2"), NodePath("../MachineOutputRest3"), NodePath("../MachineOutputRest4")]
 
 [node name="InputInventory" type="Node2D" parent="Manufacturer"]
