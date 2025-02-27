@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://068l4pgpaabt"]
 
-[ext_resource type="SpriteFrames" uid="uid://bj1by5xe6hy0f" path="res://Assets/Sprites/Conveyor_anim.tres" id="1_51pjc"]
+[ext_resource type="SpriteFrames" uid="uid://bj1by5xe6hy0f" path="res://Assets/Sprites/Belts/Conveyor_anim.tres" id="1_51pjc"]
 [ext_resource type="SpriteFrames" uid="uid://bwe4gcnlsptg6" path="res://Assets/Sprites/Output_anim.tres" id="2_xwaso"]
 
 [sub_resource type="GDScript" id="GDScript_rhnus"]

@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dic2ut1phh0w7" path="res://Scenes/Objects/Factories/Buildings/QuadDisassembler.tscn" id="1_ct576"]
 [ext_resource type="Script" path="res://Scripts/Factory/PlacableItem.gd" id="1_gea17"]
-[ext_resource type="Texture2D" uid="uid://bmj1r13novt1i" path="res://Assets/Sprites/Machines/QuadDisassembler.png" id="3_ffyb1"]
+[ext_resource type="Texture2D" uid="uid://cayoq11pr211v" path="res://Assets/Sprites/Machines/QuadDisassembler.tres" id="3_pvfsa"]
 
 [resource]
 script = ExtResource("1_gea17")
 name = "Quad Assembly"
 ui_icon_scale = 1.5
-sprite = ExtResource("3_ffyb1")
+sprite = ExtResource("3_pvfsa")
 node = ExtResource("1_ct576")

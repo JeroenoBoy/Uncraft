@@ -2,10 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://c3fbrq3byllg1" path="res://Scenes/Objects/Factories/Buildings/Bridge.tscn" id="1_u8dek"]
 [ext_resource type="Script" path="res://Scripts/Factory/PlacableItem.gd" id="2_l8ohn"]
-[ext_resource type="Texture2D" uid="uid://t5g68y3fnycp" path="res://Assets/Sprites/Bridge.png" id="2_sst47"]
+[ext_resource type="Texture2D" uid="uid://dkjysegt20pn3" path="res://Assets/Sprites/Belts/Bridge.tres" id="3_svclj"]
 
 [resource]
 script = ExtResource("2_l8ohn")
 name = "Bridge"
-sprite = ExtResource("2_sst47")
+ui_icon_scale = 1.0
+sprite = ExtResource("3_svclj")
 node = ExtResource("1_u8dek")

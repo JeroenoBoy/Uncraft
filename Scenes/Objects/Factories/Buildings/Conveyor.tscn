@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://8wkeopwsjlp0"]
 
-[ext_resource type="SpriteFrames" uid="uid://bj1by5xe6hy0f" path="res://Assets/Sprites/Conveyor_anim.tres" id="2_000hi"]
+[ext_resource type="SpriteFrames" uid="uid://bj1by5xe6hy0f" path="res://Assets/Sprites/Belts/Conveyor_anim.tres" id="2_000hi"]
 [ext_resource type="Script" path="res://Scripts/Factory/Conveyor.gd" id="3_gjdpt"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="4_ec5i8"]
 [ext_resource type="PackedScene" uid="uid://bm5rpej2vailu" path="res://Scenes/Objects/Factories/Components/SendPlaceUpdate.tscn" id="4_t1rl8"]

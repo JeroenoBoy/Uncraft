@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqwdby6fnpiwi"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_0vksq"]
-[ext_resource type="Texture2D" uid="uid://cy3wy2uotki6l" path="res://Assets/Sprites/GarbageBin.png" id="1_nqegr"]
 [ext_resource type="Script" path="res://Scripts/Factory/ClearInventory.gd" id="2_21cfi"]
+[ext_resource type="Texture2D" uid="uid://cggktjtpxa4kt" path="res://Assets/Sprites/Machines/GarbageBin.tres" id="2_wu3as"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="3_8mc1s"]
 [ext_resource type="PackedScene" uid="uid://bwo05tbedg8d7" path="res://Scenes/Objects/Factories/Components/MachineInput.tscn" id="4_gbood"]
 
@@ -11,7 +11,7 @@ script = ExtResource("1_0vksq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("1_nqegr")
+texture = ExtResource("2_wu3as")
 
 [node name="MachineInput" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("4_gbood")]
 position = Vector2(0, 14)

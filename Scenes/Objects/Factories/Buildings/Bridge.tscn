@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3fbrq3byllg1"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_7ilfj"]
-[ext_resource type="Texture2D" uid="uid://t5g68y3fnycp" path="res://Assets/Sprites/Bridge.png" id="2_jf6ib"]
+[ext_resource type="Texture2D" uid="uid://dkjysegt20pn3" path="res://Assets/Sprites/Belts/Bridge.tres" id="2_7tve3"]
 [ext_resource type="Script" path="res://Scripts/Factory/Splitter.gd" id="3_a6fqp"]
 [ext_resource type="PackedScene" uid="uid://bwo05tbedg8d7" path="res://Scenes/Objects/Factories/Components/MachineInput.tscn" id="4_p4pg6"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="5_ghecm"]
@@ -12,7 +12,7 @@ script = ExtResource("1_7ilfj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("2_jf6ib")
+texture = ExtResource("2_7tve3")
 
 [node name="Splitter" type="Node2D" parent="." node_paths=PackedStringArray("inputs", "outputs")]
 script = ExtResource("3_a6fqp")

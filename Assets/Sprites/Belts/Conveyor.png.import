@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv532i45xveb7"
-path="res://.godot/imported/Splitter.png-76cb6909cf0a0f07af777b95badd1db5.ctex"
+uid="uid://r2s4c066bv86"
+path="res://.godot/imported/Conveyor.png-6e5e2b18dba82de851101084571916c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Splitter.png"
-dest_files=["res://.godot/imported/Splitter.png-76cb6909cf0a0f07af777b95badd1db5.ctex"]
+source_file="res://Assets/Sprites/Belts/Conveyor.png"
+dest_files=["res://.godot/imported/Conveyor.png-6e5e2b18dba82de851101084571916c1.ctex"]
 
 [params]
 

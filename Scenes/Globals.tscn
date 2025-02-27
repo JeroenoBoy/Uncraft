@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Globals.gd" id="1_msmot"]
 [ext_resource type="Script" path="res://Scripts/Common/AnimationSync.gd" id="2_e8qh1"]
-[ext_resource type="SpriteFrames" uid="uid://bj1by5xe6hy0f" path="res://Assets/Sprites/Conveyor_anim.tres" id="3_wydc3"]
+[ext_resource type="SpriteFrames" uid="uid://bj1by5xe6hy0f" path="res://Assets/Sprites/Belts/Conveyor_anim.tres" id="3_wydc3"]
 [ext_resource type="SpriteFrames" uid="uid://bd7ivu5b27s5d" path="res://Assets/Sprites/Input_anim.tres" id="4_vt3km"]
 
 [node name="Globals" type="Node"]
