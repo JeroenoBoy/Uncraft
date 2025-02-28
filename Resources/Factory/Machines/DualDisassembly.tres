@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PlaceableItem" load_steps=7 format=3 uid="uid://xfq5dnf0n7rw"]
+
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="1_5jyuc"]
+[ext_resource type="Resource" uid="uid://cjdjx0hyrgxfq" path="res://Resources/GameConditions/DualDisassemblerUnlocked.tres" id="1_nkbbh"]
+[ext_resource type="Script" path="res://Scripts/Factory/PlacableItem.gd" id="2_rqge6"]
+[ext_resource type="Texture2D" uid="uid://17v4y4hh8dw4" path="res://Assets/Sprites/Machines/DualDisassembler.tres" id="3_hhh4k"]
+[ext_resource type="PackedScene" uid="uid://dsj8qgbb1q1w5" path="res://Scenes/Objects/Factories/Buildings/DualDisassembler.tscn" id="3_vivdw"]
+
+[sub_resource type="Resource" id="Resource_xiesg"]
+script = ExtResource("1_5jyuc")
+condition = ExtResource("1_nkbbh")
+expected = false
+
+[resource]
+script = ExtResource("2_rqge6")
+name = "Dual Disassembler"
+ui_icon_scale = 1.0
+sprite = ExtResource("3_hhh4k")
+node = ExtResource("3_vivdw")
+condition = SubResource("Resource_xiesg")

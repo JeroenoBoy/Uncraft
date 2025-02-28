@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CoreStage" load_steps=4 format=3 uid="uid://caiv837vixatk"]
+
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="1_i2e3b"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_7kgla"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="3_q1jpm"]
+
+[resource]
+script = ExtResource("3_q1jpm")
+name = "Dual Disassembler Research"
+description = "The company soon wishes to increase its good deeds and give more parts of the car the fresh start they deserve. But funds are low and we cannot afford the research.
+
+Produce 100 tires"
+requirements = Array[ExtResource("1_i2e3b")]([])
+results = Array[ExtResource("2_7kgla")]([])

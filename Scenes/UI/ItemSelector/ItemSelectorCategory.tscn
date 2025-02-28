@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjg8kohirr8k5"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ItemSelector/ItemSelectorCategory.gd" id="1_pjwut"]
+[ext_resource type="PackedScene" uid="uid://dd5rseck46xn5" path="res://Scenes/UI/Components/SelectableItem.tscn" id="2_05qkr"]
+
+[node name="ItemSelectorCategory" type="MarginContainer" node_paths=PackedStringArray("container")]
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 24
+script = ExtResource("1_pjwut")
+selectableItemScene = ExtResource("2_05qkr")
+container = NodePath("HBoxContainer")
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1

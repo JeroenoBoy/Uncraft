@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bgoyotwfr1lm4"]
+
+[ext_resource type="Texture2D" uid="uid://cjcb43q8lda66" path="res://Assets/Sprites/Particles/Particles.png" id="1_wdjjr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqsfg"]
+atlas = ExtResource("1_wdjjr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71qkm"]
+atlas = ExtResource("1_wdjjr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdq7e"]
+atlas = ExtResource("1_wdjjr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhx05"]
+atlas = ExtResource("1_wdjjr")
+region = Rect2(64, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqsfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71qkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdq7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhx05")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

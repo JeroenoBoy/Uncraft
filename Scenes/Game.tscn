@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckobtjtq4elpw"]
+[gd_scene load_steps=8 format=3 uid="uid://ckobtjtq4elpw"]
 
 [ext_resource type="Texture2D" uid="uid://d0nblk48tnynm" path="res://Assets/Sprites/Background.png" id="1_m7xa0"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionManager.gd" id="1_yd4q0"]
 [ext_resource type="PackedScene" uid="uid://dlqlwrhiaipoa" path="res://Scenes/MainStateMachine.tscn" id="2_fnk24"]
+[ext_resource type="PackedScene" uid="uid://c8jct236w80lp" path="res://Scenes/Objects/Core.tscn" id="2_lki6j"]
 [ext_resource type="Script" path="res://Scripts/Grid/Grid.gd" id="3_1fxpp"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_7pnwj"]
 
@@ -11,8 +13,15 @@ point_count = 2
 
 [node name="Game" type="Node2D"]
 
+[node name="GameConditionManager" type="Node2D" parent="."]
+script = ExtResource("1_yd4q0")
+
 [node name="Grid" type="Node2D" parent="."]
 script = ExtResource("3_1fxpp")
+
+[node name="Core" parent="Grid" instance=ExtResource("2_lki6j")]
+position = Vector2(-96, -96)
+place_on_spawn = true
 
 [node name="Items" type="Node2D" parent="."]
 

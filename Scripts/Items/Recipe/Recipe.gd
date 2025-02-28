@@ -5,7 +5,9 @@ extends Resource
 @export var craft_time = 4
 @export var icon: Texture2D
 @export var ui_icon_scale = 1.0
-@export var inputs: Array[BaseRecipeItem]
+@export var condition: GameConditionField
+
+@export var inputs: Array[RecipeItem]
 @export var output: Array[RecipeItemTransform]
 
 func make_filters() -> Array[Filter]:

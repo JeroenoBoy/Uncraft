@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://brov1ybjs5gc1"]
+[gd_scene load_steps=7 format=3 uid="uid://brov1ybjs5gc1"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIManager.gd" id="1_hcomk"]
 [ext_resource type="Theme" uid="uid://cokbn1tlqfm1m" path="res://Assets/UI/UITheme.tres" id="1_oyuev"]
 [ext_resource type="PackedScene" uid="uid://r72gkwindvg5" path="res://Scenes/UI/ItemSelector/ItemSelector.tscn" id="2_pr08y"]
 [ext_resource type="PackedScene" uid="uid://dogvuij6dixmn" path="res://Scenes/UI/DeleteScreen.tscn" id="4_2qkmd"]
 [ext_resource type="PackedScene" uid="uid://t61cgieq1unh" path="res://Scenes/UI/RecipeScreen.tscn" id="4_htbro"]
+[ext_resource type="PackedScene" uid="uid://dvu54lolldlab" path="res://Scenes/UI/CoreScreen.tscn" id="6_w26cd"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -26,6 +27,9 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="DeleteScreen" parent="UIManager" instance=ExtResource("4_2qkmd")]
+layout_mode = 1
+
+[node name="CoreScreen" parent="UIManager" instance=ExtResource("6_w26cd")]
 layout_mode = 1
 
 [connection signal="mouse_entered" from="UIManager" to="UIManager" method="_on_mouse_entered"]

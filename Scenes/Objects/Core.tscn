@@ -1,0 +1,184 @@
+[gd_scene load_steps=19 format=3 uid="uid://c8jct236w80lp"]
+
+[ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_lpdty"]
+[ext_resource type="Texture2D" uid="uid://c6xkv62dtljn2" path="res://Assets/Sprites/Core-2.png" id="2_kivwt"]
+[ext_resource type="Script" path="res://Scripts/Core/Core.gd" id="2_woo0w"]
+[ext_resource type="PackedScene" uid="uid://bwo05tbedg8d7" path="res://Scenes/Objects/Factories/Components/MachineInput.tscn" id="3_gslj2"]
+[ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="4_88wnv"]
+[ext_resource type="Texture2D" uid="uid://dv7nfvcx3x4m6" path="res://Assets/Sprites/Particles/Particle_1.tres" id="6_v6w0g"]
+[ext_resource type="Texture2D" uid="uid://0dqo4skj3bwa" path="res://Assets/Sprites/Particles/Particle_transparant.tres" id="7_bxusd"]
+[ext_resource type="Script" path="res://Scripts/Common/ParticleHelper.gd" id="7_vnyyg"]
+
+[sub_resource type="Gradient" id="Gradient_8gbak"]
+offsets = PackedFloat32Array(0.00497512, 0.656716, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jr1rn"]
+gradient = SubResource("Gradient_8gbak")
+
+[sub_resource type="Curve" id="Curve_sjlfg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.07927, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_too8o"]
+curve = SubResource("Curve_sjlfg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wpavb"]
+particle_flag_disable_z = true
+spread = 180.0
+radial_velocity_min = 50.0
+radial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_too8o")
+color = Color(0.172549, 0.909804, 0.960784, 1)
+color_ramp = SubResource("GradientTexture1D_jr1rn")
+
+[sub_resource type="Curve" id="Curve_7yhmw"]
+_data = [Vector2(0, 1), 0.0, -0.0461346, 0, 0, Vector2(1, 0), -2.60637, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qhl5j"]
+curve = SubResource("Curve_7yhmw")
+
+[sub_resource type="Curve" id="Curve_1tawr"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gr2p4"]
+curve = SubResource("Curve_1tawr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_872cy"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 15.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_gr2p4")
+color = Color(0.172549, 0.909804, 0.960784, 1)
+alpha_curve = SubResource("CurveTexture_qhl5j")
+
+[node name="Core" type="Node2D"]
+script = ExtResource("1_lpdty")
+size = Vector2i(6, 6)
+movable = false
+rotatable = false
+removable = false
+
+[node name="Core" type="Node2D" parent="."]
+rotation = 0.0074626
+script = ExtResource("2_woo0w")
+
+[node name="Inventory" type="Node2D" parent="Core"]
+script = ExtResource("4_88wnv")
+
+[node name="Particles" type="GPUParticles2D" parent="Core"]
+z_index = 10
+position = Vector2(80.5, 79.5)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_wpavb")
+texture = ExtResource("6_v6w0g")
+script = ExtResource("7_vnyyg")
+
+[node name="Ping" type="GPUParticles2D" parent="Core/Particles"]
+z_index = 10
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_872cy")
+texture = ExtResource("7_bxusd")
+lifetime = 3.0
+script = ExtResource("7_vnyyg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("2_kivwt")
+
+[node name="Inputs" type="Node2D" parent="."]
+
+[node name="MachineInput" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(32, -14)
+rotation = -3.14159
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput2" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(64, -14)
+rotation = -3.14159
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput3" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(96, -14)
+rotation = -3.14159
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput4" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(128, -14)
+rotation = -3.14159
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput5" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(32, 174)
+rotation = -6.28319
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput6" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(64, 174)
+rotation = -6.28319
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput7" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(96, 174)
+rotation = -6.28319
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput8" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(128, 174)
+rotation = -6.28319
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput9" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(-14, 32)
+rotation = -4.71229
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput10" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(-14, 64)
+rotation = -4.71229
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput11" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(-14, 96)
+rotation = -4.71229
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput12" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(-14, 128)
+rotation = -4.71229
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput13" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(174, 32)
+rotation = -7.85398
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput14" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(174, 64)
+rotation = -7.85398
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput15" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(174, 96)
+rotation = -7.85398
+inventory = NodePath("../../Core/Inventory")
+
+[node name="MachineInput16" parent="Inputs" node_paths=PackedStringArray("inventory") instance=ExtResource("3_gslj2")]
+position = Vector2(174, 128)
+rotation = -7.85398
+inventory = NodePath("../../Core/Inventory")
+
+[connection signal="stage_completed" from="Core" to="Core/Particles" method="start_playing"]
+[connection signal="stage_completed" from="Core" to="Core/Particles/Ping" method="start_playing"]
+[connection signal="stage_started" from="Core" to="Core/Particles" method="stop_playing"]
+[connection signal="stage_started" from="Core" to="Core/Particles/Ping" method="stop_playing"]

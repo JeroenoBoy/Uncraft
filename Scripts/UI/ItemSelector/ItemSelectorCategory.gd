@@ -20,4 +20,12 @@ func _ready() -> void:
 		var selectableItem = selectableItemScene.instantiate() as SelectableItem
 		container.add_child(selectableItem)
 		selectableItem.set_item(SelectableItem.SelectData.new(item, item.name, item.sprite, item.ui_icon_scale))
+
+	visibility_changed.connect(_on_visibility_changed)
 	
+func _on_visibility_changed():
+	if !is_visible_in_tree():
+		return
+
+	for child in container.get_children():
+		child.visible = child.data.id.condition == null || child.data.id.condition.check()

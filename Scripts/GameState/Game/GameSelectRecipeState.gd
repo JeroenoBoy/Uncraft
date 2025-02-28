@@ -13,7 +13,7 @@ func _on_activate(state_data: Dictionary):
 	super._on_activate(state_data)
 
 	building = state_data["building"] as Node
-	var recipes = state_data["recipes"] as Array[Recipe]
+	var recipes = state_data["recipes"].filter(func(it): return it.condition == null || it.condition.check()) as Array[Recipe]
 	selected_recipe = null
 	recipe_selector_screen.show_screen({ "recipes": recipes })
 	recipe_selector_screen.recipe_selected.connect(_on_recipe_selected)
