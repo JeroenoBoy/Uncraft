@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://bni7aowuyf1sj"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Components/IconDisplay.gd" id="1_lwofr"]
+[ext_resource type="Texture2D" uid="uid://byx4gussm2u16" path="res://Assets/UI/Atlas/BackgroundIcon.tres" id="1_wvube"]
+[ext_resource type="Texture2D" uid="uid://bxfas563byeto" path="res://Assets/Sprites/Icons/ConveyorIcon.tres" id="2_mcv4v"]
+
+[node name="IconDisplay" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lwofr")
+
+[node name="Shadow" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wvube")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mcv4v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SubIcon" type="Control" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+
+[node name="Shadow" type="TextureRect" parent="SubIcon"]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wvube")
+
+[node name="Icon" type="TextureRect" parent="SubIcon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mcv4v")
+expand_mode = 1
+stretch_mode = 5

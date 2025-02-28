@@ -29,10 +29,8 @@ func _on_deactivate():
 	recipe_selector_screen.select_button_pressed.disconnect(_on_select_button_pressed)
 	recipe_selector_screen.clear_preview()
 
-func _update(_delta: float):
-	if Input.is_action_just_released("ui_cancel"):
-		state_machine.change_state("Default")
-		return
+func _on_ui_cancel():
+	state_machine.change_state("Default")
 
 func _select_recipe(recipe: Recipe):
 	building.set_recipe(recipe)

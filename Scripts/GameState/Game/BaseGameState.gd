@@ -27,3 +27,10 @@ func _on_deactivate():
 
 func _on_item_selected(item: PlaceableItem):
 	state_machine.change_state("PlaceItem", { "item": item })
+
+func _update(delta: float):
+	if Input.is_action_just_pressed("ui_cancel"):
+		_on_ui_cancel()
+
+func _on_ui_cancel():
+	pass

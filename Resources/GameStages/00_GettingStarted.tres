@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="CoreStage" load_steps=14 format=3 uid="uid://brghs7iamm762"]
+
+[ext_resource type="Texture2D" uid="uid://c6xkv62dtljn2" path="res://Assets/Sprites/Core-2.png" id="1_soxal"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_c2468"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="3_sbe0g"]
+[ext_resource type="Resource" uid="uid://dj0ehiwcdfead" path="res://Resources/GameConditions/BasicsUnlocked.tres" id="4_hbj1i"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="4_ql74g"]
+[ext_resource type="Texture2D" uid="uid://c0e53mpqhav36" path="res://Assets/Sprites/Icons/Generator.tres" id="5_4mfbp"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="5_af4hy"]
+[ext_resource type="Texture2D" uid="uid://bxfas563byeto" path="res://Assets/Sprites/Icons/ConveyorIcon.tres" id="5_ouu0c"]
+[ext_resource type="Texture2D" uid="uid://cggktjtpxa4kt" path="res://Assets/Sprites/Machines/GarbageBin.tres" id="7_hvv55"]
+
+[sub_resource type="Resource" id="Resource_10an0"]
+script = ExtResource("5_af4hy")
+icon = ExtResource("5_ouu0c")
+
+[sub_resource type="Resource" id="Resource_ifj8r"]
+script = ExtResource("5_af4hy")
+icon = ExtResource("5_4mfbp")
+
+[sub_resource type="Resource" id="Resource_rm1ll"]
+script = ExtResource("5_af4hy")
+icon = ExtResource("7_hvv55")
+
+[sub_resource type="Resource" id="Resource_xtd5h"]
+script = ExtResource("3_sbe0g")
+condition = ExtResource("4_hbj1i")
+value = true
+icons = Array[ExtResource("5_af4hy")]([SubResource("Resource_10an0"), SubResource("Resource_ifj8r"), SubResource("Resource_rm1ll")])
+
+[resource]
+script = ExtResource("4_ql74g")
+name = "Newly founded company"
+icon = ExtResource("1_soxal")
+description = "So you're our new employee? I'm John, the CEO & Founder of this humble recyling company. We think the world could do more to recycle cars! Every part could use a fresh start and its your job to automate that process."
+button_text = "Start"
+requirements = Array[ExtResource("2_c2468")]([])
+results = Array[ExtResource("3_sbe0g")]([SubResource("Resource_xtd5h")])

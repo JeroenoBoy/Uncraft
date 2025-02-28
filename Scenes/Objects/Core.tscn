@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8jct236w80lp"]
+[gd_scene load_steps=20 format=3 uid="uid://c8jct236w80lp"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_lpdty"]
 [ext_resource type="Texture2D" uid="uid://c6xkv62dtljn2" path="res://Assets/Sprites/Core-2.png" id="2_kivwt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dv7nfvcx3x4m6" path="res://Assets/Sprites/Particles/Particle_1.tres" id="6_v6w0g"]
 [ext_resource type="Texture2D" uid="uid://0dqo4skj3bwa" path="res://Assets/Sprites/Particles/Particle_transparant.tres" id="7_bxusd"]
 [ext_resource type="Script" path="res://Scripts/Common/ParticleHelper.gd" id="7_vnyyg"]
+[ext_resource type="Script" path="res://Scripts/Grid/ClickAction.gd" id="9_i1x3k"]
 
 [sub_resource type="Gradient" id="Gradient_8gbak"]
 offsets = PackedFloat32Array(0.00497512, 0.656716, 1)
@@ -65,6 +66,11 @@ size = Vector2i(6, 6)
 movable = false
 rotatable = false
 removable = false
+
+[node name="ClickAction" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("9_i1x3k")
+click_type = 1
+target = NodePath("../Core")
 
 [node name="Core" type="Node2D" parent="."]
 rotation = 0.0074626

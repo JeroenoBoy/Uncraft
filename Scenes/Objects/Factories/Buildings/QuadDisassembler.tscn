@@ -1,10 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dic2ut1phh0w7"]
+[gd_scene load_steps=12 format=3 uid="uid://dic2ut1phh0w7"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_est3o"]
-[ext_resource type="Script" path="res://Scripts/Grid/SecondaryAction/ClickAction.gd" id="2_5g03f"]
+[ext_resource type="Script" path="res://Scripts/Grid/ClickAction.gd" id="2_5g03f"]
 [ext_resource type="Script" path="res://Scripts/Factory/Manufacturer.gd" id="2_lo30o"]
-[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="3_0t7gd"]
-[ext_resource type="Resource" uid="uid://gx7g6bc0ijig" path="res://Resources/Recipes/QuadDisassembler/StripWheels.tres" id="4_4d06x"]
 [ext_resource type="PackedScene" uid="uid://bwo05tbedg8d7" path="res://Scenes/Objects/Factories/Components/MachineInput.tscn" id="4_l575c"]
 [ext_resource type="PackedScene" uid="uid://bj211qmgyukaf" path="res://Scenes/Objects/Factories/Components/MachineOutput.tscn" id="5_3xsdk"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="5_4sdhi"]
@@ -27,7 +25,6 @@ target = NodePath("../Manufacturer")
 
 [node name="Manufacturer" type="Node2D" parent="." node_paths=PackedStringArray("inputs", "outputs")]
 script = ExtResource("2_lo30o")
-recipes = Array[ExtResource("3_0t7gd")]([ExtResource("4_4d06x")])
 inputs = [NodePath("../MachineInput")]
 outputs = [NodePath("../MachineOutputCar"), NodePath("../MachineOutputRest1"), NodePath("../MachineOutputRest2"), NodePath("../MachineOutputRest3"), NodePath("../MachineOutputRest4")]
 

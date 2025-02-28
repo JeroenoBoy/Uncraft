@@ -7,7 +7,7 @@ extends Control
 @onready var countText: Label = $Count
 @onready var container: GridContainer = $GridContainer
 
-func set_item(item_data: ItemData, count = 1, parts: Array[ComplexItemPart] = []):
+func set_item(item_data: ItemData, count = 1, parts: Array[ComplexItemPart] = [], _bad_parts: Array[ComplexItemPart] = []):
 	_clear_container()
 	icon.texture = item_data.get_icon()
 
@@ -16,6 +16,9 @@ func set_item(item_data: ItemData, count = 1, parts: Array[ComplexItemPart] = []
 
 	for part in parts:
 		_add_part(part)
+
+func set_count(count: int):
+	countText.text = str(count)
 
 func _clear_container():
 	for n in container.get_children():

@@ -36,6 +36,10 @@ Conveyor=""
 Ports=""
 ConveyorOuput=""
 
+[gui]
+
+theme/custom="res://Assets/UI/UITheme.tres"
+
 [input]
 
 build_pickup={

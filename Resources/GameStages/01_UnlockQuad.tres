@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="CoreStage" load_steps=14 format=3 uid="uid://caiv837vixatk"]
+
+[ext_resource type="Texture2D" uid="uid://cayoq11pr211v" path="res://Assets/Sprites/Machines/QuadDisassembler.tres" id="1_qv81x"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_mucg2"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="3_cvj45"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="3_ircrm"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_4u4sd"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="4_jpvyn"]
+[ext_resource type="Resource" uid="uid://b57xbogeq7s8m" path="res://Resources/GameConditions/QuadDisassembledUnlocked.tres" id="6_d3ns1"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="7_js0ge"]
+[ext_resource type="Texture2D" uid="uid://nyodc86oon83" path="res://Assets/Sprites/Items/tire_full.tres" id="8_6tfcg"]
+
+[sub_resource type="Resource" id="Resource_ayvvs"]
+script = ExtResource("2_mucg2")
+count = 25
+item_data = ExtResource("3_cvj45")
+with_parts = Array[ExtResource("4_4u4sd")]([])
+without_parts = Array[ExtResource("4_4u4sd")]([])
+
+[sub_resource type="Resource" id="Resource_qf4jy"]
+script = ExtResource("7_js0ge")
+icon = ExtResource("1_qv81x")
+
+[sub_resource type="Resource" id="Resource_qnidd"]
+script = ExtResource("7_js0ge")
+icon = ExtResource("1_qv81x")
+second = ExtResource("8_6tfcg")
+
+[sub_resource type="Resource" id="Resource_7es1j"]
+script = ExtResource("3_ircrm")
+condition = ExtResource("6_d3ns1")
+value = true
+icons = Array[ExtResource("7_js0ge")]([SubResource("Resource_qf4jy"), SubResource("Resource_qnidd")])
+
+[resource]
+script = ExtResource("4_jpvyn")
+name = "Quad Disassembler Research"
+icon = ExtResource("1_qv81x")
+description = "Currently, we are just reselling old cars, but they break down quite quickly. We are currently researching an awesome machine that lets us quickly take cars apart.
+
+Make some factory that helps us sell more cars so we can finish the project!
+
+~ John"
+button_text = "Complete"
+requirements = Array[ExtResource("2_mucg2")]([SubResource("Resource_ayvvs")])
+results = Array[ExtResource("3_ircrm")]([SubResource("Resource_7es1j")])

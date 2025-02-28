@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_xiesg"]
 script = ExtResource("1_5jyuc")
 condition = ExtResource("1_nkbbh")
-expected = false
+expected = true
 
 [resource]
 script = ExtResource("2_rqge6")

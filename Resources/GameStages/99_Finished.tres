@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CoreStage" load_steps=5 format=3 uid="uid://3jj0t6edtpal"]
+
+[ext_resource type="Texture2D" uid="uid://c6xkv62dtljn2" path="res://Assets/Sprites/Core-2.png" id="1_nyp5n"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_wlkht"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="5_g1vmr"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="9_yvhtf"]
+
+[resource]
+script = ExtResource("9_yvhtf")
+name = "Corperate Greed"
+icon = ExtResource("1_nyp5n")
+description = "Dear factory architects,
+
+We wish to joyfully inform you that we have conquered the car recycling industry, and our stakeholders are joyfully pleased. And this is ofcourse all thanks to your efforts.
+
+We'd like to thank you for your excellent efforts by giving you 1 day off. You may send HR an email for when you wish for this to be.
+
+We wish for you to continue your futile efforts to expand this excellent factory, ~ but we have so much fucking money it doesn't even matter ~.
+
+Kind Regards,
+John B.D. Richelieu"
+button_text = ""
+requirements = Array[ExtResource("2_wlkht")]([])
+results = Array[ExtResource("5_g1vmr")]([])

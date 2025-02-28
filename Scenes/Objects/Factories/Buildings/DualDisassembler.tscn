@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dsj8qgbb1q1w5"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_mw5eu"]
-[ext_resource type="Script" path="res://Scripts/Grid/SecondaryAction/ClickAction.gd" id="2_r2ex5"]
+[ext_resource type="Script" path="res://Scripts/Grid/ClickAction.gd" id="2_r2ex5"]
 [ext_resource type="Script" path="res://Scripts/Factory/Manufacturer.gd" id="3_dgest"]
 [ext_resource type="Texture2D" uid="uid://17v4y4hh8dw4" path="res://Assets/Sprites/Machines/DualDisassembler.tres" id="5_ilinv"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="6_r5tb6"]

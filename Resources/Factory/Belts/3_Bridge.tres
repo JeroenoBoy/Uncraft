@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PlaceableItem" load_steps=7 format=3 uid="uid://db12nrbjnpivu"]
+
+[ext_resource type="Resource" uid="uid://cnb3flsdoqmsg" path="res://Resources/GameConditions/SplittersUnlocked.tres" id="1_cpuuh"]
+[ext_resource type="PackedScene" uid="uid://c3fbrq3byllg1" path="res://Scenes/Objects/Factories/Buildings/Bridge.tscn" id="1_u8dek"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_2m58g"]
+[ext_resource type="Script" path="res://Scripts/Factory/PlacableItem.gd" id="2_l8ohn"]
+[ext_resource type="Texture2D" uid="uid://dkjysegt20pn3" path="res://Assets/Sprites/Belts/Bridge.tres" id="3_svclj"]
+
+[sub_resource type="Resource" id="Resource_q8sxh"]
+script = ExtResource("2_2m58g")
+condition = ExtResource("1_cpuuh")
+expected = true
+
+[resource]
+script = ExtResource("2_l8ohn")
+name = "Bridge"
+ui_icon_scale = 1.0
+sprite = ExtResource("3_svclj")
+node = ExtResource("1_u8dek")
+condition = SubResource("Resource_q8sxh")

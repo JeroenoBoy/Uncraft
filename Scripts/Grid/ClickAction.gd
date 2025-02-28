@@ -2,7 +2,8 @@ class_name ClickAction
 extends Node
 
 enum ClickType {
-	SelectRecipe
+	SelectRecipe,
+	CoreClicked
 }
 
 @export var click_type: ClickType
@@ -28,6 +29,16 @@ func execute(state_machine: GameStateMachine):
 				"building": target,
 				"recipes": target.recipes
 			})
+		
+		ClickType.CoreClicked:
+			if !target is Core:
+				push_error("Target must be of type Core")
+				return
+
+			state_machine.change_state("CoreInfo", {
+				"core": target
+			})
+
 		_:
 			push_error("Click type ", click_type, " is not implemented")
 

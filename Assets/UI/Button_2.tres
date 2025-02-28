@@ -1,0 +1,77 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ddgj085v2rufk"]
+
+[ext_resource type="FontFile" uid="uid://cpk1qmkm6a5uj" path="res://Assets/UI/dogicapixel.ttf" id="3_csu64"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvc7h"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.14902, 0.168627, 0.266667, 0.588235)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.584314, 0.913725, 0.588235)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkohx"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.227451, 0.266667, 0.4, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.584314, 0.913725, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeb08"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.14902, 0.168627, 0.266667, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.172549, 0.909804, 0.960784, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31sk0"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.227451, 0.266667, 0.4, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.172549, 0.909804, 0.960784, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0w5mj"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.119311, 0.136121, 0.220311, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.172549, 0.909804, 0.960784, 1)
+corner_detail = 1
+
+[resource]
+default_font = ExtResource("3_csu64")
+default_font_size = 12
+Button/styles/disabled = SubResource("StyleBoxFlat_mvc7h")
+Button/styles/focus = SubResource("StyleBoxFlat_mkohx")
+Button/styles/hover = SubResource("StyleBoxFlat_qeb08")
+Button/styles/normal = SubResource("StyleBoxFlat_31sk0")
+Button/styles/pressed = SubResource("StyleBoxFlat_0w5mj")

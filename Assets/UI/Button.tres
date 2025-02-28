@@ -1,22 +1,22 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cokbn1tlqfm1m"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://iuy16kjniq8r"]
 
-[ext_resource type="Texture2D" uid="uid://byx4gussm2u16" path="res://Assets/UI/Atlas/BackgroundIcon.tres" id="1_3thb7"]
-[ext_resource type="Texture2D" uid="uid://be5lkhhuq0app" path="res://Assets/UI/Atlas/BackgroundIconFocus.tres" id="1_lrgqm"]
-[ext_resource type="FontFile" uid="uid://cpk1qmkm6a5uj" path="res://Assets/UI/dogicapixel.ttf" id="3_3fnba"]
+[ext_resource type="Texture2D" uid="uid://be5lkhhuq0app" path="res://Assets/UI/Atlas/BackgroundIconFocus.tres" id="1_hxxy7"]
+[ext_resource type="Texture2D" uid="uid://byx4gussm2u16" path="res://Assets/UI/Atlas/BackgroundIcon.tres" id="2_iqith"]
+[ext_resource type="FontFile" uid="uid://cpk1qmkm6a5uj" path="res://Assets/UI/dogicapixel.ttf" id="3_nc0v3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crf6c"]
-texture = ExtResource("1_lrgqm")
+texture = ExtResource("1_hxxy7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ub1jl"]
-texture = ExtResource("1_3thb7")
+texture = ExtResource("2_iqith")
 modulate_color = Color(1, 1, 1, 0.686275)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vhyua"]
-texture = ExtResource("1_3thb7")
+texture = ExtResource("2_iqith")
 modulate_color = Color(1, 1, 1, 0.588235)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hk50"]
-texture = ExtResource("1_3thb7")
+texture = ExtResource("2_iqith")
 modulate_color = Color(1, 1, 1, 0.784314)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvv2e"]
@@ -27,7 +27,7 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [resource]
-default_font = ExtResource("3_3fnba")
+default_font = ExtResource("3_nc0v3")
 default_font_size = 12
 BoxContainer/constants/separation = 8
 Button/styles/focus = SubResource("StyleBoxTexture_crf6c")

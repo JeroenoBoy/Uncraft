@@ -1,8 +1,15 @@
-[gd_resource type="Resource" script_class="PlaceableItem" load_steps=4 format=3 uid="uid://tbl7oc0yxu3p"]
+[gd_resource type="Resource" script_class="PlaceableItem" load_steps=7 format=3 uid="uid://tbl7oc0yxu3p"]
 
+[ext_resource type="Resource" uid="uid://dj0ehiwcdfead" path="res://Resources/GameConditions/BasicsUnlocked.tres" id="1_p18im"]
 [ext_resource type="PackedScene" uid="uid://cqwdby6fnpiwi" path="res://Scenes/Objects/Factories/Buildings/Bin.tscn" id="1_yqp86"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_5ygre"]
 [ext_resource type="Script" path="res://Scripts/Factory/PlacableItem.gd" id="2_fubph"]
 [ext_resource type="Texture2D" uid="uid://cggktjtpxa4kt" path="res://Assets/Sprites/Machines/GarbageBin.tres" id="3_wavxc"]
+
+[sub_resource type="Resource" id="Resource_ivec6"]
+script = ExtResource("2_5ygre")
+condition = ExtResource("1_p18im")
+expected = true
 
 [resource]
 script = ExtResource("2_fubph")
@@ -10,3 +17,4 @@ name = "Bin"
 ui_icon_scale = 1.0
 sprite = ExtResource("3_wavxc")
 node = ExtResource("1_yqp86")
+condition = SubResource("Resource_ivec6")
