@@ -25,6 +25,7 @@ target = NodePath("../Manufacturer")
 
 [node name="Manufacturer" type="Node2D" parent="." node_paths=PackedStringArray("inputs", "outputs")]
 script = ExtResource("2_lo30o")
+recipes_folder = "res://Resources/Recipes/QuadDisassembler"
 inputs = [NodePath("../MachineInput")]
 outputs = [NodePath("../MachineOutputCar"), NodePath("../MachineOutputRest1"), NodePath("../MachineOutputRest2"), NodePath("../MachineOutputRest3"), NodePath("../MachineOutputRest4")]
 

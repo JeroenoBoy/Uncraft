@@ -41,4 +41,3 @@ func execute(state_machine: GameStateMachine):
 
 		_:
 			push_error("Click type ", click_type, " is not implemented")
-
