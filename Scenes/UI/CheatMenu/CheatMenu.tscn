@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://b73lfpcgw4sdo"]
+
+[ext_resource type="PackedScene" uid="uid://dloxykvbpwoe4" path="res://Scenes/UI/Components/UIWindow.tscn" id="1_6hoe2"]
+[ext_resource type="Script" path="res://Scripts/UI/CheatScreen.gd" id="1_xute3"]
+[ext_resource type="PackedScene" uid="uid://ckf3t6uvhv1c8" path="res://Scenes/UI/CheatMenu/CheatButton.tscn" id="3_tceqj"]
+
+[node name="CheatMenu" type="CenterContainer" node_paths=PackedStringArray("button_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xute3")
+button_scene = ExtResource("3_tceqj")
+button_container = NodePath("UIWindow/MarginContainer/VBoxContainer2/CheatBox")
+
+[node name="UIWindow" parent="." instance=ExtResource("1_6hoe2")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UIWindow"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIWindow/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIWindow/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Cheat Menu"
+vertical_alignment = 1
+
+[node name="CheatBox" type="VBoxContainer" parent="UIWindow/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheatButton" parent="UIWindow/MarginContainer/VBoxContainer2/CheatBox" instance=ExtResource("3_tceqj")]
+layout_mode = 2

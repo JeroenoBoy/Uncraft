@@ -21,7 +21,6 @@ func _update(delta: float):
 	super._update(delta)
 	_process_long_press(delta)
 
-
 func _process_long_press(delta: float):
 	if UIManager.instance.is_mouse_over_ui:
 		press_time = -1

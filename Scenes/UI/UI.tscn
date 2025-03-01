@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://brov1ybjs5gc1"]
+[gd_scene load_steps=8 format=3 uid="uid://brov1ybjs5gc1"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIManager.gd" id="1_hcomk"]
 [ext_resource type="Theme" uid="uid://cokbn1tlqfm1m" path="res://Assets/UI/UITheme.tres" id="1_oyuev"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dogvuij6dixmn" path="res://Scenes/UI/DeleteScreen.tscn" id="4_2qkmd"]
 [ext_resource type="PackedScene" uid="uid://t61cgieq1unh" path="res://Scenes/UI/RecipeScreen.tscn" id="4_htbro"]
 [ext_resource type="PackedScene" uid="uid://dvu54lolldlab" path="res://Scenes/UI/CoreScreen.tscn" id="6_w26cd"]
+[ext_resource type="PackedScene" uid="uid://b73lfpcgw4sdo" path="res://Scenes/UI/CheatMenu/CheatMenu.tscn" id="7_xjps6"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -31,6 +32,14 @@ layout_mode = 1
 
 [node name="CoreScreen" parent="UIManager" instance=ExtResource("6_w26cd")]
 layout_mode = 1
+
+[node name="CheatScreen" parent="UIManager" instance=ExtResource("7_xjps6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="mouse_entered" from="UIManager" to="UIManager" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UIManager" to="UIManager" method="_on_mouse_exited"]

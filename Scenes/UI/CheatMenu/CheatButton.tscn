@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckf3t6uvhv1c8"]
+
+[ext_resource type="Theme" uid="uid://ddgj085v2rufk" path="res://Assets/UI/Button_2.tres" id="1_2twd4"]
+
+[node name="CheatButton" type="Button"]
+theme = ExtResource("1_2twd4")
+text = "Button"
