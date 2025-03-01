@@ -23,3 +23,6 @@ max_items = 1
 
 [node name="SendPlaceUpdate" parent="." instance=ExtResource("4_1ec2g")]
 position = Vector2(0, -16)
+
+[connection signal="picked_up" from="." to="SendPlaceUpdate" method="_on_place_changed"]
+[connection signal="placed" from="." to="SendPlaceUpdate" method="_on_place_changed"]
