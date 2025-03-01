@@ -10,6 +10,7 @@ var next_input_index = 0
 
 func _ready():
 	for output in outputs:
+		output.tile_update.connect(_on_tile_update)
 		output.function_update.connect(_on_function_update)
 		output.item_removed.connect(_on_item_removed_from_conveyor)
 	
@@ -22,13 +23,16 @@ func _on_item_removed_from_conveyor(_item: Item):
 func _on_item_added(_item: Item):
 	_try_split()
 
+func _on_tile_update():
+	_try_split()
+
 func _on_function_update():
 	_try_split()
 	
 func _try_split():
 	var input_count = inputs.size()
 	var output_count = outputs.size()
-
+	
 	for i in range(input_count):
 		var i_i = (i + next_input_index) % input_count
 		var process_inventory = inputs[i_i].inventory
