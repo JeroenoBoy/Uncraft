@@ -74,7 +74,7 @@ autowrap_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="BoxContainer/UIWindow/MarginContainer/VBoxContainer/Requirements"]
 layout_mode = 2
-columns = 4
+columns = 8
 
 [node name="Research" type="VBoxContainer" parent="BoxContainer/UIWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2

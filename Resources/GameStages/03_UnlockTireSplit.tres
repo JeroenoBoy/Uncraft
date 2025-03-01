@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="CoreStage" load_steps=17 format=3 uid="uid://b4d6oa8v0vs2p"]
+
+[ext_resource type="Texture2D" uid="uid://dxtf61ochgx3a" path="res://Assets/Sprites/Items/tire_tire.tres" id="1_41xkq"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_coekm"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="3_7ttqv"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_hpwbc"]
+[ext_resource type="Resource" uid="uid://deiojou0cgv6y" path="res://Resources/Items/Wheel.tres" id="6_j58jp"]
+[ext_resource type="Resource" uid="uid://br1u7ovj0no0b" path="res://Resources/Items/Door.tres" id="6_t3a0m"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="7_7aair"]
+[ext_resource type="Resource" uid="uid://bnrwm122e0s8" path="res://Resources/GameConditions/DualDisassemblerSplitTiresUnlocked.tres" id="8_4p7v6"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="9_llw2q"]
+[ext_resource type="Texture2D" uid="uid://17v4y4hh8dw4" path="res://Assets/Sprites/Machines/DualDisassembler.tres" id="10_jypxt"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="11_7pr25"]
+
+[sub_resource type="Resource" id="Resource_nal2w"]
+script = ExtResource("2_coekm")
+count = 100
+item_data = ExtResource("3_7ttqv")
+with_parts = Array[ExtResource("4_hpwbc")]([])
+without_parts = Array[ExtResource("4_hpwbc")]([])
+
+[sub_resource type="Resource" id="Resource_mgyb7"]
+script = ExtResource("2_coekm")
+count = 100
+item_data = ExtResource("6_t3a0m")
+with_parts = Array[ExtResource("4_hpwbc")]([])
+without_parts = Array[ExtResource("4_hpwbc")]([])
+
+[sub_resource type="Resource" id="Resource_avg7k"]
+script = ExtResource("2_coekm")
+count = 100
+item_data = ExtResource("6_j58jp")
+with_parts = Array[ExtResource("4_hpwbc")]([])
+without_parts = Array[ExtResource("4_hpwbc")]([])
+
+[sub_resource type="Resource" id="Resource_y63mg"]
+script = ExtResource("9_llw2q")
+icon = ExtResource("10_jypxt")
+second = ExtResource("1_41xkq")
+
+[sub_resource type="Resource" id="Resource_gesrv"]
+script = ExtResource("7_7aair")
+condition = ExtResource("8_4p7v6")
+value = true
+icons = Array[ExtResource("9_llw2q")]([SubResource("Resource_y63mg")])
+
+[resource]
+script = ExtResource("11_7pr25")
+name = "Tire Disassembly"
+icon = ExtResource("1_41xkq")
+description = "What are there more of in the world? Tires... or doors? If you think about it...... Oh right, disassembling cars! It seems that our Dual disassembler is capable of much more than just removing car parts! We are experimenting with
+
+~ John :)"
+button_text = "Complete"
+requirements = Array[ExtResource("2_coekm")]([SubResource("Resource_nal2w"), SubResource("Resource_mgyb7"), SubResource("Resource_avg7k")])
+results = Array[ExtResource("7_7aair")]([SubResource("Resource_gesrv")])

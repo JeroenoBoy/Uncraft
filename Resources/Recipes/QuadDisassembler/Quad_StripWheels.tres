@@ -7,23 +7,23 @@
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="3_5mmnn"]
 [ext_resource type="Resource" uid="uid://cr65i1n051q68" path="res://Resources/Items/Car/Part_Tires.tres" id="3_jd0ex"]
 [ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="4_cok4o"]
-[ext_resource type="Resource" uid="uid://deiojou0cgv6y" path="res://Resources/Items/Tire.tres" id="8_0iunn"]
+[ext_resource type="Resource" uid="uid://deiojou0cgv6y" path="res://Resources/Items/Wheel.tres" id="8_0iunn"]
 
-[sub_resource type="Resource" id="Resource_fqusc"]
+[sub_resource type="Resource" id="Resource_wurxw"]
 script = ExtResource("2_kinx6")
 count = 1
 item_data = ExtResource("4_cok4o")
 with_parts = Array[ExtResource("2_t4hq6")]([ExtResource("3_jd0ex")])
 without_parts = Array[ExtResource("2_t4hq6")]([])
 
-[sub_resource type="Resource" id="Resource_1e66t"]
+[sub_resource type="Resource" id="Resource_cfhsn"]
 script = ExtResource("1_se2dq")
 transform_type = 2
 count = 1
 item_data = ExtResource("4_cok4o")
 item_part = ExtResource("3_jd0ex")
 
-[sub_resource type="Resource" id="Resource_opdb6"]
+[sub_resource type="Resource" id="Resource_bhhk8"]
 script = ExtResource("1_se2dq")
 transform_type = 1
 count = 4
@@ -31,9 +31,9 @@ item_data = ExtResource("8_0iunn")
 
 [resource]
 script = ExtResource("3_5mmnn")
-name = "Strip Tires"
+name = "Remove All Wheels"
 craft_time = 8
 icon = ExtResource("1_7u4jj")
 ui_icon_scale = 1.0
-inputs = Array[ExtResource("2_kinx6")]([SubResource("Resource_fqusc")])
-output = Array[ExtResource("1_se2dq")]([SubResource("Resource_1e66t"), SubResource("Resource_opdb6")])
+inputs = Array[ExtResource("2_kinx6")]([SubResource("Resource_wurxw")])
+output = Array[ExtResource("1_se2dq")]([SubResource("Resource_cfhsn"), SubResource("Resource_bhhk8")])

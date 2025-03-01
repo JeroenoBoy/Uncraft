@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GameCondition" load_steps=2 format=3 uid="uid://bvlw6fh7nsbws"]
+
+[ext_resource type="Script" path="res://Scripts/Core/GameCondition.gd" id="1_3pqn3"]
+
+[resource]
+script = ExtResource("1_3pqn3")
+default_value = false

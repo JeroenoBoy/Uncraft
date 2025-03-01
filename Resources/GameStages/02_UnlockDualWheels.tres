@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="CoreStage" load_steps=19 format=3 uid="uid://bmdt50eddd7n7"]
+
+[ext_resource type="Texture2D" uid="uid://nyodc86oon83" path="res://Assets/Sprites/Items/tire_full.tres" id="1_d62hs"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_m8amf"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="3_1teue"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_i6jta"]
+[ext_resource type="Resource" uid="uid://br1u7ovj0no0b" path="res://Resources/Items/Door.tres" id="6_5ak47"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="7_35p0f"]
+[ext_resource type="Resource" uid="uid://c0tipgraa4osa" path="res://Resources/GameConditions/DualDisassemblerWheelsUnlocked.tres" id="8_qsm52"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="9_mxdny"]
+[ext_resource type="Resource" uid="uid://bvlw6fh7nsbws" path="res://Resources/GameConditions/Belts_BridgeUnlocked.tres" id="10_o42gg"]
+[ext_resource type="Texture2D" uid="uid://17v4y4hh8dw4" path="res://Assets/Sprites/Machines/DualDisassembler.tres" id="10_x6414"]
+[ext_resource type="Texture2D" uid="uid://dkjysegt20pn3" path="res://Assets/Sprites/Belts/Bridge.tres" id="11_10das"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="12_k7slg"]
+
+[sub_resource type="Resource" id="Resource_nal2w"]
+script = ExtResource("2_m8amf")
+count = 100
+item_data = ExtResource("3_1teue")
+with_parts = Array[ExtResource("4_i6jta")]([])
+without_parts = Array[ExtResource("4_i6jta")]([])
+
+[sub_resource type="Resource" id="Resource_avg7k"]
+script = ExtResource("2_m8amf")
+count = 100
+item_data = ExtResource("6_5ak47")
+with_parts = Array[ExtResource("4_i6jta")]([])
+without_parts = Array[ExtResource("4_i6jta")]([])
+
+[sub_resource type="Resource" id="Resource_y63mg"]
+script = ExtResource("9_mxdny")
+icon = ExtResource("10_x6414")
+second = ExtResource("1_d62hs")
+
+[sub_resource type="Resource" id="Resource_gesrv"]
+script = ExtResource("7_35p0f")
+condition = ExtResource("8_qsm52")
+value = true
+icons = Array[ExtResource("9_mxdny")]([SubResource("Resource_y63mg")])
+
+[sub_resource type="Resource" id="Resource_wqbs1"]
+script = ExtResource("9_mxdny")
+icon = ExtResource("11_10das")
+
+[sub_resource type="Resource" id="Resource_n0nhx"]
+script = ExtResource("7_35p0f")
+condition = ExtResource("10_o42gg")
+value = true
+icons = Array[ExtResource("9_mxdny")]([SubResource("Resource_wqbs1")])
+
+[resource]
+script = ExtResource("12_k7slg")
+name = "Wheel Disassembly"
+icon = ExtResource("1_d62hs")
+description = "We finally finished the hard research required for automatically removing car doors! Make us some factory that uses our new machine to quickly remove those doors!
+
+In the meantime we'll use the money to research some other uses for this machine!
+
+~ John :D"
+button_text = "Complete"
+requirements = Array[ExtResource("2_m8amf")]([SubResource("Resource_nal2w"), SubResource("Resource_avg7k")])
+results = Array[ExtResource("7_35p0f")]([SubResource("Resource_gesrv"), SubResource("Resource_n0nhx")])

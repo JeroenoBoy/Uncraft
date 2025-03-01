@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlaceableItem" load_steps=7 format=3 uid="uid://dj2b37tv5lnls"]
 
-[ext_resource type="Resource" uid="uid://cnb3flsdoqmsg" path="res://Resources/GameConditions/SplittersUnlocked.tres" id="1_2rkui"]
+[ext_resource type="Resource" uid="uid://cnb3flsdoqmsg" path="res://Resources/GameConditions/Belts_SplittersUnlocked.tres" id="1_2rkui"]
 [ext_resource type="PackedScene" uid="uid://cccts51mdfwsi" path="res://Scenes/Objects/Factories/Buildings/Splitter.tscn" id="1_scja5"]
 [ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_csd6i"]
 [ext_resource type="Script" path="res://Scripts/Factory/PlacableItem.gd" id="2_kw2g6"]

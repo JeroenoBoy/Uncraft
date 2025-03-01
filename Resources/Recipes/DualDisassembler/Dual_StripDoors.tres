@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=12 format=3 uid="uid://bwsqlbyvlpcqu"]
+
+[ext_resource type="Texture2D" uid="uid://7o0mbcuj3xhd" path="res://Assets/Sprites/Items/door.tres" id="1_tfos1"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="4_y04q5"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="5_h4417"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="6_7d465"]
+[ext_resource type="Resource" uid="uid://drmsxrkcssbbt" path="res://Resources/Items/Car/Part_Doors.tres" id="7_3i3jr"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="8_htf8e"]
+[ext_resource type="Resource" uid="uid://br1u7ovj0no0b" path="res://Resources/Items/Door.tres" id="9_pg1wm"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="10_s3ygn"]
+
+[sub_resource type="Resource" id="Resource_dofwg"]
+script = ExtResource("4_y04q5")
+count = 1
+item_data = ExtResource("5_h4417")
+with_parts = Array[ExtResource("6_7d465")]([ExtResource("7_3i3jr")])
+without_parts = Array[ExtResource("6_7d465")]([])
+
+[sub_resource type="Resource" id="Resource_doe6v"]
+script = ExtResource("8_htf8e")
+transform_type = 2
+count = 1
+item_data = ExtResource("5_h4417")
+item_part = ExtResource("7_3i3jr")
+
+[sub_resource type="Resource" id="Resource_u375o"]
+script = ExtResource("8_htf8e")
+transform_type = 1
+count = 1
+item_data = ExtResource("9_pg1wm")
+
+[resource]
+script = ExtResource("10_s3ygn")
+name = "Remove Door"
+craft_time = 4
+icon = ExtResource("1_tfos1")
+ui_icon_scale = 1.0
+inputs = Array[ExtResource("4_y04q5")]([SubResource("Resource_dofwg")])
+output = Array[ExtResource("8_htf8e")]([SubResource("Resource_doe6v"), SubResource("Resource_u375o")])

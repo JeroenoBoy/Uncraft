@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=16 format=3 uid="uid://b2ewaj3auvmwr"]
+
+[ext_resource type="Texture2D" uid="uid://dxtf61ochgx3a" path="res://Assets/Sprites/Items/tire_tire.tres" id="1_hpdsk"]
+[ext_resource type="Resource" uid="uid://bnrwm122e0s8" path="res://Resources/GameConditions/DualDisassemblerSplitTiresUnlocked.tres" id="1_lnv18"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_jk61y"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_rsy6f"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="3_a6l4q"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="4_bx2jg"]
+[ext_resource type="Resource" uid="uid://deiojou0cgv6y" path="res://Resources/Items/Wheel.tres" id="5_ipwtp"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="6_e7rp1"]
+[ext_resource type="Resource" uid="uid://deb425ggahqge" path="res://Resources/Items/Tire.tres" id="8_2hhmx"]
+[ext_resource type="Resource" uid="uid://bfl2neqg1ic1t" path="res://Resources/Items/Rim.tres" id="9_y23kw"]
+
+[sub_resource type="Resource" id="Resource_uxxol"]
+script = ExtResource("2_rsy6f")
+condition = ExtResource("1_lnv18")
+expected = true
+
+[sub_resource type="Resource" id="Resource_8i18y"]
+script = ExtResource("2_jk61y")
+count = 1
+item_data = ExtResource("5_ipwtp")
+with_parts = Array[ExtResource("6_e7rp1")]([])
+without_parts = Array[ExtResource("6_e7rp1")]([])
+
+[sub_resource type="Resource" id="Resource_tmllv"]
+script = ExtResource("3_a6l4q")
+transform_type = 0
+count = 1
+item_data = ExtResource("5_ipwtp")
+
+[sub_resource type="Resource" id="Resource_lmj4j"]
+script = ExtResource("3_a6l4q")
+transform_type = 1
+count = 1
+item_data = ExtResource("8_2hhmx")
+
+[sub_resource type="Resource" id="Resource_ycrjp"]
+script = ExtResource("3_a6l4q")
+transform_type = 1
+count = 1
+item_data = ExtResource("9_y23kw")
+
+[resource]
+script = ExtResource("4_bx2jg")
+name = "Split Wheels"
+craft_time = 2
+icon = ExtResource("1_hpdsk")
+ui_icon_scale = 1.0
+condition = SubResource("Resource_uxxol")
+inputs = Array[ExtResource("2_jk61y")]([SubResource("Resource_8i18y")])
+output = Array[ExtResource("3_a6l4q")]([SubResource("Resource_tmllv"), SubResource("Resource_lmj4j"), SubResource("Resource_ycrjp")])

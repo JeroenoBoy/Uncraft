@@ -12,7 +12,8 @@ func _on_activate(state_data: Dictionary):
 
 	cheat_screen.button_pressed.connect(_on_button_pressed)
 	cheat_screen.show_screen({ "buttons": [
-		CheatScreen.Btn.new("Unlock All", _unlock_all_achievements)
+		CheatScreen.Btn.new("Unlock All", _unlock_all),
+		CheatScreen.Btn.new("Finish Stage", _finish_core_stage)
 	]})
 
 func _on_deactivate():
@@ -28,8 +29,17 @@ func _on_button_pressed(data: Variant):
 		return
 	var cb = data as Callable
 	cb.call()
+
+func _finish_core_stage():
+	var cores = get_tree().root.find_children("Core", "Core", true, false)
+	if cores.size() == 0:
+		return
 	
-func _unlock_all_achievements():
+	var core = cores[0] as Core
+	core.current_stage_requirements.clear()
+	core._try_finish_state()
+	
+func _unlock_all():
 	var folder = "res://Resources/GameConditions"
 	var access = DirAccess.open(folder)
 	if !access.dir_exists(folder):

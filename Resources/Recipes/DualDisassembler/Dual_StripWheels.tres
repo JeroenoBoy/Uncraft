@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=15 format=3 uid="uid://d23npcw0g5wl8"]
+
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="1_0qw14"]
+[ext_resource type="Texture2D" uid="uid://nyodc86oon83" path="res://Assets/Sprites/Items/tire_full.tres" id="1_2lt23"]
+[ext_resource type="Resource" uid="uid://c0tipgraa4osa" path="res://Resources/GameConditions/DualDisassemblerWheelsUnlocked.tres" id="1_27x73"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_08id0"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="2_pjspq"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="3_w36sy"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="5_apqmg"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="6_v3klp"]
+[ext_resource type="Resource" uid="uid://cr65i1n051q68" path="res://Resources/Items/Car/Part_Tires.tres" id="7_upt7d"]
+[ext_resource type="Resource" uid="uid://deiojou0cgv6y" path="res://Resources/Items/Wheel.tres" id="9_60dq0"]
+
+[sub_resource type="Resource" id="Resource_dgw88"]
+script = ExtResource("2_08id0")
+condition = ExtResource("1_27x73")
+expected = true
+
+[sub_resource type="Resource" id="Resource_hq00u"]
+script = ExtResource("1_0qw14")
+count = 1
+item_data = ExtResource("5_apqmg")
+with_parts = Array[ExtResource("6_v3klp")]([ExtResource("7_upt7d")])
+without_parts = Array[ExtResource("6_v3klp")]([])
+
+[sub_resource type="Resource" id="Resource_y7njw"]
+script = ExtResource("2_pjspq")
+transform_type = 2
+count = 1
+item_data = ExtResource("5_apqmg")
+item_part = ExtResource("7_upt7d")
+
+[sub_resource type="Resource" id="Resource_8l46k"]
+script = ExtResource("2_pjspq")
+transform_type = 1
+count = 1
+item_data = ExtResource("9_60dq0")
+
+[resource]
+script = ExtResource("3_w36sy")
+name = "Remove Wheel"
+craft_time = 4
+icon = ExtResource("1_2lt23")
+ui_icon_scale = 1.0
+condition = SubResource("Resource_dgw88")
+inputs = Array[ExtResource("1_0qw14")]([SubResource("Resource_hq00u")])
+output = Array[ExtResource("2_pjspq")]([SubResource("Resource_y7njw"), SubResource("Resource_8l46k")])

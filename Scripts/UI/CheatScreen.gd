@@ -7,6 +7,8 @@ signal button_pressed(id: Variant)
 @export var button_container: Control
 
 func _show(screen_data: Dictionary):
+	for child in button_container.get_children():
+		child.queue_free()
 	visible = true
 
 	for btn in screen_data["buttons"]:

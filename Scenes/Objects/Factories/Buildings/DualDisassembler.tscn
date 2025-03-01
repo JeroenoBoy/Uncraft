@@ -18,6 +18,7 @@ target = NodePath("../Manufacturer")
 
 [node name="Manufacturer" type="Node2D" parent="." node_paths=PackedStringArray("inputs", "outputs")]
 script = ExtResource("3_dgest")
+recipes_folder = "res://Resources/Recipes/DualDisassembler"
 inputs = [NodePath("../MachineInput")]
 outputs = [NodePath("../MachineOutputRest1"), NodePath("../MachineOutputRest2")]
 
