@@ -22,9 +22,6 @@ outputs = [NodePath("MachineOutput")]
 [node name="MachineInput" parent="Splitter" node_paths=PackedStringArray("inventory") instance=ExtResource("4_p4pg6")]
 position = Vector2(0, 14)
 inventory = NodePath("Inventory")
-movable = true
-rotatable = true
-removable = true
 
 [node name="Inventory" type="Node2D" parent="Splitter/MachineInput"]
 script = ExtResource("5_ghecm")
@@ -32,9 +29,6 @@ max_items = 1
 
 [node name="MachineOutput" parent="Splitter" instance=ExtResource("6_mucx8")]
 position = Vector2(0, -14)
-movable = true
-rotatable = true
-removable = true
 
 [node name="Splitter2" type="Node2D" parent="." node_paths=PackedStringArray("inputs", "outputs")]
 rotation = 1.5708
@@ -45,9 +39,6 @@ outputs = [NodePath("MachineOutput")]
 [node name="MachineInput" parent="Splitter2" node_paths=PackedStringArray("inventory") instance=ExtResource("4_p4pg6")]
 position = Vector2(0, 14)
 inventory = NodePath("Inventory")
-movable = true
-rotatable = true
-removable = true
 
 [node name="Inventory" type="Node2D" parent="Splitter2/MachineInput"]
 script = ExtResource("5_ghecm")
@@ -55,6 +46,3 @@ max_items = 1
 
 [node name="MachineOutput" parent="Splitter2" instance=ExtResource("6_mucx8")]
 position = Vector2(0, -14)
-movable = true
-rotatable = true
-removable = true

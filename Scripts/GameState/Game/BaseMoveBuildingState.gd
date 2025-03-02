@@ -69,47 +69,47 @@ func rotate_object(rotation: float):
 	object.global_rotation_degrees = rotation
 	_check_valid_position()
 
-func _update(delta: float):
-	super._update(delta)
+func _on_input(event: InputEvent):
+	super._on_input(event)
 
-	var grid_pos = Grid.grid_mouse_pos(object)
-	if grid_pos != current_pos:
-		move_object(grid_pos)
-
-	if Input.is_action_just_pressed("build_cancel"):
+	if event.is_action_pressed("build_cancel"):
 		_on_cancel()
 		return
-
-	if object.removable && Input.is_action_just_released("build_delete"):
+	if object.removable && event.is_action_pressed("build_delete"):
 		_on_delete()
 		return
-
 	match mode:
 		Mode.Default:
-			if can_place && Input.is_action_just_pressed("build_place") && !UIManager.instance.is_mouse_over_ui:
+			if event.is_action_pressed("build_place"):
 				_on_place()
 				return
 		Mode.Drag:
-			if Input.is_action_just_released("build_place"):
+			if event.is_action_released("build_place"):
 				if !can_place:
 					_on_cancel()
 				elif delete_screen.is_mouse_over_screen:
 					_on_delete()
-				elif UIManager.instance.is_mouse_over_ui:
-					_on_cancel()
 				else:
 					_on_place()
 				return
 		_:
 			push_error("Move mode ", mode, " is not implemented")
 
-	if object.rotatable && Input.is_action_just_pressed("build_rotate_clockwise"):
+	if object.rotatable && event.is_action_pressed("build_rotate_clockwise"):
 		rotate_object(current_rotation + 90)
 		return
 
-	if object.rotatable && Input.is_action_just_pressed("building_rotate_anti_clockwise"):
+	if object.rotatable && event.is_action_pressed("building_rotate_anti_clockwise"):
 		rotate_object(current_rotation - 90)
 		return
+
+
+func _update(delta: float):
+	super._update(delta)
+
+	var grid_pos = Grid.grid_mouse_pos(object)
+	if grid_pos != current_pos:
+		move_object(grid_pos)
 
 func _check_valid_position():
 	can_place = Grid.instance.is_spot_occupied(object)
