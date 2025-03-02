@@ -8,6 +8,7 @@
 [node name="Conveyor" type="Node2D" groups=["ConveyorOuput"]]
 script = ExtResource("3_gjdpt")
 conveyor_speed = 1.0
+area_delete = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Conveyor"]]
 scale = Vector2(2, 2)

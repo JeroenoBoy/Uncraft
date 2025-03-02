@@ -12,6 +12,7 @@ signal picked_up()
 @export var movable = true
 @export var rotatable = true
 @export var removable = true
+@export var area_delete = false
 @export var object_store: ObjectStoreGameValue
 @export var place_on_spawn = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlqlwrhiaipoa"]
+[gd_scene load_steps=11 format=3 uid="uid://dlqlwrhiaipoa"]
 
 [ext_resource type="Script" path="res://Scripts/GameState/MainStateMachine.gd" id="1_8cmww"]
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GameStateMachine.gd" id="2_7wtd3"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GameSelectRecipeState.gd" id="6_lmyxa"]
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GameCoreInfoState.gd" id="7_2a8tc"]
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GameCheatState.gd" id="8_ec6nh"]
+[ext_resource type="Script" path="res://Scripts/GameState/Game/GameDeleteState.gd" id="9_txemg"]
+[ext_resource type="Texture2D" uid="uid://bhovyupk6mhsp" path="res://Assets/UI/Atlas/SelectionGrid.tres" id="10_8nbj0"]
 
 [node name="MainStateMachine" type="Node"]
 script = ExtResource("1_8cmww")
@@ -32,3 +34,16 @@ script = ExtResource("7_2a8tc")
 
 [node name="CheatState" type="Node" parent="Game"]
 script = ExtResource("8_ec6nh")
+
+[node name="DeleteMode" type="Node" parent="Game"]
+script = ExtResource("9_txemg")
+
+[node name="SelectionGrid" type="NinePatchRect" parent="Game/DeleteMode"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_8nbj0")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2

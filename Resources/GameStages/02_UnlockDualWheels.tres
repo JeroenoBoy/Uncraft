@@ -9,9 +9,9 @@
 [ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="8_1vnpr"]
 [ext_resource type="Resource" uid="uid://c0tipgraa4osa" path="res://Resources/GameConditions/DualDisassemblerWheelsUnlocked.tres" id="8_qsm52"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="9_mxdny"]
+[ext_resource type="Resource" uid="uid://bvlw6fh7nsbws" path="res://Resources/GameConditions/Belts_BridgeUnlocked.tres" id="10_o42gg"]
 [ext_resource type="Texture2D" uid="uid://17v4y4hh8dw4" path="res://Assets/Sprites/Machines/DualDisassembler.tres" id="10_x6414"]
 [ext_resource type="Texture2D" uid="uid://dkjysegt20pn3" path="res://Assets/Sprites/Belts/Bridge.tres" id="11_10das"]
-[ext_resource type="Resource" uid="uid://cnb3flsdoqmsg" path="res://Resources/GameConditions/Belts_SplittersUnlocked.tres" id="11_miadl"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="12_k7slg"]
 
 [sub_resource type="Resource" id="Resource_nal2w"]
@@ -45,7 +45,7 @@ icons = Array[ExtResource("9_mxdny")]([SubResource("Resource_y63mg")])
 
 [sub_resource type="Resource" id="Resource_av60k"]
 script = ExtResource("8_1vnpr")
-condition = ExtResource("11_miadl")
+condition = ExtResource("10_o42gg")
 expected = true
 
 [sub_resource type="Resource" id="Resource_wqbs1"]

@@ -10,6 +10,7 @@
 [node name="Splitter" type="Node2D"]
 script = ExtResource("1_ybp4c")
 size = Vector2i(2, 1)
+area_delete = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 0)
@@ -24,9 +25,6 @@ outputs = [NodePath("MachineOutput"), NodePath("MachineOutput2")]
 [node name="MachineInput" parent="Splitter" node_paths=PackedStringArray("inventory") instance=ExtResource("4_be8gc")]
 position = Vector2(32, 14)
 inventory = NodePath("Inventory")
-movable = true
-rotatable = true
-removable = true
 
 [node name="Inventory" type="Node2D" parent="Splitter/MachineInput"]
 script = ExtResource("5_avt0v")
@@ -35,9 +33,6 @@ max_items = 1
 [node name="MachineInput2" parent="Splitter" node_paths=PackedStringArray("inventory") instance=ExtResource("4_be8gc")]
 position = Vector2(0, 14)
 inventory = NodePath("Inventory")
-movable = true
-rotatable = true
-removable = true
 
 [node name="Inventory" type="Node2D" parent="Splitter/MachineInput2"]
 script = ExtResource("5_avt0v")
@@ -45,12 +40,6 @@ max_items = 1
 
 [node name="MachineOutput" parent="Splitter" instance=ExtResource("6_8mq3b")]
 position = Vector2(0, -14)
-movable = true
-rotatable = true
-removable = true
 
 [node name="MachineOutput2" parent="Splitter" instance=ExtResource("6_8mq3b")]
 position = Vector2(32, -14)
-movable = true
-rotatable = true
-removable = true

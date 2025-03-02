@@ -1,8 +1,12 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cokbn1tlqfm1m"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cokbn1tlqfm1m"]
 
 [ext_resource type="Texture2D" uid="uid://byx4gussm2u16" path="res://Assets/UI/Atlas/BackgroundIcon.tres" id="1_3thb7"]
 [ext_resource type="Texture2D" uid="uid://be5lkhhuq0app" path="res://Assets/UI/Atlas/BackgroundIconFocus.tres" id="1_lrgqm"]
 [ext_resource type="FontFile" uid="uid://cpk1qmkm6a5uj" path="res://Assets/UI/dogicapixel.ttf" id="3_3fnba"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fulh0"]
+texture = ExtResource("1_3thb7")
+modulate_color = Color(1, 1, 1, 0.588235)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crf6c"]
 texture = ExtResource("1_lrgqm")
@@ -30,6 +34,7 @@ corner_radius_bottom_left = 16
 default_font = ExtResource("3_3fnba")
 default_font_size = 12
 BoxContainer/constants/separation = 8
+Button/styles/disabled = SubResource("StyleBoxTexture_fulh0")
 Button/styles/focus = SubResource("StyleBoxTexture_crf6c")
 Button/styles/hover = SubResource("StyleBoxTexture_ub1jl")
 Button/styles/normal = SubResource("StyleBoxTexture_vhyua")

@@ -80,7 +80,7 @@ func _on_input(event: InputEvent):
 		return
 	match mode:
 		Mode.Default:
-			if event.is_action_pressed("build_place"):
+			if can_place && event.is_action_pressed("build_place"):
 				_on_place()
 				return
 		Mode.Drag:
