@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="IntGameValue" load_steps=2 format=3 uid="uid://cwiopcquep7u"]
+
+[ext_resource type="Script" path="res://Scripts/Core/IntGameValue.gd" id="1_7yavn"]
+
+[resource]
+script = ExtResource("1_7yavn")
+default_value = 2

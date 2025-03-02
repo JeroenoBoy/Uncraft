@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="ObjectStoreGameValue" load_steps=2 format=3 uid="uid://dqaexbb4j1j87"]
+
+[ext_resource type="Script" path="res://Scripts/Core/ObjectStoreGameValue.gd" id="1_x1o5o"]
+
+[resource]
+script = ExtResource("1_x1o5o")

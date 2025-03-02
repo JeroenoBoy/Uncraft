@@ -1,7 +1,7 @@
 class_name ItemSelectorScreen
 extends UIScreen
 
-signal on_item_selected(item: PlaceableItem)
+signal on_item_selected(selectable_item: SelectableItem)
 
 func _first_show():
 	for child in find_children("*", "SelectableItem", true, false):
@@ -14,5 +14,5 @@ func _show(_screen_data: Dictionary):
 func _hide():
 	visible = false
 
-func _on_item_pressed(item: SelectableItem):
-	on_item_selected.emit(item.data.id)
+func _on_item_pressed(selectable_item: SelectableItem):
+	on_item_selected.emit(selectable_item)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CoreStage" load_steps=29 format=3 uid="uid://bkmocv5dahhgh"]
+[gd_resource type="Resource" script_class="CoreStage" load_steps=32 format=3 uid="uid://bkmocv5dahhgh"]
 
 [ext_resource type="Texture2D" uid="uid://cayoq11pr211v" path="res://Assets/Sprites/Machines/QuadDisassembler.tres" id="1_rwi8i"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_a6w3i"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://bfl2neqg1ic1t" path="res://Resources/Items/Rim.tres" id="9_ygjyv"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="10_a5dtu"]
 [ext_resource type="Resource" uid="uid://b57xbogeq7s8m" path="res://Resources/GameConditions/QuadDisassembledUnlocked.tres" id="11_dijnb"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="12_fguy1"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="12_txyh2"]
 [ext_resource type="Texture2D" uid="uid://7o0mbcuj3xhd" path="res://Assets/Sprites/Items/door.tres" id="13_2vmwk"]
 [ext_resource type="Texture2D" uid="uid://nyodc86oon83" path="res://Assets/Sprites/Items/tire_full.tres" id="14_8tcoh"]
@@ -20,38 +21,43 @@
 
 [sub_resource type="Resource" id="Resource_nal2w"]
 script = ExtResource("2_a6w3i")
-count = 150
+count = 50
 item_data = ExtResource("3_kjqlj")
 with_parts = Array[ExtResource("4_21218")]([])
 without_parts = Array[ExtResource("4_21218")]([ExtResource("5_h1c3v")])
 
 [sub_resource type="Resource" id="Resource_avg7k"]
 script = ExtResource("2_a6w3i")
-count = 150
+count = 50
 item_data = ExtResource("6_44440")
 with_parts = Array[ExtResource("4_21218")]([])
 without_parts = Array[ExtResource("4_21218")]([])
 
 [sub_resource type="Resource" id="Resource_e3xvm"]
 script = ExtResource("2_a6w3i")
-count = 100
+count = 20
 item_data = ExtResource("7_bwf5x")
 with_parts = Array[ExtResource("4_21218")]([])
 without_parts = Array[ExtResource("4_21218")]([])
 
 [sub_resource type="Resource" id="Resource_5770l"]
 script = ExtResource("2_a6w3i")
-count = 100
+count = 50
 item_data = ExtResource("8_cst0v")
 with_parts = Array[ExtResource("4_21218")]([])
 without_parts = Array[ExtResource("4_21218")]([])
 
 [sub_resource type="Resource" id="Resource_4g03c"]
 script = ExtResource("2_a6w3i")
-count = 100
+count = 50
 item_data = ExtResource("9_ygjyv")
 with_parts = Array[ExtResource("4_21218")]([])
 without_parts = Array[ExtResource("4_21218")]([])
+
+[sub_resource type="Resource" id="Resource_61yys"]
+script = ExtResource("12_fguy1")
+condition = ExtResource("11_dijnb")
+expected = true
 
 [sub_resource type="Resource" id="Resource_xdqoc"]
 script = ExtResource("12_txyh2")
@@ -69,9 +75,13 @@ second = ExtResource("14_8tcoh")
 
 [sub_resource type="Resource" id="Resource_6lks3"]
 script = ExtResource("10_a5dtu")
-condition = ExtResource("11_dijnb")
-value = true
+game_value = SubResource("Resource_61yys")
 icons = Array[ExtResource("12_txyh2")]([SubResource("Resource_xdqoc"), SubResource("Resource_i5gtn"), SubResource("Resource_di3vf")])
+
+[sub_resource type="Resource" id="Resource_ejpgj"]
+script = ExtResource("12_fguy1")
+condition = ExtResource("15_fy1bh")
+expected = true
 
 [sub_resource type="Resource" id="Resource_y63mg"]
 script = ExtResource("12_txyh2")
@@ -79,15 +89,14 @@ icon = ExtResource("16_itqfo")
 
 [sub_resource type="Resource" id="Resource_gesrv"]
 script = ExtResource("10_a5dtu")
-condition = ExtResource("15_fy1bh")
-value = true
+game_value = SubResource("Resource_ejpgj")
 icons = Array[ExtResource("12_txyh2")]([SubResource("Resource_y63mg")])
 
 [resource]
 script = ExtResource("18_nsw1v")
 name = "Quad Disassembler"
 icon = ExtResource("1_rwi8i")
-description = "We are considering putting our company onto the stockmarket, to do so, one of our R&D made an impressively obvious yet genious discovery. Cars have..... 4 doors and 4 wheels. Why didn't we think of that earlier? We'll need a lot of resources for out next disassembler that can take full advantage of this discovery.
+description = "We are considering putting our company onto the stockmarket, to do so, one of our interns made an impressively obvious yet genious discovery. Cars have..... 4 doors and 4 wheels. Why didn't we think of that earlier? We'll need a lot of resources for out next disassembler that can take full advantage of this discovery.
 
 Cheers,
 John"

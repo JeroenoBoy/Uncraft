@@ -16,4 +16,4 @@ func clone_requirements() -> Array[RecipeItem]:
 
 func trigger_results():
 	for result in results:
-		result.condition.set_value(result.value)
+		result.game_value.set_value()

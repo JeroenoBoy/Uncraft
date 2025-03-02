@@ -39,13 +39,18 @@ func has_none_parts(parts: Array[ComplexItemPart]) -> bool:
 func remove_part(part: ComplexItemPart):
 	_parts.erase(part);
 
-	var part_index = _parts.find(func(it): return it.layer == part.layer)
-	if part_index == -1:
+	var picked_part: ComplexItemPart
+	for it in _parts:
+		if it.layer == part.layer:
+			picked_part = it
+			break
+
+	if picked_part == null:
 		_renderers[part.layer].queue_free()
 		_renderers.erase(part.layer)
 		return
 
-	_parts[part.layer].texture = _parts[part_index].texture
+	_parts[part.layer].texture = picked_part.texture
 
 func _set_data(item_data: ItemData):
 	_clear_renderers()

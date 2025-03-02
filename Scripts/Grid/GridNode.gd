@@ -12,6 +12,7 @@ signal picked_up()
 @export var movable = true
 @export var rotatable = true
 @export var removable = true
+@export var object_store: ObjectStoreGameValue
 @export var place_on_spawn = false
 
 var childNodes: Array[GridNode] = []
@@ -28,11 +29,17 @@ func _ready() -> void:
 	if place_on_spawn:
 		place()
 
+	if object_store != null:
+		object_store.add_object(self)
+
 func _exit_tree() -> void:
 	for child in childNodes:
 		placed.disconnect(child.place)
 		picked_up.disconnect(child.pickup)
 	childNodes.clear()
+
+	if object_store != null:
+		object_store.remove_object(self)
 
 func grid_position() -> Vector2i:
 	return Grid.world_to_grid(global_position)

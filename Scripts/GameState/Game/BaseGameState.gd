@@ -25,17 +25,15 @@ func _on_deactivate():
 	if can_move_camera:
 		CameraController.instance.can_move = false
 
-func _on_item_selected(item: PlaceableItem):
-	state_machine.change_state("PlaceItem", { "item": item })
+func _on_item_selected(selectable_item: SelectableItem):
+	state_machine.change_state("PlaceItem", { "item": selectable_item.data.id, "selectable_item": selectable_item })
 
-func _update(_delta: float):
-	if Input.is_action_just_pressed("ui_cancel"):
+func _on_input(event: InputEvent):
+
+	if event.is_action_pressed("ui_cancel"):
 		_on_ui_cancel()
-		return
-
-	if Input.is_action_just_pressed("open_cheats") && !OS.has_feature("disable_cheats"):
+	elif event.is_action_pressed("open_cheats"):
 		state_machine.change_state("CheatState")
-		return
 
 func _on_ui_cancel():
 	pass

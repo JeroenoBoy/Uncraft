@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CoreStage" load_steps=14 format=3 uid="uid://caiv837vixatk"]
+[gd_resource type="Resource" script_class="CoreStage" load_steps=23 format=3 uid="uid://caiv837vixatk"]
 
 [ext_resource type="Texture2D" uid="uid://17v4y4hh8dw4" path="res://Assets/Sprites/Machines/DualDisassembler.tres" id="1_4isuc"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_16csc"]
@@ -6,16 +6,26 @@
 [ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_jp7mk"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="5_nhhdr"]
 [ext_resource type="Resource" uid="uid://cjdjx0hyrgxfq" path="res://Resources/GameConditions/DualDisassemblerUnlocked.tres" id="6_5asr3"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="7_d6k0y"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="7_nrbqs"]
 [ext_resource type="Texture2D" uid="uid://7o0mbcuj3xhd" path="res://Assets/Sprites/Items/door.tres" id="8_8ruw6"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="10_wd4j8"]
+[ext_resource type="Resource" uid="uid://cwiopcquep7u" path="res://Resources/GameConditions/Counts/CarGeneratorLimit.tres" id="10_xdv8c"]
+[ext_resource type="Script" path="res://Scripts/Core/IntGameValueField.gd" id="11_nqgdd"]
+[ext_resource type="Texture2D" uid="uid://c0e53mpqhav36" path="res://Assets/Sprites/Icons/Generator.tres" id="12_kuwt7"]
+[ext_resource type="Texture2D" uid="uid://cj3fti1ack4j2" path="res://Assets/UI/Atlas/Value4.tres" id="13_tf7bu"]
 
 [sub_resource type="Resource" id="Resource_ayvvs"]
 script = ExtResource("2_16csc")
-count = 25
+count = 6
 item_data = ExtResource("3_b7rjb")
 with_parts = Array[ExtResource("4_jp7mk")]([])
 without_parts = Array[ExtResource("4_jp7mk")]([])
+
+[sub_resource type="Resource" id="Resource_s2ymn"]
+script = ExtResource("7_d6k0y")
+condition = ExtResource("6_5asr3")
+expected = true
 
 [sub_resource type="Resource" id="Resource_qf4jy"]
 script = ExtResource("7_nrbqs")
@@ -28,9 +38,23 @@ second = ExtResource("8_8ruw6")
 
 [sub_resource type="Resource" id="Resource_7es1j"]
 script = ExtResource("5_nhhdr")
-condition = ExtResource("6_5asr3")
-value = true
+game_value = SubResource("Resource_s2ymn")
 icons = Array[ExtResource("7_nrbqs")]([SubResource("Resource_qf4jy"), SubResource("Resource_qnidd")])
+
+[sub_resource type="Resource" id="Resource_gdfqf"]
+script = ExtResource("11_nqgdd")
+intValue = ExtResource("10_xdv8c")
+value = 4
+
+[sub_resource type="Resource" id="Resource_abrlt"]
+script = ExtResource("7_nrbqs")
+icon = ExtResource("12_kuwt7")
+second = ExtResource("13_tf7bu")
+
+[sub_resource type="Resource" id="Resource_hlfvv"]
+script = ExtResource("5_nhhdr")
+game_value = SubResource("Resource_gdfqf")
+icons = Array[ExtResource("7_nrbqs")]([SubResource("Resource_abrlt")])
 
 [resource]
 script = ExtResource("10_wd4j8")
@@ -43,4 +67,4 @@ Make some factory that helps us sell more cars so we can finish the project!
 ~ John :D"
 button_text = "Complete"
 requirements = Array[ExtResource("2_16csc")]([SubResource("Resource_ayvvs")])
-results = Array[ExtResource("5_nhhdr")]([SubResource("Resource_7es1j")])
+results = Array[ExtResource("5_nhhdr")]([SubResource("Resource_7es1j"), SubResource("Resource_hlfvv")])

@@ -15,5 +15,9 @@ func _on_activate(state_data: Dictionary):
 func _on_deactivate():
 	pass
 
+func _on_input(event: InputEvent):
+	pass
+
 func _update(_delta: float):
 	pass
+

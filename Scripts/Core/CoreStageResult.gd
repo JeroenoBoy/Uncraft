@@ -1,7 +1,6 @@
 class_name CoreStageResult
 extends Resource
 
-@export var condition: GameCondition
-@export var value = true
+@export var game_value: BaseGameValueField
 @export var icons: Array[CoreStageResultIcon]
 

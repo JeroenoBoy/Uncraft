@@ -24,6 +24,10 @@ func deactivate():
 	_deactivate_state(current_state)
 	current_state = null
 
+func _unhandled_input(event: InputEvent) -> void:
+	if current_state != null:
+		current_state._on_input(event)
+
 func _process(delta: float) -> void:
 	if current_state != null:
 		current_state._update(delta)

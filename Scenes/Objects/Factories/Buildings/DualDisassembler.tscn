@@ -38,11 +38,20 @@ texture = ExtResource("5_ilinv")
 position = Vector2(-14, 32)
 rotation = 1.5708
 inventory = NodePath("../Manufacturer/InputInventory")
+movable = true
+rotatable = true
+removable = true
 
 [node name="MachineOutputRest1" parent="." instance=ExtResource("9_clesg")]
 position = Vector2(46, 0)
 rotation = 1.5708
+movable = true
+rotatable = true
+removable = true
 
 [node name="MachineOutputRest2" parent="." instance=ExtResource("9_clesg")]
 position = Vector2(46, 32)
 rotation = 1.5708
+movable = true
+rotatable = true
+removable = true

@@ -7,9 +7,6 @@
 
 [node name="MachineOutput" type="Node2D" groups=["ConveyorOuput"]]
 script = ExtResource("1_0bsl2")
-movable = false
-rotatable = false
-removable = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Ports"]]
 position = Vector2(0, -1)

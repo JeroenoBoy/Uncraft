@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CoreStage" load_steps=14 format=3 uid="uid://brghs7iamm762"]
+[gd_resource type="Resource" script_class="CoreStage" load_steps=17 format=3 uid="uid://brghs7iamm762"]
 
 [ext_resource type="Texture2D" uid="uid://c6xkv62dtljn2" path="res://Assets/Sprites/Core-2.png" id="1_soxal"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_c2468"]
@@ -8,7 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://c0e53mpqhav36" path="res://Assets/Sprites/Icons/Generator.tres" id="5_4mfbp"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="5_af4hy"]
 [ext_resource type="Texture2D" uid="uid://bxfas563byeto" path="res://Assets/Sprites/Icons/ConveyorIcon.tres" id="5_ouu0c"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="5_ufbrv"]
+[ext_resource type="Texture2D" uid="uid://hd2vapxi0ccc" path="res://Assets/UI/Atlas/Value2.tres" id="7_dbl6w"]
 [ext_resource type="Texture2D" uid="uid://cggktjtpxa4kt" path="res://Assets/Sprites/Machines/GarbageBin.tres" id="7_hvv55"]
+
+[sub_resource type="Resource" id="Resource_p8dde"]
+script = ExtResource("5_ufbrv")
+condition = ExtResource("4_hbj1i")
+expected = true
 
 [sub_resource type="Resource" id="Resource_10an0"]
 script = ExtResource("5_af4hy")
@@ -17,6 +24,7 @@ icon = ExtResource("5_ouu0c")
 [sub_resource type="Resource" id="Resource_ifj8r"]
 script = ExtResource("5_af4hy")
 icon = ExtResource("5_4mfbp")
+second = ExtResource("7_dbl6w")
 
 [sub_resource type="Resource" id="Resource_rm1ll"]
 script = ExtResource("5_af4hy")
@@ -24,8 +32,7 @@ icon = ExtResource("7_hvv55")
 
 [sub_resource type="Resource" id="Resource_xtd5h"]
 script = ExtResource("3_sbe0g")
-condition = ExtResource("4_hbj1i")
-value = true
+game_value = SubResource("Resource_p8dde")
 icons = Array[ExtResource("5_af4hy")]([SubResource("Resource_10an0"), SubResource("Resource_ifj8r"), SubResource("Resource_rm1ll")])
 
 [resource]
