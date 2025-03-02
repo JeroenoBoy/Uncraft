@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlqlwrhiaipoa"]
+[gd_scene load_steps=12 format=3 uid="uid://dlqlwrhiaipoa"]
 
 [ext_resource type="Script" path="res://Scripts/GameState/MainStateMachine.gd" id="1_8cmww"]
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GameStateMachine.gd" id="2_7wtd3"]
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GameDefaultState.gd" id="3_p8mfd"]
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GamePlaceItemState.gd" id="4_7bxjf"]
+[ext_resource type="Script" path="res://Scripts/GameState/Game/GamePlaceMultiItemState.gd" id="5_ehffx"]
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GameMoveBuildingState.gd" id="5_wo8j0"]
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GameSelectRecipeState.gd" id="6_lmyxa"]
 [ext_resource type="Script" path="res://Scripts/GameState/Game/GameCoreInfoState.gd" id="7_2a8tc"]
@@ -22,6 +23,9 @@ script = ExtResource("3_p8mfd")
 
 [node name="PlaceItem" type="Node" parent="Game"]
 script = ExtResource("4_7bxjf")
+
+[node name="PlaceMulti" type="Node" parent="Game"]
+script = ExtResource("5_ehffx")
 
 [node name="MoveBuilding" type="Node" parent="Game"]
 script = ExtResource("5_wo8j0")

@@ -22,3 +22,4 @@ node = ExtResource("1_r7haa")
 condition = SubResource("Resource_kpscv")
 place_limit = ExtResource("4_53786")
 placed_store = ExtResource("5_uqnin")
+multi_place = false

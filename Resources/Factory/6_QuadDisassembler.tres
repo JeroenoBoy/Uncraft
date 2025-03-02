@@ -18,3 +18,4 @@ ui_icon_scale = 1.5
 sprite = ExtResource("3_dylj1")
 node = ExtResource("1_3fean")
 condition = SubResource("Resource_ptwxr")
+multi_place = false

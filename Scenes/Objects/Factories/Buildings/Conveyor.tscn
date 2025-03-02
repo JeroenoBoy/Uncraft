@@ -11,6 +11,7 @@ conveyor_speed = 1.0
 area_delete = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Conveyor"]]
+z_index = -5
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_000hi")
 

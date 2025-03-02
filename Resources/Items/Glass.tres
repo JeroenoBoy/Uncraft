@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://blrax816gqyob"]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemData.gd" id="1_sdipf"]
+[ext_resource type="Texture2D" uid="uid://cddywy7nsw6r0" path="res://Assets/Sprites/Items/Glass.tres" id="2_dih8w"]
+
+[resource]
+script = ExtResource("1_sdipf")
+name = "Glass"
+stack_size = 10
+sprite = ExtResource("2_dih8w")

@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=15 format=3 uid="uid://dtl4vbjlcd03r"]
+
+[ext_resource type="Resource" uid="uid://bqpseumhc7iho" path="res://Resources/GameConditions/TrunkUnlocked.tres" id="1_vp422"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_3h2md"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="3_3b4rt"]
+[ext_resource type="Texture2D" uid="uid://dd2chmh040f10" path="res://Assets/Sprites/Items/Trunk.tres" id="3_6wc7j"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="4_8e5xh"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="4_d1ug6"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="5_fi406"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="5_gbr03"]
+[ext_resource type="Resource" uid="uid://bxprlds5kfii3" path="res://Resources/Items/Car/Part_Trunk.tres" id="6_8xexf"]
+[ext_resource type="Resource" uid="uid://06gv11n5jipq" path="res://Resources/Items/Trunk.tres" id="8_puh7e"]
+
+[sub_resource type="Resource" id="Resource_ea6cy"]
+script = ExtResource("2_3h2md")
+condition = ExtResource("1_vp422")
+expected = true
+
+[sub_resource type="Resource" id="Resource_4rnc8"]
+script = ExtResource("3_3b4rt")
+count = 1
+item_data = ExtResource("4_d1ug6")
+with_parts = Array[ExtResource("5_fi406")]([ExtResource("6_8xexf")])
+without_parts = Array[ExtResource("5_fi406")]([])
+
+[sub_resource type="Resource" id="Resource_kp1o4"]
+script = ExtResource("4_8e5xh")
+transform_type = 2
+count = 1
+item_data = ExtResource("4_d1ug6")
+item_part = ExtResource("6_8xexf")
+
+[sub_resource type="Resource" id="Resource_mqpqx"]
+script = ExtResource("4_8e5xh")
+transform_type = 1
+count = 1
+item_data = ExtResource("8_puh7e")
+
+[resource]
+script = ExtResource("5_gbr03")
+name = "Remove Trunk"
+craft_time = 4
+icon = ExtResource("3_6wc7j")
+ui_icon_scale = 1.0
+condition = SubResource("Resource_ea6cy")
+inputs = Array[ExtResource("3_3b4rt")]([SubResource("Resource_4rnc8")])
+output = Array[ExtResource("4_8e5xh")]([SubResource("Resource_kp1o4"), SubResource("Resource_mqpqx")])

@@ -13,8 +13,8 @@ var _grid: Dictionary = {}
 func _init() -> void:
 	instance = self
 	astar = AStarGrid2D.new()
-	astar.cell_size = Vector2i(32, 32)
-	astar.region = Rect2i(Vector2i(-50,-50), Vector2i(100,100))
+	astar.cell_size = Vector2i(1, 1)
+	astar.region = Rect2i(Vector2i(-55,-55), Vector2i(110,110))
 	astar.update()
 
 func _ready():
@@ -32,6 +32,11 @@ static func grid_mouse_pos(adjust_for_node: GridNode = null) -> Vector2i:
 		var offset = ((adjust_for_node.size - Vector2i.ONE) * 0.5 + Vector2(adjust_for_node.offset)) * CELL_SIZE
 		mouse_pos -= offset.rotated(adjust_for_node.global_rotation)
 	return Grid.world_to_grid(mouse_pos)
+
+static func grid_precise_mouse_pos() -> Vector2:
+	var mouse_pos = instance.get_viewport().get_camera_2d().get_global_mouse_position()
+	return mouse_pos / CELL_SIZE
+	
 
 static func fast_rotate(vector: Vector2i, rot: float) -> Vector2i:
 	var rounded_rot = ((int(round(rot / 90)) % 4) + 4) % 4
@@ -60,7 +65,25 @@ func get_grid_node(grid_pos: Vector2i) -> GridNode:
 	if !_grid.has(grid_pos):
 		return null
 	return _grid[grid_pos][0]
-	
+
+func get_closest_free_point(from: Vector2i) -> Vector2i:
+	if !_grid.has(from):
+		return from
+
+	var offset = 1
+
+	while true:
+		if !_grid.has(from + Vector2i.UP * offset):
+			return from + Vector2i.UP * offset
+		if !_grid.has(from + Vector2i.LEFT * offset):
+			return from + Vector2i.LEFT * offset
+		if !_grid.has(from + Vector2i.DOWN * offset):
+			return from + Vector2i.DOWN * offset
+		if !_grid.has(from + Vector2i.RIGHT * offset):
+			return from + Vector2i.RIGHT * offset
+		offset += 1
+	return Vector2i.ZERO
+
 func set_grid_node(node: GridNode):
 	if node.is_on_grid:
 		push_warning("Tried to place an already placed node")
@@ -115,5 +138,3 @@ func is_spot_occupied(node: GridNode) -> bool:
 				return false
 
 	return true
-
-	

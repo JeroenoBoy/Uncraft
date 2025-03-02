@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bva05wjnp6pa5"]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemData.gd" id="1_dooap"]
+[ext_resource type="Texture2D" uid="uid://c2utm4rbefgy2" path="res://Assets/Sprites/Items/Aluminium.tres" id="2_1lwvp"]
+
+[resource]
+script = ExtResource("1_dooap")
+name = "Alluminium"
+stack_size = 10
+sprite = ExtResource("2_1lwvp")

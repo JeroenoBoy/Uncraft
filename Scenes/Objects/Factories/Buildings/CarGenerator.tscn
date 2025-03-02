@@ -25,9 +25,6 @@ output = NodePath("../MachineOutput")
 [node name="MachineOutput" parent="." instance=ExtResource("3_lshni")]
 position = Vector2(110, 32)
 rotation = -4.71238
-movable = true
-rotatable = true
-removable = true
 
 [connection signal="picked_up" from="." to="Generator" method="_on_car_generator_picked_up"]
 [connection signal="placed" from="." to="Generator" method="_on_car_generator_placed"]

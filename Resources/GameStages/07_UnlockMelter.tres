@@ -1,0 +1,148 @@
+[gd_resource type="Resource" script_class="CoreStage" load_steps=44 format=3 uid="uid://0iahk7c4gmhb"]
+
+[ext_resource type="Texture2D" uid="uid://dblfbupgc8lwx" path="res://Assets/Sprites/Machines/Melter.tres" id="1_txbon"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_2oqtd"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="3_loer7"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_7vo3k"]
+[ext_resource type="Resource" uid="uid://cr65i1n051q68" path="res://Resources/Items/Car/Part_Tires.tres" id="5_c7665"]
+[ext_resource type="Resource" uid="uid://dagb5jlqtwkbm" path="res://Resources/Items/Door_Mirrorless.tres" id="6_xo1xa"]
+[ext_resource type="Resource" uid="uid://deb425ggahqge" path="res://Resources/Items/Tire.tres" id="7_t0d51"]
+[ext_resource type="Resource" uid="uid://bfl2neqg1ic1t" path="res://Resources/Items/Rim.tres" id="8_l2t6t"]
+[ext_resource type="Resource" uid="uid://cnc5qqumk4hbr" path="res://Resources/Items/Trunk_Mirrorless.tres" id="9_gylc4"]
+[ext_resource type="Resource" uid="uid://d2w0vyuqddfgd" path="res://Resources/Items/Roof.tres" id="10_ueqci"]
+[ext_resource type="Resource" uid="uid://blrax816gqyob" path="res://Resources/Items/Glass.tres" id="10_vfcqy"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="11_yrrnj"]
+[ext_resource type="Resource" uid="uid://clx8j01vhnl4u" path="res://Resources/GameConditions/MelterUnlocked.tres" id="12_t87hq"]
+[ext_resource type="Resource" uid="uid://cwiopcquep7u" path="res://Resources/GameConditions/Counts/CarGeneratorLimit.tres" id="12_wli6g"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="13_acc6e"]
+[ext_resource type="Script" path="res://Scripts/Core/IntGameValueField.gd" id="13_s656y"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="14_c0ked"]
+[ext_resource type="Texture2D" uid="uid://c0e53mpqhav36" path="res://Assets/Sprites/Icons/Generator.tres" id="15_0c12q"]
+[ext_resource type="Texture2D" uid="uid://d2l10uwiko4v8" path="res://Assets/Sprites/Car/car_full.tres" id="15_hd5h5"]
+[ext_resource type="Texture2D" uid="uid://dho75dtecdmsh" path="res://Assets/UI/Atlas/Value8.tres" id="16_78b6v"]
+[ext_resource type="Texture2D" uid="uid://d1s0kul3cuyio" path="res://Assets/Sprites/Items/Door_mirrorless.tres" id="16_igkxr"]
+[ext_resource type="Texture2D" uid="uid://bdl0d2s7pnect" path="res://Assets/Sprites/Items/Roof.tres" id="16_oy2xc"]
+[ext_resource type="Texture2D" uid="uid://dv04x1uelv4ob" path="res://Assets/Sprites/Items/Trunk_mirrorless.tres" id="17_38x6l"]
+[ext_resource type="Texture2D" uid="uid://cxkq6gss6l78b" path="res://Assets/Sprites/Items/tire_rim.tres" id="17_mwbf3"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="18_0v8dr"]
+
+[sub_resource type="Resource" id="Resource_nal2w"]
+script = ExtResource("2_2oqtd")
+count = 75
+item_data = ExtResource("3_loer7")
+with_parts = Array[ExtResource("4_7vo3k")]([])
+without_parts = Array[ExtResource("4_7vo3k")]([ExtResource("5_c7665")])
+
+[sub_resource type="Resource" id="Resource_oqnki"]
+script = ExtResource("2_2oqtd")
+count = 300
+item_data = ExtResource("6_xo1xa")
+with_parts = Array[ExtResource("4_7vo3k")]([])
+without_parts = Array[ExtResource("4_7vo3k")]([])
+
+[sub_resource type="Resource" id="Resource_5770l"]
+script = ExtResource("2_2oqtd")
+count = 300
+item_data = ExtResource("7_t0d51")
+with_parts = Array[ExtResource("4_7vo3k")]([])
+without_parts = Array[ExtResource("4_7vo3k")]([])
+
+[sub_resource type="Resource" id="Resource_4g03c"]
+script = ExtResource("2_2oqtd")
+count = 300
+item_data = ExtResource("8_l2t6t")
+with_parts = Array[ExtResource("4_7vo3k")]([])
+without_parts = Array[ExtResource("4_7vo3k")]([])
+
+[sub_resource type="Resource" id="Resource_fu8er"]
+script = ExtResource("2_2oqtd")
+count = 100
+item_data = ExtResource("9_gylc4")
+with_parts = Array[ExtResource("4_7vo3k")]([])
+without_parts = Array[ExtResource("4_7vo3k")]([])
+
+[sub_resource type="Resource" id="Resource_ywxpl"]
+script = ExtResource("2_2oqtd")
+count = 100
+item_data = ExtResource("10_ueqci")
+with_parts = Array[ExtResource("4_7vo3k")]([])
+without_parts = Array[ExtResource("4_7vo3k")]([])
+
+[sub_resource type="Resource" id="Resource_ee40k"]
+script = ExtResource("2_2oqtd")
+count = 300
+item_data = ExtResource("10_vfcqy")
+with_parts = Array[ExtResource("4_7vo3k")]([])
+without_parts = Array[ExtResource("4_7vo3k")]([])
+
+[sub_resource type="Resource" id="Resource_loaqi"]
+script = ExtResource("13_s656y")
+intValue = ExtResource("12_wli6g")
+value = 8
+
+[sub_resource type="Resource" id="Resource_2c7k2"]
+script = ExtResource("14_c0ked")
+icon = ExtResource("15_0c12q")
+second = ExtResource("16_78b6v")
+
+[sub_resource type="Resource" id="Resource_uflf4"]
+script = ExtResource("11_yrrnj")
+game_value = SubResource("Resource_loaqi")
+icons = Array[ExtResource("14_c0ked")]([SubResource("Resource_2c7k2")])
+
+[sub_resource type="Resource" id="Resource_05sxy"]
+script = ExtResource("13_acc6e")
+condition = ExtResource("12_t87hq")
+expected = true
+
+[sub_resource type="Resource" id="Resource_on1ew"]
+script = ExtResource("14_c0ked")
+icon = ExtResource("1_txbon")
+
+[sub_resource type="Resource" id="Resource_bm1e0"]
+script = ExtResource("14_c0ked")
+icon = ExtResource("1_txbon")
+second = ExtResource("15_hd5h5")
+
+[sub_resource type="Resource" id="Resource_yjsqv"]
+script = ExtResource("14_c0ked")
+icon = ExtResource("1_txbon")
+second = ExtResource("16_igkxr")
+
+[sub_resource type="Resource" id="Resource_btdtj"]
+script = ExtResource("14_c0ked")
+icon = ExtResource("1_txbon")
+second = ExtResource("17_mwbf3")
+
+[sub_resource type="Resource" id="Resource_qnxru"]
+script = ExtResource("14_c0ked")
+icon = ExtResource("1_txbon")
+second = ExtResource("16_oy2xc")
+
+[sub_resource type="Resource" id="Resource_dwyc5"]
+script = ExtResource("14_c0ked")
+icon = ExtResource("1_txbon")
+second = ExtResource("17_38x6l")
+
+[sub_resource type="Resource" id="Resource_3krui"]
+script = ExtResource("11_yrrnj")
+game_value = SubResource("Resource_05sxy")
+icons = Array[ExtResource("14_c0ked")]([SubResource("Resource_on1ew"), SubResource("Resource_bm1e0"), SubResource("Resource_yjsqv"), SubResource("Resource_btdtj"), SubResource("Resource_qnxru"), SubResource("Resource_dwyc5")])
+
+[resource]
+script = ExtResource("18_0v8dr")
+name = "A Bunring Industry"
+icon = ExtResource("1_txbon")
+description = "Dear factory architects,
+
+We are upmost thankfull for all the hard work you've done for the benefit of the world. Together, we can work towards a brighter future.
+
+On that note, our R&D and Marketing team are researching into recyling aluminium, which will ultimately require a bit of heat, or so I am informed.
+
+Keep up the good work!
+
+Kind regards,
+John"
+button_text = "Complete"
+requirements = Array[ExtResource("2_2oqtd")]([SubResource("Resource_nal2w"), SubResource("Resource_oqnki"), SubResource("Resource_5770l"), SubResource("Resource_4g03c"), SubResource("Resource_fu8er"), SubResource("Resource_ywxpl"), SubResource("Resource_ee40k")])
+results = Array[ExtResource("11_yrrnj")]([SubResource("Resource_uflf4"), SubResource("Resource_3krui")])

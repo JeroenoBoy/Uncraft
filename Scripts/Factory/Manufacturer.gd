@@ -1,14 +1,13 @@
 class_name Manufacturer
 extends Node2D
 
-@export var recipes_folder = "res://Resources/Recipes"
+@export var recipes: Array[Recipe] = []
 @export var inputs: Array[MachineInput] = []
 @export var outputs: Array[MachineOutput] = []
 
 @onready var input_inventory: Inventory = $InputInventory
 @onready var processing_inventory: Inventory = $ProcessingInventory
 
-var recipes: Array[Recipe] = []
 var selected_recipe: Recipe
 var locked: bool
 
@@ -17,18 +16,7 @@ func _ready() -> void:
 	input_inventory.item_added.connect(_on_item_added)
 	for output in outputs:
 		output.item_removed.connect(_on_item_removed_from_output)
-
-	var access = DirAccess.open(recipes_folder)
-	if !access.dir_exists(recipes_folder):
-		push_error("Directory '"+recipes_folder+"' does not exist")
-		return
-	
-	for file in access.get_files():
-		var resource = ResourceLoader.load(recipes_folder + "/" + file)
-		if resource is not Recipe:
-			continue
-		recipes.append(resource)
-
+		
 func _on_item_added(_item: Item):
 	_try_craft_recipe()
 
@@ -36,11 +24,12 @@ func _on_item_removed_from_output(_item: Item):
 	_try_craft_recipe()
 
 func set_recipe(recipe: Recipe):
-	input_inventory.locked = false
+	input_inventory.locked = true
 	input_inventory.clear_inventory()
 	processing_inventory.clear_inventory()
 	selected_recipe = recipe
 	input_inventory.set_filters(selected_recipe.make_filters())
+	input_inventory.locked = false
 	
 	for input in inputs:
 		input.emit_update()

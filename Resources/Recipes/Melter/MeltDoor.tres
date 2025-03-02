@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=11 format=3 uid="uid://crjmqqmem32xa"]
+
+[ext_resource type="Texture2D" uid="uid://d1s0kul3cuyio" path="res://Assets/Sprites/Items/Door_mirrorless.tres" id="1_m6hjf"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_rj66s"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_rhv80"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="5_riw3v"]
+[ext_resource type="Resource" uid="uid://dagb5jlqtwkbm" path="res://Resources/Items/Door_Mirrorless.tres" id="6_f1nkv"]
+[ext_resource type="Resource" uid="uid://bva05wjnp6pa5" path="res://Resources/Items/Alluminium.tres" id="6_x2jn2"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="7_vrs2b"]
+
+[sub_resource type="Resource" id="Resource_htbvp"]
+script = ExtResource("2_rj66s")
+count = 1
+item_data = ExtResource("6_f1nkv")
+with_parts = Array[ExtResource("4_rhv80")]([])
+without_parts = Array[ExtResource("4_rhv80")]([])
+
+[sub_resource type="Resource" id="Resource_uwnbj"]
+script = ExtResource("5_riw3v")
+transform_type = 0
+count = 1
+item_data = ExtResource("6_f1nkv")
+
+[sub_resource type="Resource" id="Resource_m47fq"]
+script = ExtResource("5_riw3v")
+transform_type = 1
+count = 1
+item_data = ExtResource("6_x2jn2")
+
+[resource]
+script = ExtResource("7_vrs2b")
+name = "Melt Door"
+craft_time = 8
+icon = ExtResource("1_m6hjf")
+ui_icon_scale = 1.0
+inputs = Array[ExtResource("2_rj66s")]([SubResource("Resource_htbvp")])
+output = Array[ExtResource("5_riw3v")]([SubResource("Resource_uwnbj"), SubResource("Resource_m47fq")])

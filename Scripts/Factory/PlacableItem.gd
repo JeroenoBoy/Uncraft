@@ -11,6 +11,9 @@ extends Resource
 @export var place_limit: IntGameValue
 @export var placed_store: ObjectStoreGameValue
 
+@export_group("Modes")
+@export var multi_place = false
+
 func can_place() -> bool:
 	if condition != null && !condition.check():
 		return false

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=11 format=3 uid="uid://uu48ybgh1ctp"]
+
+[ext_resource type="Texture2D" uid="uid://cxkq6gss6l78b" path="res://Assets/Sprites/Items/tire_rim.tres" id="1_jrm1f"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_xshyo"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_8e7ch"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="5_hvc2q"]
+[ext_resource type="Resource" uid="uid://bfl2neqg1ic1t" path="res://Resources/Items/Rim.tres" id="6_bypgg"]
+[ext_resource type="Resource" uid="uid://bva05wjnp6pa5" path="res://Resources/Items/Alluminium.tres" id="6_d3v3n"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="7_qgvk3"]
+
+[sub_resource type="Resource" id="Resource_jogxa"]
+script = ExtResource("2_xshyo")
+count = 1
+item_data = ExtResource("6_bypgg")
+with_parts = Array[ExtResource("4_8e7ch")]([])
+without_parts = Array[ExtResource("4_8e7ch")]([])
+
+[sub_resource type="Resource" id="Resource_25tia"]
+script = ExtResource("5_hvc2q")
+transform_type = 0
+count = 1
+item_data = ExtResource("6_bypgg")
+
+[sub_resource type="Resource" id="Resource_sk5q8"]
+script = ExtResource("5_hvc2q")
+transform_type = 1
+count = 1
+item_data = ExtResource("6_d3v3n")
+
+[resource]
+script = ExtResource("7_qgvk3")
+name = "Melt Rim"
+craft_time = 8
+icon = ExtResource("1_jrm1f")
+ui_icon_scale = 1.0
+inputs = Array[ExtResource("2_xshyo")]([SubResource("Resource_jogxa")])
+output = Array[ExtResource("5_hvc2q")]([SubResource("Resource_25tia"), SubResource("Resource_sk5q8")])

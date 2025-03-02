@@ -16,9 +16,6 @@ texture = ExtResource("2_wu3as")
 [node name="MachineInput" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("4_gbood")]
 position = Vector2(0, 14)
 inventory = NodePath("../ClearInventory/Inventory")
-movable = true
-rotatable = true
-removable = true
 
 [node name="ClearInventory" type="Node2D" parent="."]
 script = ExtResource("2_21cfi")

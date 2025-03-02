@@ -1,16 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://r72gkwindvg5"]
+[gd_scene load_steps=13 format=3 uid="uid://r72gkwindvg5"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ItemSelector/ItemSelectorScreen.gd" id="1_hbgqn"]
 [ext_resource type="PackedScene" uid="uid://cjg8kohirr8k5" path="res://Scenes/UI/ItemSelector/ItemSelectorCategory.tscn" id="2_w7qvm"]
+[ext_resource type="Script" path="res://Scripts/Factory/PlacableItem.gd" id="3_c7p64"]
+[ext_resource type="Resource" uid="uid://c25bm4xykamxc" path="res://Resources/Factory/0_Conveyor.tres" id="4_yadb3"]
+[ext_resource type="Resource" uid="uid://dj2b37tv5lnls" path="res://Resources/Factory/1_Splitter.tres" id="5_f2pqq"]
+[ext_resource type="Resource" uid="uid://db12nrbjnpivu" path="res://Resources/Factory/3_Bridge.tres" id="6_tu0yj"]
+[ext_resource type="Resource" uid="uid://byl0f7kwh1dy2" path="res://Resources/Factory/4_CarGenerator.tres" id="7_770au"]
+[ext_resource type="Resource" uid="uid://xfq5dnf0n7rw" path="res://Resources/Factory/5_DualDisassembly.tres" id="8_wjxj8"]
+[ext_resource type="Resource" uid="uid://d2xe2uo6eb6o2" path="res://Resources/Factory/6_QuadDisassembler.tres" id="9_wo4rj"]
+[ext_resource type="Resource" uid="uid://c622minsakpcc" path="res://Resources/Factory/7_Melter.tres" id="10_kkxgr"]
+[ext_resource type="Resource" uid="uid://tbl7oc0yxu3p" path="res://Resources/Factory/9999_Bin.tres" id="11_wo36a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d6ymw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqe2v"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0utb6"]
-
 [node name="ItemSelector" type="Panel"]
-custom_minimum_size = Vector2(0, 125)
+custom_minimum_size = Vector2(0, 100)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -28,31 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+[node name="Container" parent="MarginContainer" instance=ExtResource("2_w7qvm")]
 layout_mode = 2
-theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_yqe2v")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_0utb6")
-tab_alignment = 1
-current_tab = 0
-tabs_position = 1
-
-[node name="Belts" parent="MarginContainer/TabContainer" instance=ExtResource("2_w7qvm")]
-layout_mode = 2
-folder = "res://Resources/Factory/Belts"
-
-[node name="Machines" parent="MarginContainer/TabContainer" instance=ExtResource("2_w7qvm")]
-visible = false
-layout_mode = 2
-folder = "res://Resources/Factory/Machines"
-metadata/_tab_index = 1
-
-[node name="Generators" parent="MarginContainer/TabContainer" instance=ExtResource("2_w7qvm")]
-visible = false
-layout_mode = 2
-folder = "res://Resources/Factory/Generators"
-metadata/_tab_index = 2
+items = Array[ExtResource("3_c7p64")]([ExtResource("4_yadb3"), ExtResource("5_f2pqq"), ExtResource("6_tu0yj"), ExtResource("7_770au"), ExtResource("8_wjxj8"), ExtResource("9_wo4rj"), ExtResource("10_kkxgr"), ExtResource("11_wo36a")])

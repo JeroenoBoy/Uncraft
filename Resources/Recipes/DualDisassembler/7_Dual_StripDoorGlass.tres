@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=16 format=3 uid="uid://df5mnc6oh5uxs"]
+
+[ext_resource type="Resource" uid="uid://diuyfphld7gqd" path="res://Resources/GameConditions/GlassUnlocked.tres" id="1_1k3ae"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_frs8o"]
+[ext_resource type="Texture2D" uid="uid://d1s0kul3cuyio" path="res://Assets/Sprites/Items/Door_mirrorless.tres" id="3_b5x7d"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="3_b65ne"]
+[ext_resource type="Resource" uid="uid://br1u7ovj0no0b" path="res://Resources/Items/Door.tres" id="5_4i13b"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="5_h8f4w"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="7_oo8tj"]
+[ext_resource type="Resource" uid="uid://blrax816gqyob" path="res://Resources/Items/Glass.tres" id="8_2s4oq"]
+[ext_resource type="Resource" uid="uid://dagb5jlqtwkbm" path="res://Resources/Items/Door_Mirrorless.tres" id="8_jgl8r"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="9_5sy3g"]
+
+[sub_resource type="Resource" id="Resource_ea6cy"]
+script = ExtResource("2_frs8o")
+condition = ExtResource("1_1k3ae")
+expected = true
+
+[sub_resource type="Resource" id="Resource_sec7s"]
+script = ExtResource("3_b65ne")
+count = 1
+item_data = ExtResource("5_4i13b")
+with_parts = Array[ExtResource("5_h8f4w")]([])
+without_parts = Array[ExtResource("5_h8f4w")]([])
+
+[sub_resource type="Resource" id="Resource_rueqd"]
+script = ExtResource("7_oo8tj")
+transform_type = 0
+count = 1
+item_data = ExtResource("5_4i13b")
+
+[sub_resource type="Resource" id="Resource_srfhb"]
+script = ExtResource("7_oo8tj")
+transform_type = 1
+count = 1
+item_data = ExtResource("8_jgl8r")
+
+[sub_resource type="Resource" id="Resource_nc4ao"]
+script = ExtResource("7_oo8tj")
+transform_type = 1
+count = 1
+item_data = ExtResource("8_2s4oq")
+
+[resource]
+script = ExtResource("9_5sy3g")
+name = "Remove Door Window"
+craft_time = 4
+icon = ExtResource("3_b5x7d")
+ui_icon_scale = 1.0
+condition = SubResource("Resource_ea6cy")
+inputs = Array[ExtResource("3_b65ne")]([SubResource("Resource_sec7s")])
+output = Array[ExtResource("7_oo8tj")]([SubResource("Resource_rueqd"), SubResource("Resource_srfhb"), SubResource("Resource_nc4ao")])

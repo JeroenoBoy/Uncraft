@@ -50,7 +50,7 @@ func remove_part(part: ComplexItemPart):
 		_renderers.erase(part.layer)
 		return
 
-	_parts[part.layer].texture = picked_part.texture
+	_renderers[part.layer].texture = picked_part.sprite
 
 func _set_data(item_data: ItemData):
 	_clear_renderers()
@@ -76,5 +76,6 @@ func _clear_renderers():
 func _create_renderer(layer: int, texture: Texture2D):
 	var instance = Sprite2D.new()
 	instance.texture = texture
+	instance.z_index = -3;
 	add_child(instance)
 	_renderers[layer] = instance

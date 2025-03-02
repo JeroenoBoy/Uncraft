@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=15 format=3 uid="uid://cwjbn7d8ibq4f"]
+
+[ext_resource type="Texture2D" uid="uid://bdl0d2s7pnect" path="res://Assets/Sprites/Items/Roof.tres" id="1_6t3lj"]
+[ext_resource type="Resource" uid="uid://bphi06bmog4p1" path="res://Resources/GameConditions/RoofUnlocked.tres" id="1_c3p75"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_k8n0y"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="4_87m33"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="5_dnyd2"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="6_d0vps"]
+[ext_resource type="Resource" uid="uid://q4m5urjnw02c" path="res://Resources/Items/Car/Part_Roof.tres" id="7_gu5iu"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="8_bh233"]
+[ext_resource type="Resource" uid="uid://d2w0vyuqddfgd" path="res://Resources/Items/Roof.tres" id="9_scr78"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="10_ld1vr"]
+
+[sub_resource type="Resource" id="Resource_o35cq"]
+script = ExtResource("2_k8n0y")
+condition = ExtResource("1_c3p75")
+expected = true
+
+[sub_resource type="Resource" id="Resource_8slxi"]
+script = ExtResource("4_87m33")
+count = 1
+item_data = ExtResource("5_dnyd2")
+with_parts = Array[ExtResource("6_d0vps")]([ExtResource("7_gu5iu")])
+without_parts = Array[ExtResource("6_d0vps")]([])
+
+[sub_resource type="Resource" id="Resource_l8to2"]
+script = ExtResource("8_bh233")
+transform_type = 2
+count = 1
+item_data = ExtResource("5_dnyd2")
+item_part = ExtResource("7_gu5iu")
+
+[sub_resource type="Resource" id="Resource_2wqwl"]
+script = ExtResource("8_bh233")
+transform_type = 1
+count = 1
+item_data = ExtResource("9_scr78")
+
+[resource]
+script = ExtResource("10_ld1vr")
+name = "Remove Roof"
+craft_time = 4
+icon = ExtResource("1_6t3lj")
+ui_icon_scale = 1.0
+condition = SubResource("Resource_o35cq")
+inputs = Array[ExtResource("4_87m33")]([SubResource("Resource_8slxi")])
+output = Array[ExtResource("8_bh233")]([SubResource("Resource_l8to2"), SubResource("Resource_2wqwl")])

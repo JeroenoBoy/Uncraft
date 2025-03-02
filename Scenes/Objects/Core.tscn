@@ -1,14 +1,25 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8jct236w80lp"]
+[gd_scene load_steps=31 format=3 uid="uid://c8jct236w80lp"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_lpdty"]
 [ext_resource type="Texture2D" uid="uid://c6xkv62dtljn2" path="res://Assets/Sprites/Core-2.png" id="2_kivwt"]
 [ext_resource type="Script" path="res://Scripts/Core/Core.gd" id="2_woo0w"]
 [ext_resource type="PackedScene" uid="uid://bwo05tbedg8d7" path="res://Scenes/Objects/Factories/Components/MachineInput.tscn" id="3_gslj2"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="4_88wnv"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="4_ajwkr"]
+[ext_resource type="Resource" uid="uid://brghs7iamm762" path="res://Resources/GameStages/00_GettingStarted.tres" id="5_navl3"]
+[ext_resource type="Resource" uid="uid://caiv837vixatk" path="res://Resources/GameStages/01_UnlockDual.tres" id="6_7skwu"]
 [ext_resource type="Texture2D" uid="uid://dv7nfvcx3x4m6" path="res://Assets/Sprites/Particles/Particle_1.tres" id="6_v6w0g"]
 [ext_resource type="Texture2D" uid="uid://0dqo4skj3bwa" path="res://Assets/Sprites/Particles/Particle_transparant.tres" id="7_bxusd"]
 [ext_resource type="Script" path="res://Scripts/Common/ParticleHelper.gd" id="7_vnyyg"]
+[ext_resource type="Resource" uid="uid://bmdt50eddd7n7" path="res://Resources/GameStages/02_UnlockDualWheels.tres" id="7_yspud"]
+[ext_resource type="Resource" uid="uid://b4d6oa8v0vs2p" path="res://Resources/GameStages/03_UnlockTireSplit.tres" id="8_5g2dw"]
+[ext_resource type="Resource" uid="uid://bkmocv5dahhgh" path="res://Resources/GameStages/04_UnlockQuad.tres" id="9_gwf1h"]
 [ext_resource type="Script" path="res://Scripts/Grid/ClickAction.gd" id="9_i1x3k"]
+[ext_resource type="Resource" uid="uid://q3rlpopnmnfc" path="res://Resources/GameStages/05_UnlockRoofTrunk.tres" id="10_ohnyx"]
+[ext_resource type="Resource" uid="uid://cpcsktwdrak47" path="res://Resources/GameStages/06_UnlockGlass.tres" id="11_eyx53"]
+[ext_resource type="Resource" uid="uid://0iahk7c4gmhb" path="res://Resources/GameStages/07_UnlockMelter.tres" id="12_4esy6"]
+[ext_resource type="Resource" uid="uid://buimn3how7466" path="res://Resources/GameStages/98_KeepItUpBaby.tres" id="13_8r0v0"]
+[ext_resource type="Resource" uid="uid://3jj0t6edtpal" path="res://Resources/GameStages/99_Finished.tres" id="14_pq52p"]
 
 [sub_resource type="Gradient" id="Gradient_8gbak"]
 offsets = PackedFloat32Array(0.00497512, 0.656716, 1)
@@ -75,6 +86,7 @@ target = NodePath("../Core")
 [node name="Core" type="Node2D" parent="."]
 rotation = 0.0074626
 script = ExtResource("2_woo0w")
+stages = Array[ExtResource("4_ajwkr")]([ExtResource("5_navl3"), ExtResource("6_7skwu"), ExtResource("7_yspud"), ExtResource("8_5g2dw"), ExtResource("9_gwf1h"), ExtResource("10_ohnyx"), ExtResource("11_eyx53"), ExtResource("12_4esy6"), ExtResource("13_8r0v0"), ExtResource("14_pq52p")])
 
 [node name="Inventory" type="Node2D" parent="Core"]
 script = ExtResource("4_88wnv")

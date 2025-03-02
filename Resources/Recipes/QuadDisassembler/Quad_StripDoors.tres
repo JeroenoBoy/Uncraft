@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=11 format=3 uid="uid://bb6vkl5emnl46"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=12 format=3 uid="uid://bb6vkl5emnl46"]
 
 [ext_resource type="Texture2D" uid="uid://7o0mbcuj3xhd" path="res://Assets/Sprites/Items/Door.tres" id="1_aabcx"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_jg2uv"]
@@ -16,6 +16,13 @@ item_data = ExtResource("3_dyli4")
 with_parts = Array[ExtResource("4_uj5nt")]([ExtResource("5_boqjq")])
 without_parts = Array[ExtResource("4_uj5nt")]([])
 
+[sub_resource type="Resource" id="Resource_7jk11"]
+script = ExtResource("6_5ceew")
+transform_type = 2
+count = 1
+item_data = ExtResource("3_dyli4")
+item_part = ExtResource("5_boqjq")
+
 [sub_resource type="Resource" id="Resource_q5ipl"]
 script = ExtResource("6_5ceew")
 transform_type = 1
@@ -29,4 +36,4 @@ craft_time = 8
 icon = ExtResource("1_aabcx")
 ui_icon_scale = 1.0
 inputs = Array[ExtResource("2_jg2uv")]([SubResource("Resource_1ixrf")])
-output = Array[ExtResource("6_5ceew")]([SubResource("Resource_q5ipl")])
+output = Array[ExtResource("6_5ceew")]([SubResource("Resource_7jk11"), SubResource("Resource_q5ipl")])

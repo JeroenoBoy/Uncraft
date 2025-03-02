@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dic2ut1phh0w7"]
+[gd_scene load_steps=15 format=3 uid="uid://dic2ut1phh0w7"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_est3o"]
 [ext_resource type="Script" path="res://Scripts/Grid/ClickAction.gd" id="2_5g03f"]
 [ext_resource type="Script" path="res://Scripts/Factory/Manufacturer.gd" id="2_lo30o"]
 [ext_resource type="PackedScene" uid="uid://bwo05tbedg8d7" path="res://Scenes/Objects/Factories/Components/MachineInput.tscn" id="4_l575c"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="4_tn5ab"]
 [ext_resource type="PackedScene" uid="uid://bj211qmgyukaf" path="res://Scenes/Objects/Factories/Components/MachineOutput.tscn" id="5_3xsdk"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="5_4sdhi"]
+[ext_resource type="Resource" uid="uid://bb6vkl5emnl46" path="res://Resources/Recipes/QuadDisassembler/Quad_StripDoors.tres" id="5_5tp0q"]
+[ext_resource type="Resource" uid="uid://gx7g6bc0ijig" path="res://Resources/Recipes/QuadDisassembler/Quad_StripWheels.tres" id="6_n0elm"]
 [ext_resource type="Texture2D" uid="uid://cayoq11pr211v" path="res://Assets/Sprites/Machines/QuadDisassembler.tres" id="7_srysf"]
 [ext_resource type="Script" path="res://Scripts/Items/Filter/Filter.gd" id="9_nuh0v"]
 [ext_resource type="Script" path="res://Scripts/Items/Filter/ItemFilter.gd" id="11_7mqvm"]
@@ -25,7 +28,7 @@ target = NodePath("../Manufacturer")
 
 [node name="Manufacturer" type="Node2D" parent="." node_paths=PackedStringArray("inputs", "outputs")]
 script = ExtResource("2_lo30o")
-recipes_folder = "res://Resources/Recipes/QuadDisassembler"
+recipes = Array[ExtResource("4_tn5ab")]([ExtResource("5_5tp0q"), ExtResource("6_n0elm")])
 inputs = [NodePath("../MachineInput")]
 outputs = [NodePath("../MachineOutputCar"), NodePath("../MachineOutputRest1"), NodePath("../MachineOutputRest2"), NodePath("../MachineOutputRest3"), NodePath("../MachineOutputRest4")]
 
@@ -44,40 +47,22 @@ texture = ExtResource("7_srysf")
 position = Vector2(-14, 32)
 rotation = 1.5708
 inventory = NodePath("../Manufacturer/InputInventory")
-movable = true
-rotatable = true
-removable = true
 
 [node name="MachineOutputRest1" parent="." instance=ExtResource("5_3xsdk")]
 position = Vector2(32, 78)
 rotation = 3.14159
-movable = true
-rotatable = true
-removable = true
 
 [node name="MachineOutputRest2" parent="." instance=ExtResource("5_3xsdk")]
 position = Vector2(128, 78)
 rotation = 3.14159
-movable = true
-rotatable = true
-removable = true
 
 [node name="MachineOutputRest3" parent="." instance=ExtResource("5_3xsdk")]
 position = Vector2(32, -14)
-movable = true
-rotatable = true
-removable = true
 
 [node name="MachineOutputRest4" parent="." instance=ExtResource("5_3xsdk")]
 position = Vector2(128, -14)
-movable = true
-rotatable = true
-removable = true
 
 [node name="MachineOutputCar" parent="." instance=ExtResource("5_3xsdk")]
 position = Vector2(174, 32)
 rotation = 1.5708
 filter = Array[ExtResource("9_nuh0v")]([SubResource("Resource_sbtv8")])
-movable = true
-rotatable = true
-removable = true

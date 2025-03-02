@@ -1,15 +1,18 @@
-[gd_resource type="Resource" script_class="ComplexItem" load_steps=7 format=3 uid="uid://d8seyk4of85l"]
+[gd_resource type="Resource" script_class="ComplexItem" load_steps=10 format=3 uid="uid://d8seyk4of85l"]
 
 [ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="1_w3ehw"]
 [ext_resource type="Script" path="res://Scripts/Items/ComplexItem.gd" id="2_k7ph7"]
 [ext_resource type="Resource" uid="uid://cr65i1n051q68" path="res://Resources/Items/Car/Part_Tires.tres" id="2_pcdo4"]
 [ext_resource type="Resource" uid="uid://drmsxrkcssbbt" path="res://Resources/Items/Car/Part_Doors.tres" id="3_r4dem"]
 [ext_resource type="Texture2D" uid="uid://bfe0u2iokybk3" path="res://Assets/Sprites/Car/car_base.tres" id="4_m4goh"]
+[ext_resource type="Resource" uid="uid://cxllqhp501ngr" path="res://Resources/Items/Car/Part_Windshield.tres" id="5_1mmxr"]
 [ext_resource type="Texture2D" uid="uid://d2l10uwiko4v8" path="res://Assets/Sprites/Car/car_full.tres" id="5_01sew"]
+[ext_resource type="Resource" uid="uid://bxprlds5kfii3" path="res://Resources/Items/Car/Part_Trunk.tres" id="6_vkb43"]
+[ext_resource type="Resource" uid="uid://q4m5urjnw02c" path="res://Resources/Items/Car/Part_Roof.tres" id="7_jjyrk"]
 
 [resource]
 script = ExtResource("2_k7ph7")
-items = Array[ExtResource("1_w3ehw")]([ExtResource("2_pcdo4"), ExtResource("3_r4dem")])
+items = Array[ExtResource("1_w3ehw")]([ExtResource("2_pcdo4"), ExtResource("3_r4dem"), ExtResource("5_1mmxr"), ExtResource("6_vkb43"), ExtResource("7_jjyrk")])
 name = "Car"
 stack_size = 10
 sprite = ExtResource("4_m4goh")

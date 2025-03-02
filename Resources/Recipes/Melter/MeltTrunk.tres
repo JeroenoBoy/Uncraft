@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=11 format=3 uid="uid://cgjcpi3s8fm73"]
+
+[ext_resource type="Texture2D" uid="uid://dv04x1uelv4ob" path="res://Assets/Sprites/Items/Trunk_mirrorless.tres" id="1_skaey"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_mhv6o"]
+[ext_resource type="Resource" uid="uid://cnc5qqumk4hbr" path="res://Resources/Items/Trunk_Mirrorless.tres" id="3_0s2s6"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_1axmj"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="5_rc2ya"]
+[ext_resource type="Resource" uid="uid://bva05wjnp6pa5" path="res://Resources/Items/Alluminium.tres" id="6_h75jr"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="7_y5e7u"]
+
+[sub_resource type="Resource" id="Resource_uinio"]
+script = ExtResource("2_mhv6o")
+count = 1
+item_data = ExtResource("3_0s2s6")
+with_parts = Array[ExtResource("4_1axmj")]([])
+without_parts = Array[ExtResource("4_1axmj")]([])
+
+[sub_resource type="Resource" id="Resource_5ciup"]
+script = ExtResource("5_rc2ya")
+transform_type = 0
+count = 1
+item_data = ExtResource("3_0s2s6")
+
+[sub_resource type="Resource" id="Resource_827b1"]
+script = ExtResource("5_rc2ya")
+transform_type = 1
+count = 1
+item_data = ExtResource("6_h75jr")
+
+[resource]
+script = ExtResource("7_y5e7u")
+name = "Melt Trunk"
+craft_time = 8
+icon = ExtResource("1_skaey")
+ui_icon_scale = 1.0
+inputs = Array[ExtResource("2_mhv6o")]([SubResource("Resource_uinio")])
+output = Array[ExtResource("5_rc2ya")]([SubResource("Resource_5ciup"), SubResource("Resource_827b1")])

@@ -35,7 +35,11 @@ func _on_input(event: InputEvent):
 		selected_node_at_press = Grid.grid_mouse_pos()
 
 	elif event.is_action_released("build_pickup"):
+		if press_time == -1:
+			return
+
 		var building = Grid.instance.get_grid_node(selected_node_at_press)
+		_reset_press()
 		if building == null: return
 		var click_action = building.find_child("ClickAction", false)
 
@@ -43,6 +47,10 @@ func _on_input(event: InputEvent):
 			click_action.execute(state_machine)
 		else:
 			state_machine.change_state("MoveBuilding", { "building": building })
+
+	elif event.is_action_pressed("build_delete"):
+		state_machine.change_state("DeleteMode")
+		
 			
 func _update(delta: float):
 	super._update(delta)

@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="CoreStage" load_steps=34 format=3 uid="uid://q3rlpopnmnfc"]
+
+[ext_resource type="Texture2D" uid="uid://dd2chmh040f10" path="res://Assets/Sprites/Items/Trunk.tres" id="1_4jtw4"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_1yei1"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="3_ebjsr"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_ix1th"]
+[ext_resource type="Resource" uid="uid://cr65i1n051q68" path="res://Resources/Items/Car/Part_Tires.tres" id="5_0sbb7"]
+[ext_resource type="Resource" uid="uid://br1u7ovj0no0b" path="res://Resources/Items/Door.tres" id="6_e7w6i"]
+[ext_resource type="Resource" uid="uid://deb425ggahqge" path="res://Resources/Items/Tire.tres" id="8_ic7k3"]
+[ext_resource type="Resource" uid="uid://bfl2neqg1ic1t" path="res://Resources/Items/Rim.tres" id="9_x60ok"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="10_60yhx"]
+[ext_resource type="Resource" uid="uid://bphi06bmog4p1" path="res://Resources/GameConditions/RoofUnlocked.tres" id="11_etf36"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="12_jh57m"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="13_p8bqp"]
+[ext_resource type="Texture2D" uid="uid://17v4y4hh8dw4" path="res://Assets/Sprites/Machines/DualDisassembler.tres" id="14_2xtts"]
+[ext_resource type="Texture2D" uid="uid://bdl0d2s7pnect" path="res://Assets/Sprites/Items/Roof.tres" id="15_5v8al"]
+[ext_resource type="Resource" uid="uid://bqpseumhc7iho" path="res://Resources/GameConditions/TrunkUnlocked.tres" id="17_mnnag"]
+[ext_resource type="Resource" uid="uid://cwiopcquep7u" path="res://Resources/GameConditions/Counts/CarGeneratorLimit.tres" id="18_mq4rv"]
+[ext_resource type="Script" path="res://Scripts/Core/IntGameValueField.gd" id="19_idm76"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="19_rflhp"]
+[ext_resource type="Texture2D" uid="uid://c0e53mpqhav36" path="res://Assets/Sprites/Icons/Generator.tres" id="20_85ied"]
+[ext_resource type="Texture2D" uid="uid://dp038n0q8af1i" path="res://Assets/UI/Atlas/Value6.tres" id="21_q2f1e"]
+
+[sub_resource type="Resource" id="Resource_nal2w"]
+script = ExtResource("2_1yei1")
+count = 75
+item_data = ExtResource("3_ebjsr")
+with_parts = Array[ExtResource("4_ix1th")]([])
+without_parts = Array[ExtResource("4_ix1th")]([ExtResource("5_0sbb7")])
+
+[sub_resource type="Resource" id="Resource_avg7k"]
+script = ExtResource("2_1yei1")
+count = 250
+item_data = ExtResource("6_e7w6i")
+with_parts = Array[ExtResource("4_ix1th")]([])
+without_parts = Array[ExtResource("4_ix1th")]([])
+
+[sub_resource type="Resource" id="Resource_5770l"]
+script = ExtResource("2_1yei1")
+count = 250
+item_data = ExtResource("8_ic7k3")
+with_parts = Array[ExtResource("4_ix1th")]([])
+without_parts = Array[ExtResource("4_ix1th")]([])
+
+[sub_resource type="Resource" id="Resource_4g03c"]
+script = ExtResource("2_1yei1")
+count = 250
+item_data = ExtResource("9_x60ok")
+with_parts = Array[ExtResource("4_ix1th")]([])
+without_parts = Array[ExtResource("4_ix1th")]([])
+
+[sub_resource type="Resource" id="Resource_jjrdn"]
+script = ExtResource("12_jh57m")
+condition = ExtResource("11_etf36")
+expected = true
+
+[sub_resource type="Resource" id="Resource_xdqoc"]
+script = ExtResource("13_p8bqp")
+icon = ExtResource("14_2xtts")
+second = ExtResource("15_5v8al")
+
+[sub_resource type="Resource" id="Resource_3krui"]
+script = ExtResource("10_60yhx")
+game_value = SubResource("Resource_jjrdn")
+icons = Array[ExtResource("13_p8bqp")]([SubResource("Resource_xdqoc")])
+
+[sub_resource type="Resource" id="Resource_63ohl"]
+script = ExtResource("12_jh57m")
+condition = ExtResource("17_mnnag")
+expected = true
+
+[sub_resource type="Resource" id="Resource_y63mg"]
+script = ExtResource("13_p8bqp")
+icon = ExtResource("14_2xtts")
+second = ExtResource("1_4jtw4")
+
+[sub_resource type="Resource" id="Resource_fumx3"]
+script = ExtResource("10_60yhx")
+game_value = SubResource("Resource_63ohl")
+icons = Array[ExtResource("13_p8bqp")]([SubResource("Resource_y63mg")])
+
+[sub_resource type="Resource" id="Resource_cs7o4"]
+script = ExtResource("19_idm76")
+intValue = ExtResource("18_mq4rv")
+value = 6
+
+[sub_resource type="Resource" id="Resource_3ne4a"]
+script = ExtResource("13_p8bqp")
+icon = ExtResource("20_85ied")
+second = ExtResource("21_q2f1e")
+
+[sub_resource type="Resource" id="Resource_c0vbb"]
+script = ExtResource("10_60yhx")
+game_value = SubResource("Resource_cs7o4")
+icons = Array[ExtResource("13_p8bqp")]([SubResource("Resource_3ne4a")])
+
+[resource]
+script = ExtResource("19_rflhp")
+name = "Total Car Takeout"
+icon = ExtResource("1_4jtw4")
+description = "Hello factory architects,
+
+We are delighted to announce the great success of the recent transition to a publicly traded company. This means we'll need to expand our profits and thus our production.
+
+Our R&D team is researching techiniques we can use to increase our prof.. increase the good we do in this world.
+
+Cheers,
+John"
+button_text = "Complete"
+requirements = Array[ExtResource("2_1yei1")]([SubResource("Resource_nal2w"), SubResource("Resource_avg7k"), SubResource("Resource_5770l"), SubResource("Resource_4g03c")])
+results = Array[ExtResource("10_60yhx")]([SubResource("Resource_3krui"), SubResource("Resource_fumx3"), SubResource("Resource_c0vbb")])

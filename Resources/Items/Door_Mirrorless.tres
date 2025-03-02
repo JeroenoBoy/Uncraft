@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dagb5jlqtwkbm"]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemData.gd" id="1_kbswx"]
+[ext_resource type="Texture2D" uid="uid://d1s0kul3cuyio" path="res://Assets/Sprites/Items/Door_mirrorless.tres" id="2_5qi2i"]
+
+[resource]
+script = ExtResource("1_kbswx")
+name = "Door"
+stack_size = 10
+sprite = ExtResource("2_5qi2i")

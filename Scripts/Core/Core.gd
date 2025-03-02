@@ -5,29 +5,16 @@ signal stage_started()
 signal stage_completed()
 signal requirement_updated(requirement: RecipeItem)
 
-@export var stages_folder = "res://Resources/GameStages"
+@export var stages: Array[CoreStage] = []
 
 @onready var inventory: Inventory = $Inventory
 
-var stages: Array[CoreStage] = []
 var current_stage_requirements: Array[RecipeItem] = []
 var current_stage = 0
 var is_stage_completed = false
 
 func _ready() -> void:
 	inventory.item_added.connect(_on_item_added)
-
-	var access = DirAccess.open(stages_folder)
-	if !access.dir_exists(stages_folder):
-		push_error("Directory '" + stages_folder + "' does not exist")
-		return
-
-	for file in access.get_files():
-		var resource = ResourceLoader.load(stages_folder + "/" + file)
-		if resource is not CoreStage:
-			continue
-		stages.append(resource)
-
 	set_stage(0)
 
 func get_stage() -> CoreStage:

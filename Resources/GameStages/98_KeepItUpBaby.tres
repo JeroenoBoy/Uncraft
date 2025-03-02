@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="CoreStage" load_steps=20 format=3 uid="uid://buimn3how7466"]
+
+[ext_resource type="Texture2D" uid="uid://cggktjtpxa4kt" path="res://Assets/Sprites/Machines/GarbageBin.tres" id="1_dnj53"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_1fex5"]
+[ext_resource type="Resource" uid="uid://bva05wjnp6pa5" path="res://Resources/Items/Alluminium.tres" id="3_kgw7m"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_ndfac"]
+[ext_resource type="Resource" uid="uid://cr65i1n051q68" path="res://Resources/Items/Car/Part_Tires.tres" id="5_kttsb"]
+[ext_resource type="Resource" uid="uid://deb425ggahqge" path="res://Resources/Items/Tire.tres" id="7_37l64"]
+[ext_resource type="Resource" uid="uid://blrax816gqyob" path="res://Resources/Items/Glass.tres" id="10_ne0gu"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="11_o64jj"]
+[ext_resource type="Resource" uid="uid://clx8j01vhnl4u" path="res://Resources/GameConditions/MelterUnlocked.tres" id="12_j1nry"]
+[ext_resource type="Texture2D" uid="uid://blgkhl1waao1j" path="res://Assets/UI/Atlas/QuestionMark.tres" id="12_v7lrb"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="13_8ru16"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="14_f8bgl"]
+[ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="20_jwnw1"]
+
+[sub_resource type="Resource" id="Resource_nal2w"]
+script = ExtResource("2_1fex5")
+count = 1500
+item_data = ExtResource("3_kgw7m")
+with_parts = Array[ExtResource("4_ndfac")]([])
+without_parts = Array[ExtResource("4_ndfac")]([ExtResource("5_kttsb")])
+
+[sub_resource type="Resource" id="Resource_ee40k"]
+script = ExtResource("2_1fex5")
+count = 800
+item_data = ExtResource("10_ne0gu")
+with_parts = Array[ExtResource("4_ndfac")]([])
+without_parts = Array[ExtResource("4_ndfac")]([])
+
+[sub_resource type="Resource" id="Resource_5770l"]
+script = ExtResource("2_1fex5")
+count = 300
+item_data = ExtResource("7_37l64")
+with_parts = Array[ExtResource("4_ndfac")]([])
+without_parts = Array[ExtResource("4_ndfac")]([])
+
+[sub_resource type="Resource" id="Resource_05sxy"]
+script = ExtResource("13_8ru16")
+condition = ExtResource("12_j1nry")
+expected = true
+
+[sub_resource type="Resource" id="Resource_y1gvy"]
+script = ExtResource("14_f8bgl")
+icon = ExtResource("12_v7lrb")
+
+[sub_resource type="Resource" id="Resource_3krui"]
+script = ExtResource("11_o64jj")
+game_value = SubResource("Resource_05sxy")
+icons = Array[ExtResource("14_f8bgl")]([SubResource("Resource_y1gvy")])
+
+[resource]
+script = ExtResource("20_jwnw1")
+name = "A 'Passion' for Recyling"
+icon = ExtResource("1_dnj53")
+description = "Dear factory architects,
+
+The company has ascended to great hights and we are aiming to become the #1 recyling company in the world. We'll become a household name, a company everyone will look up to.
+
+To achieve this, we wish for you to produce nothing but raw materials. We want rubber, alluminium and glass. With these fresh products, we will take over the world!
+
+Kind regards,
+John"
+button_text = "Complete"
+requirements = Array[ExtResource("2_1fex5")]([SubResource("Resource_nal2w"), SubResource("Resource_ee40k"), SubResource("Resource_5770l")])
+results = Array[ExtResource("11_o64jj")]([SubResource("Resource_3krui")])

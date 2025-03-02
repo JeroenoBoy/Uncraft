@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=14 format=3 uid="uid://cdfxje1swvln"]
+
+[ext_resource type="Texture2D" uid="uid://d2l10uwiko4v8" path="res://Assets/Sprites/Car/car_full.tres" id="1_06ltb"]
+[ext_resource type="Resource" uid="uid://diuyfphld7gqd" path="res://Resources/GameConditions/GlassUnlocked.tres" id="1_bwdhk"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="1_yqefs"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="2_d4gm2"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_uldak"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="3_xeo5i"]
+[ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="5_j1kw4"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="6_tqjq4"]
+[ext_resource type="Resource" uid="uid://bva05wjnp6pa5" path="res://Resources/Items/Alluminium.tres" id="8_d1rhq"]
+
+[sub_resource type="Resource" id="Resource_qtacm"]
+script = ExtResource("2_uldak")
+condition = ExtResource("1_bwdhk")
+expected = true
+
+[sub_resource type="Resource" id="Resource_j6o05"]
+script = ExtResource("1_yqefs")
+count = 1
+item_data = ExtResource("5_j1kw4")
+with_parts = Array[ExtResource("6_tqjq4")]([])
+without_parts = Array[ExtResource("6_tqjq4")]([])
+
+[sub_resource type="Resource" id="Resource_1ja1r"]
+script = ExtResource("2_d4gm2")
+transform_type = 0
+count = 1
+item_data = ExtResource("5_j1kw4")
+
+[sub_resource type="Resource" id="Resource_wccai"]
+script = ExtResource("2_d4gm2")
+transform_type = 1
+count = 1
+item_data = ExtResource("8_d1rhq")
+
+[resource]
+script = ExtResource("3_xeo5i")
+name = "Melt Car"
+craft_time = 8
+icon = ExtResource("1_06ltb")
+ui_icon_scale = 1.0
+condition = SubResource("Resource_qtacm")
+inputs = Array[ExtResource("1_yqefs")]([SubResource("Resource_j6o05")])
+output = Array[ExtResource("2_d4gm2")]([SubResource("Resource_1ja1r"), SubResource("Resource_wccai")])

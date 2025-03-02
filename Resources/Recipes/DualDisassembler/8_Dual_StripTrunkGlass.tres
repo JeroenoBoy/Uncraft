@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=16 format=3 uid="uid://bom3x12y7mj2r"]
+
+[ext_resource type="Resource" uid="uid://diuyfphld7gqd" path="res://Resources/GameConditions/GlassUnlocked.tres" id="1_m7oar"]
+[ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="2_h5oys"]
+[ext_resource type="Texture2D" uid="uid://dv04x1uelv4ob" path="res://Assets/Sprites/Items/Trunk_mirrorless.tres" id="3_26rh1"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="4_k5pgd"]
+[ext_resource type="Resource" uid="uid://06gv11n5jipq" path="res://Resources/Items/Trunk.tres" id="5_r002a"]
+[ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="6_gap6k"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItemTransform.gd" id="7_btk8o"]
+[ext_resource type="Resource" uid="uid://cnc5qqumk4hbr" path="res://Resources/Items/Trunk_Mirrorless.tres" id="8_xch7u"]
+[ext_resource type="Resource" uid="uid://blrax816gqyob" path="res://Resources/Items/Glass.tres" id="9_jr3os"]
+[ext_resource type="Script" path="res://Scripts/Items/Recipe/Recipe.gd" id="10_swt7k"]
+
+[sub_resource type="Resource" id="Resource_y0fuf"]
+script = ExtResource("2_h5oys")
+condition = ExtResource("1_m7oar")
+expected = true
+
+[sub_resource type="Resource" id="Resource_sec7s"]
+script = ExtResource("4_k5pgd")
+count = 1
+item_data = ExtResource("5_r002a")
+with_parts = Array[ExtResource("6_gap6k")]([])
+without_parts = Array[ExtResource("6_gap6k")]([])
+
+[sub_resource type="Resource" id="Resource_rueqd"]
+script = ExtResource("7_btk8o")
+transform_type = 0
+count = 1
+item_data = ExtResource("5_r002a")
+
+[sub_resource type="Resource" id="Resource_srfhb"]
+script = ExtResource("7_btk8o")
+transform_type = 1
+count = 1
+item_data = ExtResource("8_xch7u")
+
+[sub_resource type="Resource" id="Resource_nc4ao"]
+script = ExtResource("7_btk8o")
+transform_type = 1
+count = 1
+item_data = ExtResource("9_jr3os")
+
+[resource]
+script = ExtResource("10_swt7k")
+name = "Remove Trunk Glass"
+craft_time = 4
+icon = ExtResource("3_26rh1")
+ui_icon_scale = 1.0
+condition = SubResource("Resource_y0fuf")
+inputs = Array[ExtResource("4_k5pgd")]([SubResource("Resource_sec7s")])
+output = Array[ExtResource("7_btk8o")]([SubResource("Resource_rueqd"), SubResource("Resource_srfhb"), SubResource("Resource_nc4ao")])

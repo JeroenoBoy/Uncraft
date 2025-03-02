@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://d2w0vyuqddfgd"]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemData.gd" id="1_pcv0l"]
+[ext_resource type="Texture2D" uid="uid://bdl0d2s7pnect" path="res://Assets/Sprites/Items/Roof.tres" id="2_at2ge"]
+
+[resource]
+script = ExtResource("1_pcv0l")
+name = "Roof"
+stack_size = 10
+sprite = ExtResource("2_at2ge")

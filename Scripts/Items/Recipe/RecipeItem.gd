@@ -8,7 +8,7 @@ extends Resource
 @export var without_parts: Array[ComplexItemPart] = []
 
 func make_filter() -> Filter:
-	if without_parts.is_empty() && without_parts.is_empty():
+	if with_parts.is_empty() && without_parts.is_empty():
 		var simple_filter = ItemFilter.new()
 		simple_filter.item = item_data
 		return simple_filter
