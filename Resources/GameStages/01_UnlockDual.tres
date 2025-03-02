@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://cjdjx0hyrgxfq" path="res://Resources/GameConditions/DualDisassemblerUnlocked.tres" id="6_5asr3"]
 [ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="7_d6k0y"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="7_nrbqs"]
-[ext_resource type="Texture2D" uid="uid://7o0mbcuj3xhd" path="res://Assets/Sprites/Items/door.tres" id="8_8ruw6"]
+[ext_resource type="Texture2D" uid="uid://7o0mbcuj3xhd" path="res://Assets/Sprites/Items/Door.tres" id="8_8ruw6"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="10_wd4j8"]
 [ext_resource type="Resource" uid="uid://cwiopcquep7u" path="res://Resources/GameConditions/Counts/CarGeneratorLimit.tres" id="10_xdv8c"]
 [ext_resource type="Script" path="res://Scripts/Core/IntGameValueField.gd" id="11_nqgdd"]

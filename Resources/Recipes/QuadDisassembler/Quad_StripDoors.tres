@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=11 format=3 uid="uid://bb6vkl5emnl46"]
 
-[ext_resource type="Texture2D" uid="uid://7o0mbcuj3xhd" path="res://Assets/Sprites/Items/door.tres" id="1_aabcx"]
+[ext_resource type="Texture2D" uid="uid://7o0mbcuj3xhd" path="res://Assets/Sprites/Items/Door.tres" id="1_aabcx"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_jg2uv"]
 [ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="3_dyli4"]
 [ext_resource type="Script" path="res://Scripts/Items/ComplexItemPart.gd" id="4_uj5nt"]
