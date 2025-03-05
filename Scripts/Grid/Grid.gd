@@ -39,7 +39,7 @@ static func grid_precise_mouse_pos() -> Vector2:
 	
 
 static func fast_rotate(vector: Vector2i, rot: float) -> Vector2i:
-	var rounded_rot = ((int(round(rot / 90)) % 4) + 4) % 4
+	var rounded_rot := ((int(round(rot / 90)) % 4) + 4) % 4
 	match rounded_rot:
 		1:
 			var y = vector.y
@@ -127,14 +127,15 @@ func remove_grid_node(node: GridNode):
 	node.is_on_grid = false
 	
 func is_spot_occupied(node: GridNode) -> bool:
-	var gridPos = world_to_grid(node.global_position)
-	var offset = node.offset
-	var rot = node.global_rotation_degrees
+	var gridPos := world_to_grid(node.global_position)
+	var offset := node.offset
+	var rot := node.global_rotation_degrees
 	
 	for x in range(node.size.x):
 		for y in range(node.size.y):
 			var pos = fast_rotate(Vector2i(x + offset.x, y + offset.y), rot) + gridPos
-			if _grid.has(pos):
-				return false
+			if !_grid.has(pos):
+				return true
+			return _grid[pos][0].replacable
 
 	return true

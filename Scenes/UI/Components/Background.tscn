@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://bln7c71al55vp"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Components/CloseButton.gd" id="1_iiqc0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ujh2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ol3g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_022in"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ebg8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58j3f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y8tqr"]
+
+[node name="Background" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ujh2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ol3g")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_022in")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7ebg8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_58j3f")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y8tqr")
+script = ExtResource("1_iiqc0")

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dloxykvbpwoe4"]
+[gd_scene load_steps=11 format=3 uid="uid://dloxykvbpwoe4"]
 
 [ext_resource type="Script" path="res://Scripts/Common/UI/TileScaleContainer.gd" id="1_d8y87"]
 [ext_resource type="Script" path="res://Scripts/Common/UI/UIWindow.gd" id="1_najdx"]
 [ext_resource type="Texture2D" uid="uid://62awiu4mvq5t" path="res://Assets/UI/Atlas/BackgroundManufacturer.tres" id="2_ni6h0"]
 [ext_resource type="Texture2D" uid="uid://byx4gussm2u16" path="res://Assets/UI/Atlas/BackgroundIcon.tres" id="3_ou6i7"]
+[ext_resource type="Texture2D" uid="uid://bnv8pa8c8u28v" path="res://Assets/UI/Atlas/CloseButton.tres" id="5_6dyiy"]
+[ext_resource type="Script" path="res://Scripts/UI/Components/CloseButton.gd" id="6_xj7wx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8tjl"]
 
@@ -109,5 +111,34 @@ patch_margin_left = 2
 patch_margin_top = 3
 patch_margin_right = 2
 patch_margin_bottom = 2
+
+[node name="Control" type="Control" parent="."]
+z_index = 5
+layout_mode = 2
+mouse_filter = 1
+
+[node name="CloseButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -39.0
+offset_top = -7.0
+offset_right = 9.0
+offset_bottom = 41.0
+grow_horizontal = 0
+script = ExtResource("6_xj7wx")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CloseButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/CloseButton/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_6dyiy")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

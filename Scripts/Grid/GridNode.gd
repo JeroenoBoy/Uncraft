@@ -7,14 +7,15 @@ signal function_update()
 signal placed()
 signal picked_up()
 
-@export var size = Vector2i.ONE
-@export var offset = Vector2i.ZERO
-@export var movable = true
-@export var rotatable = true
-@export var removable = true
-@export var area_delete = false
+@export var size := Vector2i.ONE
+@export var offset := Vector2i.ZERO
+@export var movable := true
+@export var rotatable := true
+@export var removable := true
+@export var replacable := false
+@export var area_delete := false
 @export var object_store: ObjectStoreGameValue
-@export var place_on_spawn = false
+@export var place_on_spawn := false
 
 var childNodes: Array[GridNode] = []
 var is_on_grid = false

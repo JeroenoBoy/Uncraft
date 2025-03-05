@@ -3,8 +3,8 @@ extends BaseGameState
 
 var item: PlaceableItem
 var selectable_item: SelectableItem
-var start_pos = Vector2i.ZERO
-var prev_mouse_pos = Vector2i.ZERO
+var start_pos := Vector2i.ZERO
+var prev_mouse_pos := Vector2i.ZERO
 
 var active_tiles: Array[GridNode] = []
 var inactive_tiles: Array[GridNode] = []
@@ -69,14 +69,18 @@ func _place_all():
 	})
 
 func _create_path():
-	var target = Grid.grid_mouse_pos()
+	var target := Grid.grid_mouse_pos()
 	prev_mouse_pos = target
 	target = Grid.instance.get_closest_free_point(target)
-	var path = Grid.instance.astar.get_point_path(start_pos, target, true)
+	var pref_start_pos := Grid.instance.get_closest_free_point(start_pos)
+	var path := Grid.instance.astar.get_point_path(pref_start_pos, target, true)
 
 	_inactivate_all()
 
-	var dir = Grid.grid_precise_mouse_pos() - Vector2(target)
+	if path.size() == 0:
+		return
+
+	var dir := Grid.grid_precise_mouse_pos() - Vector2(target)
 	if abs(dir.x) > abs(dir.y):
 		dir.y = 0
 	else:
@@ -84,8 +88,31 @@ func _create_path():
 
 	if dir.length_squared() <= 0.5:
 		dir = -dir
+	
+	dir = dir.normalized()
 
-	var parent_pos = target + Vector2i(dir.normalized())
+	for i in range(5):
+		if i == 4:
+			if path.size() < 2:
+				break
+			dir = path[path.size()-1] - path[path.size()-2]
+			break
+
+		var d := Grid.fast_rotate(dir, i * 90)
+		var nodes := Grid.instance.get_grid_nodes(target + d)
+		var yesbreak := false
+		for node in nodes:
+			if node == null:
+				continue
+			if node is MachineInput:
+				dir = d
+				yesbreak = true
+				break
+
+		if yesbreak:
+			break
+	
+	var parent_pos := target + Vector2i(dir)
 	for i in range(path.size()-1, -1, -1):
 		var pos = Vector2i(path[i])
 		dir = parent_pos - pos
@@ -97,7 +124,7 @@ func _create_path():
 		elif dir.x < 0:
 			rot = PI * 1.5
 
-		var node = _get_tile()
+		var node := _get_tile()
 		node.position = Grid.grid_to_world(pos)
 		node.global_rotation = rot
 		parent_pos = pos

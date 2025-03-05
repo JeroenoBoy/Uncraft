@@ -1,8 +1,8 @@
 class_name BaseGameState
 extends State
 
-var item_selector = false
-var can_move_camera = false
+var item_selector := false
+var can_move_camera := false
 var _item_selector_screen: ItemSelectorScreen
 
 func _on_first_activate():
@@ -10,6 +10,7 @@ func _on_first_activate():
 		_item_selector_screen = UIManager.instance.get_screen("ItemSelector") as ItemSelectorScreen
 
 func _on_activate(_state_data: Dictionary):
+	EventBus.instance.ui_cancel.connect(_on_ui_cancel)
 	if item_selector:
 		_item_selector_screen.on_item_selected.connect(_on_item_selected)
 		_item_selector_screen.show_screen()
@@ -18,6 +19,7 @@ func _on_activate(_state_data: Dictionary):
 		CameraController.instance.can_move = true
 
 func _on_deactivate():
+	EventBus.instance.ui_cancel.disconnect(_on_ui_cancel)
 	if item_selector:
 		_item_selector_screen.on_item_selected.disconnect(_on_item_selected)
 		_item_selector_screen.hide_screen()
