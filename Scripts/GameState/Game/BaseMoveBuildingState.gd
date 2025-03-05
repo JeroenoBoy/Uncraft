@@ -20,6 +20,10 @@ func _init() -> void:
 func _on_first_activate():
 	super._on_first_activate()
 	delete_screen = UIManager.instance.get_screen("DeleteScreen") as DeleteScreen
+	keybinds.append(KeybindWidget.Data.new("Place", "LMB"))
+	keybinds.append(KeybindWidget.Data.new("Cancel", "ESC"))
+	keybinds.append(KeybindWidget.Data.new("Rotate", "Q"))
+	keybinds.append(KeybindWidget.Data.new("Rotate", "E"))
 
 func _on_activate(state_data: Dictionary):
 	super._on_activate(state_data)
@@ -27,6 +31,7 @@ func _on_activate(state_data: Dictionary):
 	mode = Mode.Default
 	if state_data.has("mode"):
 		mode = Mode.get(state_data["mode"])
+		Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 
 	delete_screen.delete_pressed.connect(_on_delete)
 
@@ -34,6 +39,10 @@ func _on_deactivate():
 	super._on_deactivate()
 	delete_screen.hide_screen()
 	delete_screen.delete_pressed.disconnect(_on_delete)
+
+	if mode == Mode.Drag:
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		
 
 func reset_position_to_mouse():
 	current_rotation = 0
@@ -69,20 +78,26 @@ func rotate_object(rotation: float):
 	object.global_rotation_degrees = rotation
 	_check_valid_position()
 
-func _on_input(event: InputEvent):
-	super._on_input(event)
+func _on_input(event: InputEvent) -> bool:
+	if super._on_input(event):
+		return true
 
 	if event.is_action_pressed("build_cancel"):
 		_on_cancel()
-		return
+		return true
+	
+	if object == null:
+		return false
+		
 	if object.removable && event.is_action_pressed("build_delete"):
 		_on_delete()
-		return
+		return true
+
 	match mode:
 		Mode.Default:
 			if can_place && event.is_action_pressed("build_place"):
 				_on_place()
-				return
+				return true
 		Mode.Drag:
 			if event.is_action_released("build_place"):
 				if !can_place:
@@ -91,17 +106,19 @@ func _on_input(event: InputEvent):
 					_on_delete()
 				else:
 					_on_place()
-				return
+				return true
 		_:
 			push_error("Move mode ", mode, " is not implemented")
 
 	if object.rotatable && event.is_action_pressed("build_rotate_clockwise"):
 		rotate_object(current_rotation + 90)
-		return
+		return true
 
 	if object.rotatable && event.is_action_pressed("building_rotate_anti_clockwise"):
 		rotate_object(current_rotation - 90)
-		return
+		return true
+
+	return false
 
 
 func _update(delta: float):

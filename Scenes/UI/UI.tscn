@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brov1ybjs5gc1"]
+[gd_scene load_steps=12 format=3 uid="uid://brov1ybjs5gc1"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIManager.gd" id="1_hcomk"]
 [ext_resource type="Theme" uid="uid://cokbn1tlqfm1m" path="res://Assets/UI/UITheme.tres" id="1_oyuev"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://t61cgieq1unh" path="res://Scenes/UI/RecipeScreen.tscn" id="4_htbro"]
 [ext_resource type="PackedScene" uid="uid://dvu54lolldlab" path="res://Scenes/UI/CoreScreen.tscn" id="6_w26cd"]
 [ext_resource type="PackedScene" uid="uid://b73lfpcgw4sdo" path="res://Scenes/UI/CheatMenu/CheatMenu.tscn" id="7_xjps6"]
+[ext_resource type="Script" path="res://Scripts/Common/UI/TileScaleContainer.gd" id="8_1mwl2"]
+[ext_resource type="Script" path="res://Scripts/UI/SimpleScreen.gd" id="8_yiec0"]
+[ext_resource type="Texture2D" uid="uid://bhovyupk6mhsp" path="res://Assets/UI/Atlas/SelectionGrid.tres" id="9_lqr7p"]
+[ext_resource type="PackedScene" uid="uid://bdu3kmmy01is1" path="res://Scenes/UI/Keybinds/KeybindScreen.tscn" id="11_c2g8m"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -41,6 +45,42 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="DeleteIndicator" type="Control" parent="UIManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_yiec0")
+
+[node name="TileScaleContainer" type="Container" parent="UIManager/DeleteIndicator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_1mwl2")
+tile_scale = 2.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UIManager/DeleteIndicator/TileScaleContainer"]
+layout_mode = 2
+texture = ExtResource("9_lqr7p")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="KeybindScreen" parent="UIManager" instance=ExtResource("11_c2g8m")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = -32.0
+offset_right = 96.0
+offset_bottom = 0.0
 
 [connection signal="mouse_entered" from="UIManager" to="UIManager" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UIManager" to="UIManager" method="_on_mouse_exited"]

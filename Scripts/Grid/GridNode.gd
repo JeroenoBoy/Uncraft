@@ -13,7 +13,7 @@ signal picked_up()
 @export var rotatable := true
 @export var removable := true
 @export var replacable := false
-@export var area_delete := false
+@export var area_delete := true
 @export var object_store: ObjectStoreGameValue
 @export var place_on_spawn := false
 
@@ -58,6 +58,7 @@ func grid_rotation() -> Vector2i:
 			return Vector2i.ZERO
 
 func place():
+	Grid.instance.remove_replacable_tiles(self)
 	Grid.instance.set_grid_node(self)
 	placed.emit()
 	tile_update.emit()

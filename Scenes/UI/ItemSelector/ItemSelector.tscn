@@ -14,7 +14,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d6ymw"]
 
-[node name="ItemSelector" type="Panel"]
+[node name="ItemSelector" type="Panel" node_paths=PackedStringArray("button_container")]
 custom_minimum_size = Vector2(0, 100)
 anchors_preset = 12
 anchor_top = 1.0
@@ -25,6 +25,7 @@ grow_vertical = 0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_d6ymw")
 script = ExtResource("1_hbgqn")
+button_container = NodePath("MarginContainer/Container/HBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -37,3 +38,5 @@ grow_vertical = 2
 [node name="Container" parent="MarginContainer" instance=ExtResource("2_w7qvm")]
 layout_mode = 2
 items = Array[ExtResource("3_c7p64")]([ExtResource("4_yadb3"), ExtResource("5_f2pqq"), ExtResource("6_tu0yj"), ExtResource("7_770au"), ExtResource("8_wjxj8"), ExtResource("9_wo4rj"), ExtResource("10_kkxgr"), ExtResource("11_wo36a")])
+
+[editable path="MarginContainer/Container"]

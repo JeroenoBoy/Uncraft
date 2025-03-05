@@ -8,6 +8,7 @@ var building: Node
 func _on_first_activate():
 	super._on_first_activate()
 	recipe_selector_screen = UIManager.instance.get_screen("RecipeSelector") as RecipeScreen
+	keybinds.append(KeybindWidget.Data.new("Cancel", "ESC"))
 
 func _on_activate(state_data: Dictionary):
 	super._on_activate(state_data)

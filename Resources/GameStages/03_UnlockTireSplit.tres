@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CoreStage" load_steps=26 format=3 uid="uid://b4d6oa8v0vs2p"]
+[gd_resource type="Resource" script_class="CoreStage" load_steps=19 format=3 uid="uid://b4d6oa8v0vs2p"]
 
 [ext_resource type="Texture2D" uid="uid://dxtf61ochgx3a" path="res://Assets/Sprites/Items/tire_tire.tres" id="1_41xkq"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_coekm"]
@@ -11,11 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="9_ahcd7"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="9_llw2q"]
 [ext_resource type="Texture2D" uid="uid://17v4y4hh8dw4" path="res://Assets/Sprites/Machines/DualDisassembler.tres" id="10_jypxt"]
-[ext_resource type="Resource" uid="uid://cwiopcquep7u" path="res://Resources/GameConditions/Counts/CarGeneratorLimit.tres" id="10_uv3br"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="11_7pr25"]
-[ext_resource type="Script" path="res://Scripts/Core/IntGameValueField.gd" id="11_lo11c"]
-[ext_resource type="Texture2D" uid="uid://c0e53mpqhav36" path="res://Assets/Sprites/Icons/Generator.tres" id="12_a8o56"]
-[ext_resource type="Texture2D" uid="uid://dp038n0q8af1i" path="res://Assets/UI/Atlas/Value6.tres" id="13_1h2is"]
 
 [sub_resource type="Resource" id="Resource_nal2w"]
 script = ExtResource("2_coekm")
@@ -53,21 +49,6 @@ script = ExtResource("7_7aair")
 game_value = SubResource("Resource_7otu4")
 icons = Array[ExtResource("9_llw2q")]([SubResource("Resource_y63mg")])
 
-[sub_resource type="Resource" id="Resource_a63hm"]
-script = ExtResource("11_lo11c")
-intValue = ExtResource("10_uv3br")
-value = 6
-
-[sub_resource type="Resource" id="Resource_gkhlv"]
-script = ExtResource("9_llw2q")
-icon = ExtResource("12_a8o56")
-second = ExtResource("13_1h2is")
-
-[sub_resource type="Resource" id="Resource_5nn75"]
-script = ExtResource("7_7aair")
-game_value = SubResource("Resource_a63hm")
-icons = Array[ExtResource("9_llw2q")]([SubResource("Resource_gkhlv")])
-
 [resource]
 script = ExtResource("11_7pr25")
 name = "Tire Disassembly"
@@ -77,4 +58,4 @@ description = "What are there more of in the world? Tires... or doors? If you th
 ~ John :)"
 button_text = "Complete"
 requirements = Array[ExtResource("2_coekm")]([SubResource("Resource_nal2w"), SubResource("Resource_mgyb7"), SubResource("Resource_avg7k")])
-results = Array[ExtResource("7_7aair")]([SubResource("Resource_gesrv"), SubResource("Resource_5nn75")])
+results = Array[ExtResource("7_7aair")]([SubResource("Resource_gesrv")])

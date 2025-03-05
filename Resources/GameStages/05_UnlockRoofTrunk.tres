@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CoreStage" load_steps=34 format=3 uid="uid://q3rlpopnmnfc"]
+[gd_resource type="Resource" script_class="CoreStage" load_steps=27 format=3 uid="uid://q3rlpopnmnfc"]
 
 [ext_resource type="Texture2D" uid="uid://dd2chmh040f10" path="res://Assets/Sprites/Items/Trunk.tres" id="1_4jtw4"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_1yei1"]
@@ -15,11 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://17v4y4hh8dw4" path="res://Assets/Sprites/Machines/DualDisassembler.tres" id="14_2xtts"]
 [ext_resource type="Texture2D" uid="uid://bdl0d2s7pnect" path="res://Assets/Sprites/Items/Roof.tres" id="15_5v8al"]
 [ext_resource type="Resource" uid="uid://bqpseumhc7iho" path="res://Resources/GameConditions/TrunkUnlocked.tres" id="17_mnnag"]
-[ext_resource type="Resource" uid="uid://cwiopcquep7u" path="res://Resources/GameConditions/Counts/CarGeneratorLimit.tres" id="18_mq4rv"]
-[ext_resource type="Script" path="res://Scripts/Core/IntGameValueField.gd" id="19_idm76"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStage.gd" id="19_rflhp"]
-[ext_resource type="Texture2D" uid="uid://c0e53mpqhav36" path="res://Assets/Sprites/Icons/Generator.tres" id="20_85ied"]
-[ext_resource type="Texture2D" uid="uid://dp038n0q8af1i" path="res://Assets/UI/Atlas/Value6.tres" id="21_q2f1e"]
 
 [sub_resource type="Resource" id="Resource_nal2w"]
 script = ExtResource("2_1yei1")
@@ -79,21 +75,6 @@ script = ExtResource("10_60yhx")
 game_value = SubResource("Resource_63ohl")
 icons = Array[ExtResource("13_p8bqp")]([SubResource("Resource_y63mg")])
 
-[sub_resource type="Resource" id="Resource_cs7o4"]
-script = ExtResource("19_idm76")
-intValue = ExtResource("18_mq4rv")
-value = 6
-
-[sub_resource type="Resource" id="Resource_3ne4a"]
-script = ExtResource("13_p8bqp")
-icon = ExtResource("20_85ied")
-second = ExtResource("21_q2f1e")
-
-[sub_resource type="Resource" id="Resource_c0vbb"]
-script = ExtResource("10_60yhx")
-game_value = SubResource("Resource_cs7o4")
-icons = Array[ExtResource("13_p8bqp")]([SubResource("Resource_3ne4a")])
-
 [resource]
 script = ExtResource("19_rflhp")
 name = "Total Car Takeout"
@@ -108,4 +89,4 @@ Cheers,
 John"
 button_text = "Complete"
 requirements = Array[ExtResource("2_1yei1")]([SubResource("Resource_nal2w"), SubResource("Resource_avg7k"), SubResource("Resource_5770l"), SubResource("Resource_4g03c")])
-results = Array[ExtResource("10_60yhx")]([SubResource("Resource_3krui"), SubResource("Resource_fumx3"), SubResource("Resource_c0vbb")])
+results = Array[ExtResource("10_60yhx")]([SubResource("Resource_3krui"), SubResource("Resource_fumx3")])

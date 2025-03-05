@@ -3,6 +3,9 @@ extends BaseMoveBuildingState
 
 var cancelAction: CancelableAction
 
+func _on_first_activate():
+	super._on_first_activate()
+
 func _on_activate(state_data: Dictionary):
 	super._on_activate(state_data)
 

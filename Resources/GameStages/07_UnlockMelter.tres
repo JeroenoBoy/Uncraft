@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CoreStage" load_steps=44 format=3 uid="uid://0iahk7c4gmhb"]
+[gd_resource type="Resource" script_class="CoreStage" load_steps=37 format=3 uid="uid://0iahk7c4gmhb"]
 
 [ext_resource type="Texture2D" uid="uid://dblfbupgc8lwx" path="res://Assets/Sprites/Machines/Melter.tres" id="1_txbon"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe/RecipeItem.gd" id="2_2oqtd"]
@@ -13,13 +13,9 @@
 [ext_resource type="Resource" uid="uid://blrax816gqyob" path="res://Resources/Items/Glass.tres" id="10_vfcqy"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResult.gd" id="11_yrrnj"]
 [ext_resource type="Resource" uid="uid://clx8j01vhnl4u" path="res://Resources/GameConditions/MelterUnlocked.tres" id="12_t87hq"]
-[ext_resource type="Resource" uid="uid://cwiopcquep7u" path="res://Resources/GameConditions/Counts/CarGeneratorLimit.tres" id="12_wli6g"]
 [ext_resource type="Script" path="res://Scripts/Core/GameConditionField.gd" id="13_acc6e"]
-[ext_resource type="Script" path="res://Scripts/Core/IntGameValueField.gd" id="13_s656y"]
 [ext_resource type="Script" path="res://Scripts/Core/CoreStageResultIcon.gd" id="14_c0ked"]
-[ext_resource type="Texture2D" uid="uid://c0e53mpqhav36" path="res://Assets/Sprites/Icons/Generator.tres" id="15_0c12q"]
 [ext_resource type="Texture2D" uid="uid://d2l10uwiko4v8" path="res://Assets/Sprites/Car/car_full.tres" id="15_hd5h5"]
-[ext_resource type="Texture2D" uid="uid://dho75dtecdmsh" path="res://Assets/UI/Atlas/Value8.tres" id="16_78b6v"]
 [ext_resource type="Texture2D" uid="uid://d1s0kul3cuyio" path="res://Assets/Sprites/Items/Door_mirrorless.tres" id="16_igkxr"]
 [ext_resource type="Texture2D" uid="uid://bdl0d2s7pnect" path="res://Assets/Sprites/Items/Roof.tres" id="16_oy2xc"]
 [ext_resource type="Texture2D" uid="uid://dv04x1uelv4ob" path="res://Assets/Sprites/Items/Trunk_mirrorless.tres" id="17_38x6l"]
@@ -74,21 +70,6 @@ count = 300
 item_data = ExtResource("10_vfcqy")
 with_parts = Array[ExtResource("4_7vo3k")]([])
 without_parts = Array[ExtResource("4_7vo3k")]([])
-
-[sub_resource type="Resource" id="Resource_loaqi"]
-script = ExtResource("13_s656y")
-intValue = ExtResource("12_wli6g")
-value = 8
-
-[sub_resource type="Resource" id="Resource_2c7k2"]
-script = ExtResource("14_c0ked")
-icon = ExtResource("15_0c12q")
-second = ExtResource("16_78b6v")
-
-[sub_resource type="Resource" id="Resource_uflf4"]
-script = ExtResource("11_yrrnj")
-game_value = SubResource("Resource_loaqi")
-icons = Array[ExtResource("14_c0ked")]([SubResource("Resource_2c7k2")])
 
 [sub_resource type="Resource" id="Resource_05sxy"]
 script = ExtResource("13_acc6e")
@@ -145,4 +126,4 @@ Kind regards,
 John"
 button_text = "Complete"
 requirements = Array[ExtResource("2_2oqtd")]([SubResource("Resource_nal2w"), SubResource("Resource_oqnki"), SubResource("Resource_5770l"), SubResource("Resource_4g03c"), SubResource("Resource_fu8er"), SubResource("Resource_ywxpl"), SubResource("Resource_ee40k")])
-results = Array[ExtResource("11_yrrnj")]([SubResource("Resource_uflf4"), SubResource("Resource_3krui")])
+results = Array[ExtResource("11_yrrnj")]([SubResource("Resource_3krui")])

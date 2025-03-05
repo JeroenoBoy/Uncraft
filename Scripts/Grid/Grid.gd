@@ -73,13 +73,13 @@ func get_closest_free_point(from: Vector2i) -> Vector2i:
 	var offset = 1
 
 	while true:
-		if !_grid.has(from + Vector2i.UP * offset):
+		if !_grid.has(from + Vector2i.UP * offset) || _grid[from + Vector2i.UP * offset][0].replacable:
 			return from + Vector2i.UP * offset
-		if !_grid.has(from + Vector2i.LEFT * offset):
+		if !_grid.has(from + Vector2i.LEFT * offset) || _grid[from + Vector2i.LEFT * offset][0].replacable:
 			return from + Vector2i.LEFT * offset
-		if !_grid.has(from + Vector2i.DOWN * offset):
+		if !_grid.has(from + Vector2i.DOWN * offset) || _grid[from + Vector2i.DOWN * offset][0].replacable:
 			return from + Vector2i.DOWN * offset
-		if !_grid.has(from + Vector2i.RIGHT * offset):
+		if !_grid.has(from + Vector2i.RIGHT * offset) || _grid[from + Vector2i.RIGHT * offset][0].replacable:
 			return from + Vector2i.RIGHT * offset
 		offset += 1
 	return Vector2i.ZERO
@@ -125,6 +125,22 @@ func remove_grid_node(node: GridNode):
 				_grid[pos].erase(node)
 
 	node.is_on_grid = false
+
+func remove_replacable_tiles(node: GridNode):
+	var gridPos = world_to_grid(node.global_position)
+	var offset = node.offset
+	var rot = node.global_rotation_degrees
+
+	for x in range(node.size.x):
+		for y in range(node.size.y):
+			var pos = fast_rotate(Vector2i(x + offset.x, y + offset.y), rot) + gridPos
+			var node_at_pos = get_grid_node(pos)
+			if node_at_pos == null:
+				continue
+			if !node_at_pos.replacable:
+				continue
+			node_at_pos.pickup()
+			node_at_pos.queue_free()
 	
 func is_spot_occupied(node: GridNode) -> bool:
 	var gridPos := world_to_grid(node.global_position)
@@ -135,7 +151,9 @@ func is_spot_occupied(node: GridNode) -> bool:
 		for y in range(node.size.y):
 			var pos = fast_rotate(Vector2i(x + offset.x, y + offset.y), rot) + gridPos
 			if !_grid.has(pos):
-				return true
-			return _grid[pos][0].replacable
+				continue
+			if _grid[pos][0].replacable:
+				continue
+			return false
 
 	return true

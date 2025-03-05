@@ -8,37 +8,51 @@ var start_press_tile = Vector2i.ZERO
 
 func _init() -> void:
 	can_move_camera = true
+	item_selector = true
 
 func _ready():
 	selection_grid.visible = false
 
+func _on_first_activate():
+	super._on_first_activate()
+	keybinds.append(KeybindWidget.Data.new("Remove Object", "LMB"))
+	keybinds.append(KeybindWidget.Data.new("Area Remove (Hold)", "LMB"))
+	keybinds.append(KeybindWidget.Data.new("Cancel", "ESC"))
+
 func _on_activate(state_data: Dictionary):
 	super._on_activate(state_data)
 	_reset_press()
+	Input.set_default_cursor_shape(Input.CURSOR_CROSS)
+	UIManager.instance.show_screen("DeleteIndicator")
 
 func _on_deactivate():
 	super._on_deactivate()
 	_reset_press()
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	UIManager.instance.hide_screen("DeleteIndicator")
 
-func _on_input(event: InputEvent):
+func _on_input(event: InputEvent) -> bool:
+	if super._on_input(event):
+		return true
+		
 	if event.is_action_pressed("build_cancel"):
 		state_machine.change_state("Default")
-		return
+		return true
 
 	if event.is_action_pressed("build_place"):
 		start_press_tile = Grid.grid_mouse_pos()
 		press_started = true
-		return
+		return true
 
 	if !press_started:
-		return
+		return true
 
 	if event.is_action_released("build_place"):
 		var mouse_pos = Grid.grid_mouse_pos()
 		if mouse_pos == start_press_tile:
 			_try_remove_node(start_press_tile)
 			_reset_press()
-			return
+			return true
 
 		var min_x = min(mouse_pos.x, start_press_tile.x)
 		var min_y = min(mouse_pos.y, start_press_tile.y)
@@ -51,6 +65,9 @@ func _on_input(event: InputEvent):
 				_try_remove_node(pos, true)
 
 		_reset_press()
+		return true
+
+	return false
 
 func _update(delta: float) -> void:
 	if !press_started:

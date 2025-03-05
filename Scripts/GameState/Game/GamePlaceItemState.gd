@@ -42,12 +42,17 @@ func _on_deactivate():
 	object = null
 
 func _on_input(event: InputEvent):
-	super._on_input(event)
 	if event.is_action_pressed("build_place"):
 		is_holding_place = true
 		place_start_pos = Grid.grid_mouse_pos()
+	
 	if event.is_action_released("build_place"):
 		is_holding_place = false
+
+	if super._on_input(event):
+		return true
+
+	return false
 
 func _update(delta: float):
 	super._update(delta)

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://nf7kddyk64sm"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Keybinds/KeybindWidget.gd" id="1_ikni5"]
+[ext_resource type="Script" path="res://Scripts/Common/UI/TileScaleContainer.gd" id="2_hhdc5"]
+[ext_resource type="Texture2D" uid="uid://bj3dpc7eplwjs" path="res://Assets/UI/Atlas/BackgroundKeybind.tres" id="3_o8ydx"]
+[ext_resource type="Texture2D" uid="uid://byx4gussm2u16" path="res://Assets/UI/Atlas/BackgroundIcon.tres" id="4_4quam"]
+
+[node name="Keybind" type="PanelContainer" node_paths=PackedStringArray("name_label", "key_label")]
+custom_minimum_size = Vector2(0, 32)
+script = ExtResource("1_ikni5")
+name_label = NodePath("HBoxContainer/MarginContainer/Name")
+key_label = NodePath("HBoxContainer/TextureRect/Keybind")
+
+[node name="TileScaleContainer" type="Container" parent="."]
+layout_mode = 2
+script = ExtResource("2_hhdc5")
+tile_scale = 2.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TileScaleContainer"]
+layout_mode = 2
+texture = ExtResource("3_o8ydx")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+texture = ExtResource("4_4quam")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Keybind" type="Label" parent="HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="Name" type="Label" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Label"
+vertical_alignment = 1

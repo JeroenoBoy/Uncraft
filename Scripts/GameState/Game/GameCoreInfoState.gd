@@ -5,7 +5,9 @@ var core_screen: CoreScreen
 var core: Core
 
 func _on_first_activate():
+	super._on_first_activate()
 	core_screen = UIManager.instance.get_screen("CoreScreen") as CoreScreen
+	keybinds.append(KeybindWidget.Data.new("Cancel", "ESC"))
 
 func _on_activate(state_data: Dictionary):
 	super._on_activate(state_data)
@@ -20,6 +22,7 @@ func _on_activate(state_data: Dictionary):
 	core.stage_completed.connect(_on_stage_completed)
 
 func _on_deactivate():
+	super._on_deactivate()
 	core_screen.hide_screen()
 	core_screen.complete_pressed.disconnect(_on_complete_pressed)
 	core.requirement_updated.disconnect(_on_requirement_updated)

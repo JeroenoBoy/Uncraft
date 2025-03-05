@@ -115,5 +115,11 @@ text = "Select"
 [node name="Background" parent="." instance=ExtResource("7_mywfb")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/UIWindow/MarginContainer/HBoxContainer/UIPanel/MarginContainer/VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]

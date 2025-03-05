@@ -13,6 +13,11 @@ func _init():
 	item_selector = true
 	can_move_camera = true
 
+func _on_first_activate():
+	super._on_first_activate()
+	keybinds.append(KeybindWidget.Data.new("Place (Release)", "LMB"))
+	keybinds.append(KeybindWidget.Data.new("Cancel", "ESC"))
+
 func _on_activate(state_data: Dictionary):
 	super._on_activate(state_data)
 
@@ -93,9 +98,8 @@ func _create_path():
 
 	for i in range(5):
 		if i == 4:
-			if path.size() < 2:
-				break
-			dir = path[path.size()-1] - path[path.size()-2]
+			if path.size() > 2:
+				dir = path[path.size()-1] - path[path.size()-2]
 			break
 
 		var d := Grid.fast_rotate(dir, i * 90)
