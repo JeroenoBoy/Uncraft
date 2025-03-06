@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc33fd1250uu3"]
+[gd_scene load_steps=15 format=3 uid="uid://bc33fd1250uu3"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_2iuyb"]
 [ext_resource type="Script" path="res://Scripts/Grid/ClickAction.gd" id="2_g7m4r"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bj211qmgyukaf" path="res://Scenes/Objects/Factories/Components/MachineOutput.tscn" id="7_n1dt0"]
 [ext_resource type="Resource" uid="uid://chjdkyhba7yc0" path="res://Resources/Recipes/Melter/MeltRoof.tres" id="8_4j7xf"]
 [ext_resource type="Resource" uid="uid://cgjcpi3s8fm73" path="res://Resources/Recipes/Melter/MeltTrunk.tres" id="9_0ptf6"]
+[ext_resource type="PackedScene" uid="uid://bp4rh4pn5xxcf" path="res://Scenes/Objects/Factories/Components/Notification.tscn" id="14_0v47f"]
 
 [node name="Melter" type="Node2D"]
 script = ExtResource("1_2iuyb")
@@ -48,3 +49,8 @@ inventory = NodePath("../Manufacturer/InputInventory")
 [node name="MachineOutput" parent="." instance=ExtResource("7_n1dt0")]
 position = Vector2(78, 32)
 rotation = 1.5708
+
+[node name="Notification" parent="." instance=ExtResource("14_0v47f")]
+position = Vector2(32, 31)
+
+[connection signal="recipe_changed" from="Manufacturer" to="Notification" method="_on_manufacturer_recipe_changed"]

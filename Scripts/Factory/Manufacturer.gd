@@ -1,6 +1,8 @@
 class_name Manufacturer
 extends Node2D
 
+signal recipe_changed(recipe: Recipe)
+
 @export var recipes: Array[Recipe] = []
 @export var inputs: Array[MachineInput] = []
 @export var outputs: Array[MachineOutput] = []
@@ -33,6 +35,8 @@ func set_recipe(recipe: Recipe):
 	
 	for input in inputs:
 		input.emit_update()
+
+	recipe_changed.emit(recipe)
 
 func _try_craft_recipe() -> bool:
 	if locked:

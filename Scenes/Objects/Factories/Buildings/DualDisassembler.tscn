@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsj8qgbb1q1w5"]
+[gd_scene load_steps=18 format=3 uid="uid://dsj8qgbb1q1w5"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_mw5eu"]
 [ext_resource type="Script" path="res://Scripts/Grid/ClickAction.gd" id="2_r2ex5"]
@@ -16,10 +16,12 @@
 [ext_resource type="Resource" uid="uid://dw2335pl81hyl" path="res://Resources/Recipes/DualDisassembler/6_Dual_StripCarGlass.tres" id="10_5psqo"]
 [ext_resource type="Resource" uid="uid://df5mnc6oh5uxs" path="res://Resources/Recipes/DualDisassembler/7_Dual_StripDoorGlass.tres" id="11_lvgsf"]
 [ext_resource type="Resource" uid="uid://bom3x12y7mj2r" path="res://Resources/Recipes/DualDisassembler/8_Dual_StripTrunkGlass.tres" id="12_uhnkn"]
+[ext_resource type="PackedScene" uid="uid://bp4rh4pn5xxcf" path="res://Scenes/Objects/Factories/Components/Notification.tscn" id="17_0a8d3"]
 
 [node name="DualDisassembler" type="Node2D"]
 script = ExtResource("1_mw5eu")
 size = Vector2i(2, 2)
+metadata/_edit_vertical_guides_ = [-11.0]
 
 [node name="ClickAction" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_r2ex5")
@@ -55,3 +57,8 @@ rotation = 1.5708
 [node name="MachineOutputRest2" parent="." instance=ExtResource("9_clesg")]
 position = Vector2(46, 32)
 rotation = 1.5708
+
+[node name="Notification" parent="." instance=ExtResource("17_0a8d3")]
+position = Vector2(16, 16)
+
+[connection signal="recipe_changed" from="Manufacturer" to="Notification" method="_on_manufacturer_recipe_changed"]

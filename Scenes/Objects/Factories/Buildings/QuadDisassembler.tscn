@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dic2ut1phh0w7"]
+[gd_scene load_steps=16 format=3 uid="uid://dic2ut1phh0w7"]
 
 [ext_resource type="Script" path="res://Scripts/Grid/GridNode.gd" id="1_est3o"]
 [ext_resource type="Script" path="res://Scripts/Grid/ClickAction.gd" id="2_5g03f"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/Items/Filter/Filter.gd" id="9_nuh0v"]
 [ext_resource type="Script" path="res://Scripts/Items/Filter/ItemFilter.gd" id="11_7mqvm"]
 [ext_resource type="Resource" uid="uid://d8seyk4of85l" path="res://Resources/Items/Car/Car.tres" id="12_w08yo"]
+[ext_resource type="PackedScene" uid="uid://bp4rh4pn5xxcf" path="res://Scenes/Objects/Factories/Components/Notification.tscn" id="14_6uwh7"]
 
 [sub_resource type="Resource" id="Resource_sbtv8"]
 script = ExtResource("11_7mqvm")
@@ -66,3 +67,8 @@ position = Vector2(128, -14)
 position = Vector2(174, 32)
 rotation = 1.5708
 filter = Array[ExtResource("9_nuh0v")]([SubResource("Resource_sbtv8")])
+
+[node name="Notification" parent="." instance=ExtResource("14_6uwh7")]
+position = Vector2(80, 32)
+
+[connection signal="recipe_changed" from="Manufacturer" to="Notification" method="_on_manufacturer_recipe_changed"]

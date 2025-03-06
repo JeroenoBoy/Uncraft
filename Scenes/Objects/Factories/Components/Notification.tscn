@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp4rh4pn5xxcf"]
+
+[ext_resource type="Texture2D" uid="uid://bnf2xubafysw5" path="res://Assets/UI/Atlas/Notification.tres" id="1_2ya40"]
+[ext_resource type="Script" path="res://Scripts/Factory/FactoryNotification.gd" id="1_d01k7"]
+[ext_resource type="Texture2D" uid="uid://byx4gussm2u16" path="res://Assets/UI/Atlas/BackgroundIcon.tres" id="2_pvcle"]
+
+[node name="Notification" type="Node2D"]
+z_index = 15
+script = ExtResource("1_d01k7")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(0, 3)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_pvcle")
+
+[node name="Notify" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ya40")
